@@ -1,0 +1,61 @@
+name: Skill Quality Gate
+
+on:
+  pull_request:
+    paths: ['.agent/skills/**']
+
+jobs:
+  validate-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Agent Skills CLI
+        run: npm install -g agent-skills-cli
+
+      - name: Validate and score all skills
+        run: |
+          FAILED=0
+          for skill in .agent/skills/*/; do
+            # Skip templates directory
+            if [ "$(basename "$skill")" = ".templates" ]; then
+              continue
+            fi
+
+            echo ""
+            echo "=========================================="
+            echo "Checking: $skill"
+            echo "=========================================="
+
+            # Validate structure
+            echo "--- Validating ---"
+            if ! skills validate "$skill"; then
+              echo "FAIL: $skill failed validation"
+              FAILED=1
+              continue
+            fi
+            echo "PASS: validation"
+
+            # Score quality (minimum: 70)
+            echo "--- Scoring ---"
+            SCORE=$(skills score "$skill" --json 2>/dev/null | jq '.score // 0')
+            if [ "$SCORE" -lt 70 ]; then
+              echo "FAIL: $skill scored $SCORE (minimum: 70)"
+              FAILED=1
+            else
+              echo "PASS: scored $SCORE"
+            fi
+          done
+
+          if [ "$FAILED" -eq 1 ]; then
+            echo ""
+            echo "One or more skills failed the quality gate."
+            exit 1
+          fi
+
+          echo ""
+          echo "All skills passed the quality gate."

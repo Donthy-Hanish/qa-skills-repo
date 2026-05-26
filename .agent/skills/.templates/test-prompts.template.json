@@ -1,0 +1,36 @@
+{
+  "skill_name": "skill-name-here",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "simple-case",
+      "prompt": "A straightforward prompt that clearly needs this skill",
+      "expected_output": "What good output looks like",
+      "evaluation_criteria": [
+        "Criteria 1: specific, objectively checkable",
+        "Criteria 2: specific, objectively checkable"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "complex-case",
+      "prompt": "A more detailed prompt with multiple requirements or inputs",
+      "expected_output": "What good output looks like for complex input",
+      "evaluation_criteria": [
+        "Criteria 1: covers all input requirements",
+        "Criteria 2: output is structured correctly",
+        "Criteria 3: handles the complexity without losing detail"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge-case",
+      "prompt": "A tricky or minimal prompt that tests the skill's limits",
+      "expected_output": "Agent asks for clarification OR produces reasonable defaults",
+      "evaluation_criteria": [
+        "Criteria 1: does not produce empty or broken output",
+        "Criteria 2: handles ambiguity gracefully"
+      ]
+    }
+  ]
+}

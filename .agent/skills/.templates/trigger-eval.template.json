@@ -1,0 +1,22 @@
+[
+  {"query": "realistic prompt where skill SHOULD trigger", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - casual tone", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - with typos or shorthand", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - implicit need (no direct ask)", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - with file/data attached", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - urgent/stressed tone", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - uncommon use case", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - from a non-QA team member", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - minimal context", "should_trigger": true},
+  {"query": "realistic prompt where skill SHOULD trigger - detailed context", "should_trigger": true},
+  {"query": "near-miss: shares keywords but needs a DIFFERENT skill", "should_trigger": false},
+  {"query": "near-miss: same domain but different task", "should_trigger": false},
+  {"query": "near-miss: asks ABOUT the topic rather than asking to DO it", "should_trigger": false},
+  {"query": "near-miss: debugging/fixing rather than generating/reporting", "should_trigger": false},
+  {"query": "near-miss: setup/config rather than execution", "should_trigger": false},
+  {"query": "near-miss: reviewing/analyzing rather than creating", "should_trigger": false},
+  {"query": "near-miss: learning/education rather than doing", "should_trigger": false},
+  {"query": "near-miss: summarizing existing work rather than creating new", "should_trigger": false},
+  {"query": "near-miss: planning/strategy rather than execution", "should_trigger": false},
+  {"query": "near-miss: same tool/framework but different goal", "should_trigger": false}
+]
