@@ -1,0 +1,86 @@
+{
+  "skill_name": "api-contract-tester",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "basic-swagger-smoke-test-setup",
+      "prompt": "I've got a swagger.json for our staging API at https://api-stage.company.com. I want to run automated contract tests against every endpoint. Auth is a simple Bearer token — I POST to /auth/login with username and password and get back an access_token. Here's the swagger.json path: ./swagger.json. How do I get started?",
+      "expected_output": "Step-by-step setup guide covering: (1) confirming prerequisites (Python 3, pip install requests urllib3), (2) copying contract_runner.py to the project directory, (3) configuring the BASE_URL, SWAGGER_FILE, and auth block in contract_runner.py for single-bearer-token login, (4) running `python contract_runner.py`, and (5) explaining what the CSV output will look like. Should NOT ask unnecessary clarifying questions since all required info was provided.",
+      "evaluation_criteria": [
+        "Output includes the exact pip install command: pip install requests urllib3",
+        "Output shows the correct BASE_URL config block pointing to the staging URL provided",
+        "Auth configuration matches 'single bearer token' pattern — login POST returning access_token",
+        "Output references contract_runner.py by name and explains where to place it",
+        "Output references SWAGGER_FILE = 'swagger.json' and TEST_DATA_FILE config",
+        "Run command `python contract_runner.py` is explicitly shown",
+        "Output explains the CSV report format (PASS / FAIL / CONTRACT FAIL columns)",
+        "Output does NOT instruct the user to run against production",
+        "Output does NOT ask for information already provided (base URL, auth type, swagger file path)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "interpret-contract-fail-violations",
+      "prompt": "I ran contract_runner.py and got this in the results CSV:\n\nEndpoint: GET /api/users\nResult: CONTRACT FAIL\nContract Violations: root.id: expected integer, got str; root.email: required field missing; root[0].address: undocumented field (contract breach)\n\nCan you explain what each of these means and who needs to fix them?",
+      "expected_output": "A clear explanation of each violation type with root cause and remediation owner. Should map exactly to the three violation patterns described in the skill: type mismatch (backend serializer issue), required field missing (backend must always return the field), and undocumented field breach (either update the spec or strip the field). Should include a prioritized fix list.",
+      "evaluation_criteria": [
+        "Explains 'expected integer, got str' as a JSON serializer returning wrong type — fix owned by backend developer",
+        "Explains 'required field missing' as the field being marked required in the spec but absent from the response — fix owned by backend developer",
+        "Explains 'undocumented field (contract breach)' as a field present in response but not in the spec when additionalProperties is false — fix is either update spec OR strip field",
+        "Provides a prioritized order for fixing (CONTRACT FAIL on swagger auto-tests first, then CSV tests)",
+        "Does NOT suggest the user edit the live API response directly in a workaround way",
+        "Explanation is clear enough for a developer who has never seen this tool before",
+        "Distinguishes between who owns each fix (backend developer vs. spec owner)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "write-test-data-csv-scenarios",
+      "prompt": "I need to write test_data.csv scenarios for our /api/orders POST endpoint. It creates a new order. Required fields: customerId (integer), items (array, min 1 item), paymentMethod (string, enum: CARD/CASH). Cover happy path, missing required fields, invalid enum value, and duplicate order (we return 409 for that).",
+      "expected_output": "A ready-to-use test_data.csv block with correct column headers (Endpoint,Method,Scenario,Expected Status,Payload) and rows covering: valid order creation (201), missing customerId (400), missing items array (400), empty items array (400), invalid paymentMethod value (400/422), and duplicate order (409). Payloads should be realistic JSON.",
+      "evaluation_criteria": [
+        "CSV starts with the exact header row: Endpoint,Method,Scenario,Expected Status,Payload",
+        "Happy path row uses POST /api/orders, expected status 201, and a complete valid payload with all required fields",
+        "Missing customerId scenario expects 400",
+        "Missing items array scenario expects 400",
+        "Empty items array [] scenario expects 400 (boundary case for min 1 item)",
+        "Invalid paymentMethod (e.g., 'BITCOIN') scenario expects 400 or 422",
+        "Duplicate order scenario expects 409",
+        "All payloads are valid JSON (not placeholder strings like 'test_string')",
+        "Output explains that CSV tests take priority over auto-generated swagger tests for the same endpoint+method pair"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "troubleshoot-all-401-errors",
+      "prompt": "I ran python contract_runner.py and every single endpoint came back as FAIL with status 401. Auth should be working — I'm using a two-step JWT flow where I login first, then exchange the lobby token for a privileged one. What's going wrong and how do I debug it?",
+      "expected_output": "Targeted troubleshooting steps for the two-step JWT pattern specifically. Should guide the user to print the raw auth response to find where the JWT lives in the JSON structure, check the token extraction path, verify the exchange endpoint URL and headers, and confirm the final Authorization header format. Should reference the specific troubleshooting section of the skill for 'All endpoints return 401' and 'Token extraction fails'.",
+      "evaluation_criteria": [
+        "Identifies this as an auth configuration issue, not an endpoint issue",
+        "Specifically addresses the two-step JWT pattern (login → exchange)",
+        "Suggests printing the raw auth response to inspect the actual JSON structure",
+        "Suggests printing exch_resp.text to find where the eyJ... token appears",
+        "Mentions checking the Authorization header format (e.g., Bearer vs Token prefix)",
+        "Explains that SSL_VERIFY = False may be needed for staging environments without valid certs",
+        "Does NOT suggest running tests against production to verify auth works",
+        "Provides actionable debug steps rather than just describing the problem"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "breaking-change-detection-multi-env",
+      "prompt": "We have two environments — staging and production. We want to run the contract suite against both and find out if the latest staging deploy introduced any breaking changes that aren't in production yet. How do we do this with contract_runner.py?",
+      "expected_output": "Instructions for running contract_runner.py twice with different BASE_URL values, saving the resulting CSV reports with distinct names, and diffing the outputs to identify new CONTRACT FAILs in staging that don't appear in production. Should explain that new CONTRACT FAILs in staging indicate breaking changes introduced by the latest deploy.",
+      "evaluation_criteria": [
+        "Explains changing BASE_URL in contract_runner.py for each environment",
+        "Shows how to run the suite twice to get two separate timestamped CSV reports",
+        "Explains diffing the two CSV outputs to find new CONTRACT FAILs",
+        "Clarifies that CONTRACT FAILs present in staging but not production indicate breaking changes from the latest deploy",
+        "Includes a caution about running automated tests against production (prefer staging/QA only)",
+        "Mentions that MAX_WORKERS may need tuning if one environment rate-limits more aggressively",
+        "Output is actionable — user can follow the steps without guessing",
+        "Does NOT suggest a completely different tool when contract_runner.py can handle this natively"
+      ]
+    }
+  ]
+}

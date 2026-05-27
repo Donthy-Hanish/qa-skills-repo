@@ -1,0 +1,82 @@
+[
+  {
+    "query": "ok so we just got this new user story for the checkout flow refactor — JIRA-4521. can you generate the full set of test cases? we use robot framework btw",
+    "should_trigger": true
+  },
+  {
+    "query": "I need BDD scenarios for this user story: As a customer, I want to filter products by category so I can find what I need faster",
+    "should_trigger": true
+  },
+  {
+    "query": "here's our acceptance criteria from confluence, can you turn these into given/when/then test cases?\n1. User can reset password via email\n2. Link expires after 24h\n3. Password must meet complexity rules",
+    "should_trigger": true
+  },
+  {
+    "query": "generate test cases for the new user registration feature, need to cover happy path and all the negative scenarios too",
+    "should_trigger": true
+  },
+  {
+    "query": "we have this story in our sprint backlog about adding a coupon code field to the cart page. what test scenarios should we write?",
+    "should_trigger": true
+  },
+  {
+    "query": "write robot framework bdd test cases for this: As an admin, I want to deactivate user accounts so that former employees can no longer access the system",
+    "should_trigger": true
+  },
+  {
+    "query": "can you help me figure out what positive/negative/boundary cases I need for this login feature? here are the ACs from jira...",
+    "should_trigger": true
+  },
+  {
+    "query": "take this ticket and give me a full test case document with edge cases: PROJ-892 - Allow users to upload profile photos (max 5MB, jpg/png only)",
+    "should_trigger": true
+  },
+  {
+    "query": "i pasted the user story below, need test scenarios covering all the weird edge cases — especially around concurrent edits and special characters in the name field",
+    "should_trigger": true
+  },
+  {
+    "query": "what test cases should I create from this requirement? Users should be able to export their order history as CSV with date range filters",
+    "should_trigger": true
+  },
+  {
+    "query": "this test keeps failing intermittently on CI, can you help me figure out why? here's the error: TimeoutError at checkout.spec.ts:47",
+    "should_trigger": false
+  },
+  {
+    "query": "can you review my robot framework test script and tell me if I'm using the right keywords? here's the file: tests/login.robot",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I set up selenium grid with robot framework for parallel test execution?",
+    "should_trigger": false
+  },
+  {
+    "query": "our test suite takes 45 minutes to run, can you help me optimize it? maybe we should parallelize or skip some redundant cases",
+    "should_trigger": false
+  },
+  {
+    "query": "write a python unit test for this calculate_discount() function using pytest",
+    "should_trigger": false
+  },
+  {
+    "query": "help me fix this xpath locator, it's not finding the submit button after the UI redesign: //button[@class='old-submit-btn']",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to write a user story for the new search feature — can you help me draft it with proper acceptance criteria?",
+    "should_trigger": false
+  },
+  {
+    "query": "can you generate a test report from our robot framework output.xml? I need it in HTML format for the stakeholder meeting",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the best way to handle test data management in robot framework? should we use data-driven approach or keyword-driven?",
+    "should_trigger": false
+  },
+  {
+    "query": "help me debug this selenium error — ElementClickInterceptedException when trying to click the dropdown on the payments page",
+    "should_trigger": false
+  }
+]

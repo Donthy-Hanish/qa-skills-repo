@@ -1,0 +1,82 @@
+[
+  {
+    "query": "we have a swagger.json for our staging API — can you run contract tests against it and tell me which endpoints are failing?",
+    "should_trigger": true
+  },
+  {
+    "query": "i keep getting CONTRACT FAIL on the /users GET endpoint. the status is 200 but something about the response body doesn't match the spec. how do I debug this?",
+    "should_trigger": true
+  },
+  {
+    "query": "our backend team says they didn't change anything but after the last deploy, the API regression suite is full of type mismatch errors — root.id: expected integer, got str. can you help me figure out what broke?",
+    "should_trigger": true
+  },
+  {
+    "query": "i want to validate that our /api/orders endpoint actually returns all the required fields defined in openapi.json. can you set this up?",
+    "should_trigger": true
+  },
+  {
+    "query": "can you write test_data.csv scenarios for our checkout API? need happy path, missing required fields, and a 409 for duplicate orders",
+    "should_trigger": true
+  },
+  {
+    "query": "we're about to ship a new API version — can you check if there are any breaking changes between v1 and v2 of our swagger spec?",
+    "should_trigger": true
+  },
+  {
+    "query": "our API uses a two-step JWT auth — you log in to get a lobby token then exchange it. how do I configure contract_runner.py to handle that?",
+    "should_trigger": true
+  },
+  {
+    "query": "all my swagger auto-tests are coming back 400 on POST endpoints, but the endpoints work fine when I call them manually. what's going on?",
+    "should_trigger": true
+  },
+  {
+    "query": "need to set up automated smoke tests for every endpoint in our swagger.json — minimal effort, just want to know what's broken",
+    "should_trigger": true
+  },
+  {
+    "query": "can you help me interpret this contract test output? i've got a bunch of 'root[0].userId: expected string, got NoneType' violations in the CSV",
+    "should_trigger": true
+  },
+  {
+    "query": "write me BDD test cases for the /users endpoint — positive, negative, and boundary scenarios in Given/When/Then format",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I mock the payment API in my Jest unit tests so the tests don't hit the real endpoint?",
+    "should_trigger": false
+  },
+  {
+    "query": "my Postman collection keeps timing out on the /orders endpoint. can you help me figure out why? here's the error log",
+    "should_trigger": false
+  },
+  {
+    "query": "can you generate a full OpenAPI/Swagger spec for our new user registration API? here are the endpoints we need",
+    "should_trigger": false
+  },
+  {
+    "query": "help me write a Python script that calls our /products API and stores the results in a database",
+    "should_trigger": false
+  },
+  {
+    "query": "our frontend is getting CORS errors when calling the /auth/login endpoint from localhost — how do I fix that?",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to load test our API with 1000 concurrent users to see how it handles peak traffic — what tool should I use?",
+    "should_trigger": false
+  },
+  {
+    "query": "can you review this FastAPI route handler and tell me if the response model matches what we have in the pydantic schema?",
+    "should_trigger": false
+  },
+  {
+    "query": "set up a GitHub Actions CI pipeline that runs our pytest suite on every pull request to the main branch",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to document all our REST endpoints — can you generate markdown documentation from our codebase using the docstrings?",
+    "should_trigger": false
+  }
+]

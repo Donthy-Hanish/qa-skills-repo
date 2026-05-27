@@ -1,0 +1,88 @@
+{
+  "skill_name": "test-case-generator",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "simple-login-story",
+      "prompt": "Generate test cases for this user story:\n\nAs a registered user, I want to log in with my email and password so that I can access my personal dashboard.\n\nAcceptance Criteria:\n- User can log in with valid email and password\n- Invalid credentials show a generic error message\n- Account locks after 5 consecutive failed attempts\n- Locked accounts can be unlocked via email",
+      "expected_output": "A structured markdown document with test cases organized into Positive, Negative, Boundary, and Edge Case sections. Each test case should have a unique ID (TC-XXX), priority level, preconditions, Gherkin-style Given/When/Then scenario, and Robot Framework keyword reference. Should include a summary table with counts per category.",
+      "evaluation_criteria": [
+        "Output includes a summary table with test case counts per type and priority",
+        "Positive scenarios cover all 4 acceptance criteria (valid login, error message, lockout, unlock)",
+        "Negative scenarios include at least: wrong password, wrong email, empty fields, SQL injection attempt",
+        "Boundary scenarios cover the 5th failed attempt specifically (4 prior + 5th triggers lock)",
+        "Edge case scenarios include at least one of: concurrent login, session expiry, case-sensitive email",
+        "Each test case has Given/When/Then in proper Gherkin format",
+        "Each test case includes a Robot Framework keyword reference block",
+        "Priority levels are assigned (Critical for login success and lockout, High for error messages)",
+        "Test data table is provided where applicable",
+        "A traceability matrix maps test cases back to acceptance criteria"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "complex-ecommerce-story",
+      "prompt": "Here's our Jira ticket, need full test coverage:\n\nPROJ-2847: Shopping Cart - Apply Discount Coupon\n\nAs a customer, I want to apply a discount coupon to my shopping cart so that I can get a reduced price on my order.\n\nAcceptance Criteria:\n1. User can enter a valid coupon code in the cart page and see the discount applied to the order total\n2. Only one coupon can be applied per order — applying a second replaces the first\n3. Expired coupons show error: \"This coupon has expired\"\n4. Coupon discount cannot exceed the order total (minimum payable is $0.00)\n5. Coupons have a minimum order value requirement shown on hover\n6. Percentage-based and fixed-amount coupons are both supported\n\nTech notes: Coupon validation happens server-side via /api/coupons/validate. UI auto-refreshes the total after applying.",
+      "expected_output": "Comprehensive test case document covering the multi-faceted coupon feature. Should handle both percentage and fixed-amount coupon types separately. Should include API-oriented scenarios for the validation endpoint alongside UI scenarios. Boundary cases should focus on coupon-value-equals-total and minimum-order thresholds.",
+      "evaluation_criteria": [
+        "Output covers all 6 acceptance criteria with at least one positive scenario each",
+        "Separate scenarios exist for percentage-based and fixed-amount coupons",
+        "Negative scenarios include: expired coupon, invalid code, coupon below min order, applying coupon to empty cart",
+        "Boundary scenarios include: coupon value equals order total exactly, order total at minimum threshold, 100% discount coupon",
+        "Edge cases include at least two of: removing items after coupon applied, coupon + sale item interaction, coupon code with special characters, applying coupon then refreshing page",
+        "Second coupon replacing first is explicitly tested",
+        "Test cases reference both SeleniumLibrary (UI) and RequestsLibrary (API) where appropriate",
+        "Output includes test data tables with example coupon codes, amounts, and percentages",
+        "Priority assignments make sense (coupon application = Critical, edge cases = Medium/Low)",
+        "Traceability matrix is present and maps to all 6 acceptance criteria"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "vague-story-handling",
+      "prompt": "generate test cases for user registration",
+      "expected_output": "The skill should NOT produce generic test cases. Instead, it should ask the user clarifying questions about the registration feature: What fields are required? Password rules? Email verification? Social login? Age restrictions? CAPTCHA? Then generate test cases only after getting answers.",
+      "evaluation_criteria": [
+        "Skill recognizes the input is too vague and does NOT produce full test cases immediately",
+        "Skill asks at least 3 clarifying questions about the registration feature",
+        "Questions cover essential aspects: required fields, validation rules, verification flow",
+        "Tone is helpful, not dismissive — explains WHY more detail is needed",
+        "If the skill provides preliminary scenarios, they are clearly marked as assumptions that need confirmation"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "api-only-story",
+      "prompt": "We need test cases for this API story — no UI involved:\n\nAs a mobile app developer, I want a REST API endpoint POST /api/users that creates a new user account so that the mobile app can handle registration.\n\nAcceptance Criteria:\n- Endpoint accepts JSON body with: name (required, 2-50 chars), email (required, valid format), password (required, min 8 chars, must contain uppercase, lowercase, number)\n- Returns 201 with user object (id, name, email, createdAt) on success\n- Returns 400 with validation errors array for invalid input\n- Returns 409 if email already exists\n- Rate limited to 10 requests per minute per IP",
+      "expected_output": "Test cases using API-oriented Given/When/Then language (not UI language). Should reference Robot Framework RequestsLibrary instead of SeleniumLibrary. Boundary cases should focus heavily on the specific character limits and password rules. Should include rate limiting scenarios.",
+      "evaluation_criteria": [
+        "All Given/When/Then scenarios use API language (endpoints, HTTP methods, request bodies, status codes) not UI language",
+        "Robot Framework references use RequestsLibrary keywords (POST On Session, Status Should Be) not SeleniumLibrary",
+        "Positive scenarios cover successful creation with valid data and verify 201 response with correct body structure",
+        "Negative scenarios cover: missing required fields, invalid email format, weak password, duplicate email (409)",
+        "Boundary scenarios cover name length (2 chars, 50 chars, 1 char, 51 chars) and password length (8 chars, 7 chars)",
+        "Password complexity rules are tested individually (no uppercase, no lowercase, no number)",
+        "Rate limiting scenario tests the 11th request within a minute",
+        "Test data tables include example JSON request bodies",
+        "Response body validation is included in expected results (checking id, name, email, createdAt fields)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "multi-role-story",
+      "prompt": "need test scenarios for this — it's got different behavior per role:\n\nAs a user (admin or member), I want to manage team members in the organization settings so that I can control who has access.\n\nAcceptance Criteria:\n- Admins can invite new members via email\n- Admins can remove existing members\n- Admins can change member roles (admin/member)\n- Members can only view the team list\n- Members cannot invite, remove, or change roles\n- Removing the last admin is blocked with a warning\n- Invited users receive an email with a join link valid for 72 hours",
+      "expected_output": "Test cases clearly separated by user role (Admin vs Member). Each role should have its own section with appropriate positive/negative scenarios. Cross-role scenarios (member trying admin actions) should be in the negative section. The 'last admin' protection should be a boundary case.",
+      "evaluation_criteria": [
+        "Test cases are organized by role with clear Admin and Member sections",
+        "Admin positive scenarios cover: invite, remove, change role",
+        "Member positive scenarios cover: view team list",
+        "Member negative scenarios explicitly test each forbidden action (invite, remove, change role) with expected denial",
+        "Boundary scenario covers removing the last admin — tests both the block and the warning message",
+        "Edge cases include: inviting an already-existing member, changing own role, join link expiry at exactly 72 hours",
+        "Scenarios clearly specify which role is performing each action in the Given clause",
+        "Priority reflects that permission enforcement (member can't do admin actions) is Critical",
+        "At least one scenario tests the invite email flow end-to-end (invite → email → join link → acceptance)"
+      ]
+    }
+  ]
+}
