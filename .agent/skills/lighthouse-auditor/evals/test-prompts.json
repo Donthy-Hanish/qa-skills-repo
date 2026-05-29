@@ -1,0 +1,58 @@
+{
+  "skill_name": "lighthouse-auditor",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "single-url-python-audit",
+      "prompt": "Write a python script that runs a Lighthouse audit on a single URL. The script should use a headless desktop configuration and verify that the Performance, Accessibility, and SEO scores are all above 90. If any score is below 90, it should exit with a non-zero status code.",
+      "expected_output": "A complete Python script that runs npx lighthouse via subprocess, parses the JSON report, extracts scores, validates them, and exits appropriately.",
+      "evaluation_criteria": [
+        "Produces a valid, self-contained Python script",
+        "Uses subprocess to run 'npx lighthouse' with headless Chrome flags",
+        "Includes the '--preset=desktop' CLI argument",
+        "Parses the resulting JSON report file to extract category scores",
+        "Includes assertions for performance, accessibility, and SEO scores against a threshold of 90",
+        "Exits with sys.exit(1) or raises an error when assertions fail"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "robot-framework-integration",
+      "prompt": "We want to run Lighthouse audits as part of our Robot Framework test suite. Write a .robot file and a supporting Python library LighthouseLibrary.py containing keywords to run audits and assert scores and Web Vitals (LCP < 2500ms, CLS < 0.1).",
+      "expected_output": "A Robot Framework .robot suite file and a LighthouseLibrary.py file containing custom Python keywords.",
+      "evaluation_criteria": [
+        "Produces a valid .robot file utilizing a custom library LighthouseLibrary",
+        "Produces a valid LighthouseLibrary.py defining keywords like 'Run Lighthouse Audit' and assertion keywords",
+        "The Python library runs the Lighthouse CLI and parses the JSON report",
+        "Includes assertions checking that LCP is under 2500ms",
+        "Includes assertions checking that CLS is under 0.1"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "lighthouse-ci-config",
+      "prompt": "Create a configuration template for Lighthouse CI (lighthouserc.json) and a GitHub Actions workflow to run audits on the URL https://staging.example.com on every push.",
+      "expected_output": "A valid lighthouserc.json configuration and a GitHub Actions workflow YAML file.",
+      "evaluation_criteria": [
+        "Produces a valid JSON lighthouserc.json structure",
+        "lighthouserc.json targets the URL https://staging.example.com",
+        "lighthouserc.json configures assertions for min category scores or metrics",
+        "Produces a valid GitHub Actions YAML workflow configured for push events",
+        "The workflow includes installation of @lhci/cli and running 'lhci autorun'"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "before-after-comparison",
+      "prompt": "Generate a Python script to compare Lighthouse audit scores before and after a change. The script should run audits on two URLs (e.g., staging and production, or a URL before and after a deploy) and output a markdown table showing the diff in category scores and Core Web Vitals.",
+      "expected_output": "A Python script that performs two audits, compares the resulting JSON outputs, and formats the comparison as a Markdown table.",
+      "evaluation_criteria": [
+        "Produces a valid Python script that can execute or read two reports",
+        "Extracts scores for Performance, Accessibility, Best Practices, and SEO from both runs",
+        "Extracts Core Web Vitals (LCP, CLS, TBT, Speed Index, FID/INP)",
+        "Calculates the differences (diffs) for each metric",
+        "Generates and prints a cleanly formatted Markdown comparison table"
+      ]
+    }
+  ]
+}

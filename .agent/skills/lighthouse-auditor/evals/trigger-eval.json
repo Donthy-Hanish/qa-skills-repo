@@ -1,0 +1,82 @@
+[
+  {
+    "query": "can you run a lighthouse audit on our production checkout page? url is https://shop.example.com/checkout",
+    "should_trigger": true
+  },
+  {
+    "query": "Need a python script to run lighthouse audits for multiple urls. We have a file urls.txt with one url per line.",
+    "should_trigger": true
+  },
+  {
+    "query": "how to set up lighthouse in our github actions? we want to check performance and accessibility on pull requests.",
+    "should_trigger": true
+  },
+  {
+    "query": "write a robot framework suite that integrates lighthouse testing. I need custom keywords to assert LCP and CLS.",
+    "should_trigger": true
+  },
+  {
+    "query": "write a script to compare lighthouse scores before and after a release. we want to check for regressions.",
+    "should_trigger": true
+  },
+  {
+    "query": "i need a custom lighthouse configuration that tests in desktop mode and ignores best practices audits.",
+    "should_trigger": true
+  },
+  {
+    "query": "audit this url: https://staging.example.com. let me know if we meet our performance budget of LCP < 2.5s.",
+    "should_trigger": true
+  },
+  {
+    "query": "can you help me set up a lighthouserc.json configuration for our frontend repository? we need to enforce min score of 90 on seo.",
+    "should_trigger": true
+  },
+  {
+    "query": "generate a python utility that runs npx lighthouse via subprocess and saves html reports to a reports/ folder.",
+    "should_trigger": true
+  },
+  {
+    "query": "the pm wants to know if the homepage is accessible. write a test script that fetches the accessibility score using lighthouse CLI.",
+    "should_trigger": true
+  },
+  {
+    "query": "write a robot framework selenium test to click the checkout button and verify the cart count updates.",
+    "should_trigger": false
+  },
+  {
+    "query": "help me debug this flaky playwright test. it keeps failing with TimeoutError at login.spec.js line 32.",
+    "should_trigger": false
+  },
+  {
+    "query": "what are the core web vitals and why do they matter for search engine ranking?",
+    "should_trigger": false
+  },
+  {
+    "query": "write a selenium python script to scrape product prices from an e-commerce website.",
+    "should_trigger": false
+  },
+  {
+    "query": "we need to set up a gitlab ci pipeline for our python pytest suite. can you generate the .gitlab-ci.yml?",
+    "should_trigger": false
+  },
+  {
+    "query": "my python subprocess command is failing with FileNotFoundError when running git status. how do i fix it?",
+    "should_trigger": false
+  },
+  {
+    "query": "can you analyze this nginx access log and tell me which endpoints are getting the most traffic?",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a swagger api contract test for our orders endpoint. here is the swagger.json file.",
+    "should_trigger": false
+  },
+  {
+    "query": "the staging server is down. how do i check the docker container logs to see why it crashed?",
+    "should_trigger": false
+  },
+  {
+    "query": "what is the difference between cumulative layout shift and first input delay?",
+    "should_trigger": false
+  }
+]
