@@ -53,6 +53,56 @@
         "Calculates the differences (diffs) for each metric",
         "Generates and prints a cleanly formatted Markdown comparison table"
       ]
+    },
+    {
+      "id": 5,
+      "name": "authenticated-dashboard-audit",
+      "prompt": "Our dashboard at https://staging.ourapp.com/dashboard is behind a login page at /login. Username field is id:email, password field is id:password, submit button is id:btn-login. Credentials are testuser@company.com / Test1234!. Write a Python script that logs in first and then runs a Lighthouse audit on the dashboard. Performance must be above 75.",
+      "expected_output": "A Python script that uses Playwright to authenticate, extracts cookies, passes them to Lighthouse via --extra-headers, audits the dashboard URL, and asserts performance >= 75.",
+      "evaluation_criteria": [
+        "Uses Playwright or Puppeteer to log in and extract cookies",
+        "Passes cookies to Lighthouse via --extra-headers",
+        "Audits the dashboard URL (https://staging.ourapp.com/dashboard), not the login page",
+        "Asserts performance score above 75",
+        "Handles the case where login fails (e.g., checks for redirect or cookie presence)"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "cold-warm-user-flow",
+      "prompt": "Generate a Lighthouse user flow script that audits https://example.com with both a cold load (cache cleared) and a warm load (cache preserved). Output a unified HTML report showing both steps side by side.",
+      "expected_output": "A Node.js script using Puppeteer and the Lighthouse startFlow API that performs two navigations (cold then warm) and generates a single unified HTML flow report.",
+      "evaluation_criteria": [
+        "Uses Lighthouse startFlow API with Puppeteer",
+        "First navigation uses default settings (cold, cache cleared)",
+        "Second navigation uses disableStorageReset: true (warm)",
+        "Generates a unified HTML flow report (not two separate reports)",
+        "Both steps have descriptive stepName labels"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "snapshot-accessibility-audit",
+      "prompt": "I need to check accessibility on our settings modal. The modal opens when you click the gear icon (id:btn-settings) on /account page. Write a Lighthouse snapshot audit that opens the modal and then checks accessibility score.",
+      "expected_output": "A Node.js script using Puppeteer and the Lighthouse startFlow API that navigates to /account, clicks the settings button, waits for the modal, and runs flow.snapshot() to check accessibility.",
+      "evaluation_criteria": [
+        "Uses Puppeteer to navigate to /account",
+        "Clicks the settings button to open the modal",
+        "Waits for modal to be visible before snapshotting",
+        "Uses flow.snapshot() not flow.navigate()",
+        "Checks accessibility score (not performance, since snapshot mode doesn't measure performance)"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "vague-input-handling",
+      "prompt": "run lighthouse on our site",
+      "expected_output": "Agent asks clarifying questions rather than generating a script from this vague input.",
+      "evaluation_criteria": [
+        "Does NOT generate a script from this vague input",
+        "Asks clarifying questions: which URL, desktop or mobile, which categories to check, any authentication needed",
+        "Tone is helpful, not dismissive"
+      ]
     }
   ]
 }

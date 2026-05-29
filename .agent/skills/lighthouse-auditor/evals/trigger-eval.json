@@ -76,7 +76,7 @@
     "should_trigger": false
   },
   {
-    "query": "what is the difference between cumulative layout shift and first input delay?",
+    "query": "our homepage LCP is too high, can you help optimize the images and lazy load the below-fold content to improve it",
     "should_trigger": false
   }
 ]
