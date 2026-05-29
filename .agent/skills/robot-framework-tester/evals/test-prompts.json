@@ -1,0 +1,91 @@
+{
+  "skill_name": "robot-framework-tester",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "simple-ui-login-page",
+      "prompt": "Write robot framework tests for our login page. URL is /auth/login. It has an email field (id: email), password field (id: password), and a submit button (id: btn-login). Successful login redirects to /dashboard. Failed login shows 'Invalid email or password' in a div.error-msg. Account locks after 5 failed attempts showing 'Account locked. Contact admin.'",
+      "expected_output": "A complete set of files: login_page.resource (Page Object with locators and keywords), variables.robot (URL, credentials, timeouts), user_login.robot (test suite with Settings/Variables/Test Cases/Keywords sections). Test suite should include smoke, positive, negative, boundary (5th attempt lockout), and data-driven invalid input tests. Should use Suite Setup/Teardown for browser lifecycle, Wait Until Element Is Visible (never Sleep), screenshot on failure, and proper tags.",
+      "evaluation_criteria": [
+        "Produces a .resource file with locators as variables (${INPUT_EMAIL}, ${INPUT_PASSWORD}, ${BTN_LOGIN}, ${MSG_ERROR}) and action keywords (Fill Login Form, Click Login Button, Verify Error Message)",
+        "Produces a .robot test suite with all four sections: *** Settings ***, *** Variables ***, *** Test Cases ***, *** Keywords ***",
+        "Settings section includes: Library SeleniumLibrary, Resource for the page object, Suite Setup to open browser, Suite Teardown to close browser, Test Teardown with Capture Page Screenshot on failure",
+        "Test cases use descriptive Title Case names and include [Documentation] and [Tags] on every test",
+        "Tags include smoke, regression, critical/high/medium/low, and feature-specific tags",
+        "Includes at least one data-driven test using [Template] with a test data table",
+        "All waits use 'Wait Until Element Is Visible' or similar — no Sleep anywhere",
+        "Boundary test covers the 5th failed login attempt triggering account lockout",
+        "Variables file separates environment config (BASE_URL, BROWSER) from test data",
+        "Headless browser support is included in the suite setup (--headless argument)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "api-crud-endpoints",
+      "prompt": "Generate robot framework API tests for our user management API:\n- POST /api/v1/users — creates user, body: {name, email, role}. name required (2-100 chars), email required (must be valid format), role optional (default 'viewer'). Returns 201 with user object including id and createdAt. Returns 400 for validation errors, 409 for duplicate email.\n- GET /api/v1/users/{id} — returns user object. 404 if not found.\n- DELETE /api/v1/users/{id} — returns 204. 404 if not found, 403 if deleting an admin.\nAuth: Bearer token in Authorization header. Base URL: https://api.staging.ourapp.com",
+      "expected_output": "A .robot test suite using RequestsLibrary (not SeleniumLibrary) with session management. Should cover all three endpoints with positive, negative, and boundary tests. Session created in Suite Setup with auth headers. Data-driven test for validation edge cases. Python helper script for generating test user payloads.",
+      "evaluation_criteria": [
+        "Uses RequestsLibrary keywords (POST On Session, GET On Session, DELETE On Session) — not SeleniumLibrary",
+        "Suite Setup creates a session with Create Session including Authorization Bearer header",
+        "Suite Teardown calls Delete All Sessions",
+        "POST tests cover: valid creation (201), missing name (400), invalid email (400), duplicate email (409)",
+        "GET tests cover: existing user (200), non-existent user (404)",
+        "DELETE tests cover: existing user (204), non-existent user (404), admin user (403)",
+        "Boundary tests cover name length limits (2 chars, 100 chars, 1 char, 101 chars)",
+        "Response body assertions verify JSON structure (id, name, email, role, createdAt fields)",
+        "Data-driven test using [Template] for multiple validation scenarios",
+        "Produces a Python helper file for generating randomized test user data",
+        "Variables section defines API_BASE_URL, AUTH_TOKEN, and ENDPOINT variables"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "combined-ui-api-product-search",
+      "prompt": "Write robot tests for our product search feature that needs both UI and API testing:\n- UI: /products page has a search bar (id: search-input), search button (id: btn-search), and results grid (css: .product-card). Each card shows product name, price, and an 'Add to Cart' button.\n- API: GET /api/products?q={term}&page=1&limit=20 returns {results: [...], total: N, page: N}\n- Test: user searches 'laptop', UI shows matching products, API response matches what's displayed.\n- Also test: empty search, no results found, special characters in search term, pagination.",
+      "expected_output": "A test suite that imports BOTH SeleniumLibrary and RequestsLibrary. Separate .resource file for the search page UI. Keywords that call the API to verify data matches what the UI displays. Tests cover the full search flow including edge cases.",
+      "evaluation_criteria": [
+        "Settings section imports both SeleniumLibrary and RequestsLibrary",
+        "Produces a search_page.resource file with UI locators and interaction keywords",
+        "Test suite includes a keyword that calls the API and compares results with UI-displayed data",
+        "Positive test: search term returns matching products on both UI and API",
+        "Negative test: search with no results shows 'No products found' message",
+        "Edge case: special characters in search term (quotes, ampersands) are handled",
+        "Pagination test: navigating to page 2 updates results",
+        "Empty search test: submitting empty query shows appropriate behavior",
+        "Suite Setup handles both browser opening AND API session creation",
+        "Suite Teardown closes both browser and API sessions"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "data-driven-registration-form",
+      "prompt": "I need heavily data-driven robot tests for our registration form. Fields: first_name (required, 1-50 chars), last_name (required, 1-50 chars), email (required, valid format), password (required, min 8 chars, must have uppercase+lowercase+number+special char), confirm_password (must match password), phone (optional, 10 digits). URL: /register. Success redirects to /welcome. Validation errors appear inline under each field with class 'field-error'.",
+      "expected_output": "A test suite that is primarily data-driven using [Template] keywords with extensive test data tables. Should cover all field validation rules systematically. Page Object resource file for the registration page. Should include a Python helper for generating valid/invalid test data combinations.",
+      "evaluation_criteria": [
+        "Majority of test cases use [Template] keyword pattern with inline data tables",
+        "Data tables cover all validation rules: required fields, length limits, email format, password complexity, phone format",
+        "Password complexity is tested individually: missing uppercase, missing lowercase, missing number, missing special char",
+        "Confirm password mismatch is tested",
+        "Boundary tests: name at 1 char, name at 50 chars, name at 51 chars, password at 8 chars, password at 7 chars",
+        "Page Object .resource file includes a keyword for each field interaction and error verification",
+        "Error verification keywords check inline error messages under specific fields (not just any error on page)",
+        "Python helper generates valid and invalid data combinations",
+        "Positive test verifies redirect to /welcome after successful registration",
+        "Tags differentiate between field-specific test groups (e.g., password-validation, email-validation)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "vague-input-handling",
+      "prompt": "write robot tests for our app",
+      "expected_output": "The skill should NOT generate test files. It should ask clarifying questions: What feature or page? Is it UI testing, API testing, or both? What URL or endpoint? What are the key interactions and expected behaviors? Then wait for answers before generating anything.",
+      "evaluation_criteria": [
+        "Does NOT produce .robot, .resource, or .py files from this vague input",
+        "Asks at least 3 clarifying questions about the feature, page/endpoint, and expected behavior",
+        "Questions include: what specific feature or page to test, whether it is UI or API or both, what the URL or endpoint is",
+        "Tone is collaborative and helpful — explains why more detail leads to better tests",
+        "If a skeleton is offered, it is clearly marked as a starting point that needs user input to complete"
+      ]
+    }
+  ]
+}

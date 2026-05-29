@@ -1,0 +1,82 @@
+[
+  {
+    "query": "we need to automate the checkout flow — write robot framework tests for the cart page, add-to-cart button, and the order summary. we use selenium btw",
+    "should_trigger": true
+  },
+  {
+    "query": "can you create a .robot file for our user registration page? it has name, email, password fields and a captcha. need positive and negative cases",
+    "should_trigger": true
+  },
+  {
+    "query": "generate robot framework API tests for our POST /api/orders endpoint. payload has customer_id, items array, and shipping_address. returns 201 on success, 400 for missing fields",
+    "should_trigger": true
+  },
+  {
+    "query": "I need a page object resource file for our dashboard page — it has a sidebar nav, user avatar dropdown, notification bell, and a data table with sorting",
+    "should_trigger": true
+  },
+  {
+    "query": "write data-driven robot tests for the login form — need to test valid creds, wrong password, empty email, locked account, and SQL injection in the email field",
+    "should_trigger": true
+  },
+  {
+    "query": "scaffold a robot framework test project for our e-commerce app. we need tests for product search, cart, checkout, and user profile pages. include the variables file and common resource",
+    "should_trigger": true
+  },
+  {
+    "query": "convert these manual test cases into robot framework scripts:\n1. Verify admin can create new product\n2. Verify price field rejects negative values\n3. Verify image upload accepts only jpg/png",
+    "should_trigger": true
+  },
+  {
+    "query": "need a python helper library for our robot tests — should generate random user data, fake addresses, and calculate expected cart totals with tax",
+    "should_trigger": true
+  },
+  {
+    "query": "create robot framework tests that hit both the UI and the API — user fills the contact form on /contact, and we verify the message appears in GET /api/messages",
+    "should_trigger": true
+  },
+  {
+    "query": "write RF tests for the search feature with requestslibrary — GET /api/products?q= should return matching products, handle empty query, and respect pagination params limit and offset",
+    "should_trigger": true
+  },
+  {
+    "query": "my robot framework test is failing with ElementNotInteractableException on the dropdown menu — can you help me fix the locator? here's the error log from output.xml",
+    "should_trigger": false
+  },
+  {
+    "query": "generate BDD test cases from this user story: As a customer I want to track my order so I can see delivery status. include positive, negative, and boundary scenarios",
+    "should_trigger": false
+  },
+  {
+    "query": "run contract tests against our swagger.json — need to validate that all endpoints return the correct schema. here's the swagger URL: https://api.staging.myapp.com/swagger/v1/swagger.json",
+    "should_trigger": false
+  },
+  {
+    "query": "can you review my existing login.robot file and tell me if the keywords are following best practices? I think we have some redundant waits",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I set up a GitHub Actions workflow to run robot framework tests in headless chrome? need the YAML file for CI",
+    "should_trigger": false
+  },
+  {
+    "query": "our robot tests are flaky — sometimes the cart total assertion passes and sometimes it fails. I think it's a timing issue. here's the test: tests/cart.robot line 47",
+    "should_trigger": false
+  },
+  {
+    "query": "write a pytest unit test for our calculate_discount() python function — need to cover percentage discounts, flat discounts, and stacking",
+    "should_trigger": false
+  },
+  {
+    "query": "help me parse the robot framework output.xml to extract test durations and generate a custom HTML report for our stakeholder meeting",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to configure selenium grid with 4 chrome nodes and 2 firefox nodes for parallel robot framework execution — what's the docker-compose setup?",
+    "should_trigger": false
+  },
+  {
+    "query": "can you help me write a user story with acceptance criteria for the new payment gateway integration? we need it for sprint planning",
+    "should_trigger": false
+  }
+]
