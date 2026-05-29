@@ -14,9 +14,8 @@ pip install robotframework-datadriver
 ```
 
 ### CSV File (`test_data.csv`)
-The CSV file must have column headers matching the variables expected by the template keyword.
-```csv
-${username},${password},${expected_error}
+# Note: DataDriver automatically maps plain column names to Robot variables.
+username,password,expected_error
 invalid_user,wrong_pass,Invalid username or password
 empty_user,,Username cannot be empty
 good_user,wrong_pass,Invalid username or password
@@ -70,6 +69,10 @@ user_credentials:
 ```
 
 ### Robot Code (`yaml_driven.robot`)
+
+> [!NOTE]
+> Dot-notation access (`${user_credentials.admin.username}`) works with Python variable files. If using Robot's standard YAML `Variables` import, use bracket notation instead: `${user_credentials}[admin][username]`.
+
 ```robot
 *** Settings ***
 Documentation     Suite leveraging external YAML variables.
@@ -79,7 +82,7 @@ Library           SeleniumLibrary
 *** Test Cases ***
 Verify Admin Login
     [Setup]    Open Login Page
-    Login As User    ${user_credentials.admin.username}    ${user_credentials.admin.password}
+    Login As User    ${user_credentials}[admin][username]    ${user_credentials}[admin][password]
     Verify Welcome Message for Admin
     [Teardown]    Close Browser
 
@@ -149,6 +152,8 @@ ${DB_PORT}        5432
 *** Test Cases ***
 Verify Customer Record Insertion
     [Documentation]    Creates a user, queries DB to verify, and deletes record.
+    ...                NOTE: 'Generate Random User ID' and 'Create User Via API' are placeholder keywords.
+    ...                You must implement these in your project's .resource file or Python library before running this example.
     ${user_id}=        Generate Random User ID
     Create User Via API    ${user_id}    John Doe
     

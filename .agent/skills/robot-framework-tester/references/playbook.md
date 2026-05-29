@@ -14,7 +14,6 @@ robotframework-seleniumlibrary==6.1.3
 robotframework-requests==0.9.5
 robotframework-jsonlibrary==0.5
 pabot==2.16.0
-urllib3<2.0.0  # Required for compatibility with older request/selenium libraries
 ```
 
 ### Installation
@@ -58,7 +57,10 @@ pabot --processes 4 tests/
 
 ## 3. Internal Selenium Grid Setup
 
-When running tests against an internal Selenium Grid rather than a local browser, configure `SeleniumLibrary` to run remotely.
+When running tests against an internal Selenium Grid rather than a local browser, configure `SeleniumLibrary` to run remotely using the `options` parameter.
+
+> [!NOTE]
+> The `desired_capabilities` parameter was deprecated in SeleniumLibrary 6.x. Always configure browser settings using the modern `options` parameter instead of `desired_capabilities`.
 
 ### Grid URL
 ```txt
@@ -66,39 +68,22 @@ remote_url=http://selenium-grid:4444/wd/hub
 ```
 
 ### Configuration Example
-Define your browser capabilities and instantiate the remote browser. Do not use hardcoded capability mappings; construct them using proper dictionary/object structures.
-
 ```robot
 *** Settings ***
 Library           SeleniumLibrary
-Library           Collections
 
 *** Variables ***
 ${GRID_URL}       http://selenium-grid:4444/wd/hub
 ${BROWSER}        chrome
 
 *** Keywords ***
-Open Remote Browser
+Open Remote Chrome Browser
     [Arguments]    ${target_url}
-    &{chrome_options}=    Create Dictionary    args=@{EMPTY}
-    # For Chrome
-    &{capabilities}=    Create Dictionary
-    ...    browserName=chrome
-    ...    platformName=LINUX
-    ...    goog:chromeOptions=${chrome_options}
-    
-    Open Browser    ${target_url}    browser=${BROWSER}    remote_url=${GRID_URL}    desired_capabilities=${capabilities}
+    Open Browser    ${target_url}    browser=${BROWSER}    remote_url=${GRID_URL}    options=add_argument("--no-sandbox");add_argument("--disable-dev-shm-usage")
 
 Open Remote Firefox Browser
     [Arguments]    ${target_url}
-    &{firefox_options}=    Create Dictionary    args=@{EMPTY}
-    # For Firefox
-    &{capabilities}=    Create Dictionary
-    ...    browserName=firefox
-    ...    platformName=LINUX
-    ...    moz:firefoxOptions=${firefox_options}
-    
-    Open Browser    ${target_url}    browser=firefox    remote_url=${GRID_URL}    desired_capabilities=${capabilities}
+    Open Browser    ${target_url}    browser=firefox    remote_url=${GRID_URL}    options=add_argument("--headless");add_argument("--no-sandbox")
 ```
 
 ---
