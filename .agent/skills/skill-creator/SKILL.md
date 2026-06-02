@@ -1,8 +1,9 @@
 ---
 name: skill-creator
 description: >
-  Create new skills that output three deliverables: a SKILL.md file, an eval
-  set (trigger-eval.json), and test prompts (test-prompts.json). Tailored for
+  Create new skills that output four deliverables: a SKILL.md file, an eval
+  set (trigger-eval.json), test prompts (test-prompts.json), and a
+  requirements.json declaring runtime dependencies. Tailored for
   teams using Antigravity as their IDE and Agent Skills CLI as the quality gate.
   Use this skill when someone says "build a skill", "create a skill", "make a
   skill for", "turn this into a skill", "I keep repeating this prompt", "can we
@@ -13,16 +14,16 @@ description: >
 
 # Skill Creator for Antigravity + Agent Skills CLI
 
-Build skills that ship with everything needed to validate and test them.
-Every skill you create produces three files:
+Build skills that ship with everything needed to validate, test, and install them.
+Every skill you create produces four files:
 
 ```
 skill-name/
-├── SKILL.md              ← The skill itself
+├── SKILL.md              <- The skill itself
+├── requirements.json     <- Runtime dependencies for generated output
 ├── evals/
-│   └── trigger-eval.json ← 20 queries for description optimization
-└── evals/
-    └── test-prompts.json ← 3-5 realistic test prompts with expected outputs
+│   ├── trigger-eval.json <- 20 queries for description optimization
+│   └── test-prompts.json <- 3-5 realistic test prompts with expected outputs
 ```
 
 ## The Process
@@ -74,9 +75,9 @@ not conduct an exhaustive interview.
 
 ---
 
-## Step 3: Write the Three Deliverables
+## Step 3: Write the Four Deliverables
 
-Create all three files in one pass. Present them to the user together.
+Create all four files in one pass. Present them to the user together.
 
 ### Deliverable 1: SKILL.md
 
@@ -205,16 +206,87 @@ prompt, see what the skill produces, and evaluate.
   but "output contains a section for boundary value test cases."
 - If the skill produces files, describe what the file should contain.
 
+### Deliverable 4: requirements.json
+
+Declare the runtime dependencies needed to execute the output this skill
+generates. This file is read by the project's setup script
+(scripts/setup.py) to install everything automatically.
+
+**Format:**
+```json
+{
+  "skill": "skill-name",
+  "python": ["package-name"],
+  "node": ["package-name"],
+  "commands": ["post-install command if needed"],
+  "system": ["tool-name (install from URL)"],
+  "notes": "Brief note about what these dependencies are for."
+}
+```
+
+**Rules for requirements.json:**
+- Only include dependencies needed to RUN the generated output, not
+  dependencies needed to build or edit the skill itself.
+- `python`: pip packages. Use exact package names as they appear on PyPI.
+- `node`: npm packages. Use exact package names as they appear on npm.
+- `commands`: post-install commands like `playwright install chromium`.
+- `system`: tools that can't be installed via pip/npm and need manual
+  installation (e.g., k6, Docker). Include the install URL.
+- `notes`: one line explaining what the deps are for.
+- If the skill produces only markdown/text output with no executable
+  code, use empty arrays: `"python": [], "node": []`
+
+**Examples:**
+
+Skill that generates Robot Framework tests:
+```json
+{
+  "skill": "robot-framework-tester",
+  "python": [
+    "robotframework",
+    "robotframework-seleniumlibrary",
+    "robotframework-requests",
+    "pabot"
+  ],
+  "node": [],
+  "commands": [],
+  "notes": "Core Robot Framework stack for running generated .robot files."
+}
+```
+
+Skill that generates Lighthouse audit scripts:
+```json
+{
+  "skill": "lighthouse-auditor",
+  "python": ["robotframework", "playwright"],
+  "node": ["lighthouse", "@lhci/cli", "puppeteer"],
+  "commands": ["playwright install chromium"],
+  "notes": "Node.js for Lighthouse CLI. Playwright for authenticated audits."
+}
+```
+
+Skill that produces only markdown (no runtime deps):
+```json
+{
+  "skill": "test-case-generator",
+  "python": [],
+  "node": [],
+  "commands": [],
+  "notes": "No runtime dependencies. Produces markdown output only."
+}
+```
+
 ---
 
 ## Step 4: Review with the User
 
-Present all three deliverables and ask:
+Present all four deliverables and ask:
 
 "Here's what I've created:
-1. **SKILL.md** — [brief summary of what it does]
-2. **trigger-eval.json** — 20 queries to test triggering accuracy
-3. **test-prompts.json** — [N] test prompts to validate output quality
+1. **SKILL.md** - [brief summary of what it does]
+2. **trigger-eval.json** - 20 queries to test triggering accuracy
+3. **test-prompts.json** - [N] test prompts to validate output quality
+4. **requirements.json** - runtime dependencies for generated output
 
 Want to review each one, or should we go straight to testing?"
 
@@ -363,3 +435,11 @@ Before presenting to the user, verify:
 - [ ] Each has a descriptive name
 - [ ] Each has objectively checkable evaluation_criteria
 - [ ] Prompts use real-world language, not clean academic phrasing
+
+**requirements.json:**
+- [ ] Lists only runtime dependencies (not build-time)
+- [ ] Python packages use exact PyPI names
+- [ ] Node packages use exact npm names
+- [ ] Post-install commands listed in "commands" array
+- [ ] System dependencies include install URLs
+- [ ] Empty arrays for skills with no runtime deps (not omitted)
