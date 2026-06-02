@@ -1,0 +1,17 @@
+{
+  "skill": "lighthouse-auditor",
+  "python": [
+    "robotframework",
+    "robotframework-seleniumlibrary",
+    "playwright"
+  ],
+  "node": [
+    "lighthouse",
+    "@lhci/cli",
+    "puppeteer"
+  ],
+  "commands": [
+    "playwright install chromium"
+  ],
+  "notes": "Needs Node.js for Lighthouse CLI. Playwright for authenticated audits. Puppeteer for user flows."
+}

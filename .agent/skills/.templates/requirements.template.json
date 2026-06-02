@@ -1,0 +1,16 @@
+{
+  "skill": "skill-name-here",
+  "python": [
+    "package-name"
+  ],
+  "node": [
+    "package-name"
+  ],
+  "commands": [
+    "post-install command if needed"
+  ],
+  "system": [
+    "system tool (install from URL)"
+  ],
+  "notes": "Brief note about what these dependencies are for."
+}

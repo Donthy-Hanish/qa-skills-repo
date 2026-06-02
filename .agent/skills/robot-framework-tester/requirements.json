@@ -1,0 +1,14 @@
+{
+  "skill": "robot-framework-tester",
+  "python": [
+    "robotframework",
+    "robotframework-seleniumlibrary",
+    "robotframework-requests",
+    "robotframework-jsonlibrary",
+    "robotframework-databaselibrary",
+    "pabot"
+  ],
+  "node": [],
+  "commands": [],
+  "notes": "Core Robot Framework stack for running generated .robot files."
+}

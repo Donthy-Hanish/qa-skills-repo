@@ -1,0 +1,12 @@
+{
+  "skill": "api-contract-tester",
+  "python": [
+    "requests",
+    "jsonschema",
+    "robotframework",
+    "robotframework-requests"
+  ],
+  "node": [],
+  "commands": [],
+  "notes": "Requires requests library for generated API test scripts."
+}

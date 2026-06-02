@@ -1,0 +1,7 @@
+{
+  "skill": "test-case-generator",
+  "python": [],
+  "node": [],
+  "commands": [],
+  "notes": "No runtime dependencies. Produces markdown output only."
+}
