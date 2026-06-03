@@ -1,0 +1,125 @@
+{
+  "skill_name": "change-impact-analyzer",
+  "queries": [
+    {
+      "id": 1,
+      "query": "I just merged a PR that changes the authentication middleware - can you analyze what tests we need to run and which modules might be affected?",
+      "should_trigger": true,
+      "rationale": "Explicit request for affected modules and test selection tied to a code change"
+    },
+    {
+      "id": 2,
+      "query": "Here is the diff from our latest commit. Can you tell me the blast radius and which regression tests to prioritize?\n\n--- a/src/api/users.py\n+++ b/src/api/users.py\n@@ -42,7 +42,7 @@\n-    return db.query(User).filter(User.active == True)\n+    return db.query(User).filter(User.active == True, User.role != 'suspended')",
+      "should_trigger": true,
+      "rationale": "Pasted diff with explicit blast-radius and regression-test question"
+    },
+    {
+      "id": 3,
+      "query": "We are about to deploy ticket PROJ-4521 which adds multi-currency support to the billing module. What is the impact and which areas should QA focus on?",
+      "should_trigger": true,
+      "rationale": "Jira ticket reference with request for impact analysis and QA focus areas"
+    },
+    {
+      "id": 4,
+      "query": "Our team changed the date picker component to support date ranges instead of single dates. Help me figure out what might break and what tests to run.",
+      "should_trigger": true,
+      "rationale": "Free-text change description asking what might break and test selection"
+    },
+    {
+      "id": 5,
+      "query": "I need a regression scope recommendation for a database migration that adds a new column to the orders table and updates three API endpoints.",
+      "should_trigger": true,
+      "rationale": "Explicit regression scope request for a multi-layer change"
+    },
+    {
+      "id": 6,
+      "query": "Can you do a change impact analysis on this GitLab merge request? It refactors the notification service to use async processing instead of synchronous calls.",
+      "should_trigger": true,
+      "rationale": "Explicit 'change impact analysis' phrase with GitLab MR context"
+    },
+    {
+      "id": 7,
+      "query": "We updated the environment config to point staging at a new database cluster. What is the risk and which smoke tests should we run before switching?",
+      "should_trigger": true,
+      "rationale": "Config change with risk assessment and smoke test selection request"
+    },
+    {
+      "id": 8,
+      "query": "Here is a Jira ticket body: Summary: Fix CSV export timeout for large datasets. Components: Reports, Data-Export. Labels: performance, backend. What tests should QA run and what areas are affected?",
+      "should_trigger": true,
+      "rationale": "Pasted Jira ticket with components/labels asking for affected areas and tests"
+    },
+    {
+      "id": 9,
+      "query": "I want to set up the change impact analyzer for our new project. We have about 30 modules and use Xray for test management. How do I create the project test map?",
+      "should_trigger": true,
+      "rationale": "Setup request for the skill's project-test-map workflow"
+    },
+    {
+      "id": 10,
+      "query": "We rolled back the payment gateway integration from v3 to v2. What is the regression risk and do we need full regression or just smoke?",
+      "should_trigger": true,
+      "rationale": "Rollback scenario with regression scope question"
+    },
+    {
+      "id": 11,
+      "query": "Write me a Python function that parses command line arguments using argparse.",
+      "should_trigger": false,
+      "rationale": "Generic coding task with no change-impact or testing context"
+    },
+    {
+      "id": 12,
+      "query": "Can you review this pull request for code quality issues and suggest improvements?",
+      "should_trigger": false,
+      "rationale": "Code review request, not change-impact or test-selection"
+    },
+    {
+      "id": 13,
+      "query": "Help me write unit tests for my React component that renders a user profile card.",
+      "should_trigger": false,
+      "rationale": "Test authoring request, not impact analysis of a change"
+    },
+    {
+      "id": 14,
+      "query": "What is the difference between integration testing and end-to-end testing?",
+      "should_trigger": false,
+      "rationale": "Conceptual QA question with no specific change to analyze"
+    },
+    {
+      "id": 15,
+      "query": "Create a test plan for our mobile app's login feature covering functional, security, and usability scenarios.",
+      "should_trigger": false,
+      "rationale": "Test planning from scratch, not driven by a specific code change"
+    },
+    {
+      "id": 16,
+      "query": "Run a load test against our search API with 50 virtual users for 10 minutes.",
+      "should_trigger": false,
+      "rationale": "Performance/load testing execution, not change-impact analysis"
+    },
+    {
+      "id": 17,
+      "query": "Explain how to set up a CI/CD pipeline with GitHub Actions for a Node.js project.",
+      "should_trigger": false,
+      "rationale": "DevOps/CI setup question with no change-impact context"
+    },
+    {
+      "id": 18,
+      "query": "Help me debug this failing Playwright test - it times out when clicking the submit button.",
+      "should_trigger": false,
+      "rationale": "Test debugging, not change-impact scoping"
+    },
+    {
+      "id": 19,
+      "query": "What are the best practices for API contract testing using Pact?",
+      "should_trigger": false,
+      "rationale": "Best practices question about a testing tool, not a change-driven analysis"
+    },
+    {
+      "id": 20,
+      "query": "Generate a test data set with 500 users, each with random names, emails, and roles for our staging environment.",
+      "should_trigger": false,
+      "rationale": "Test data generation, not change-impact or regression scoping"
+    }
+  ]
+}

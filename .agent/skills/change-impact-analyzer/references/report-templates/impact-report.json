@@ -1,0 +1,65 @@
+{
+  "_schema_version": "1.0.0",
+  "_description": "Change Impact Analysis Report - machine-readable format for CI integration",
+  "change_summary": {
+    "change_id": "<Jira ticket ID, PR number, or 'free-text'>",
+    "title": "<One-line summary>",
+    "input_type": "<jira_ticket | diff_pr | free_text | combined>",
+    "analysis_date": "<YYYY-MM-DD>",
+    "analyst": "<Name or 'automated'>"
+  },
+  "change_description": "<2-3 sentence summary>",
+  "affected_areas": [
+    {
+      "id": 1,
+      "area": "<Module or component name>",
+      "impact_type": "<direct | upstream | downstream | shared | cross_cutting>",
+      "risk_level": "<critical | high | medium | low>",
+      "risk_rationale": "<One sentence explaining the risk level>",
+      "escalation_applied": false,
+      "escalation_reason": null
+    }
+  ],
+  "tests_to_run": {
+    "test_map_loaded": false,
+    "note": "No project test map loaded. Test IDs below are from the project inventory, not fabricated.",
+    "by_risk_level": {
+      "critical": [],
+      "high": [],
+      "medium": [],
+      "low": []
+    },
+    "automated_suites": [
+      {
+        "suite_or_tag": "<e.g., @auth>",
+        "estimated_run_time": "<e.g., 10 min>",
+        "covers": "<Description of what this suite covers>"
+      }
+    ],
+    "manual_tests": [
+      {
+        "test_id": "<e.g., TC-101>",
+        "test_name": "<e.g., Login with valid credentials>",
+        "module": "<e.g., Auth>",
+        "priority": "<critical | high | medium | low>"
+      }
+    ]
+  },
+  "regression_scope": {
+    "recommended": "<smoke | sanity | targeted_regression | full_regression>",
+    "rationale": "<2-3 sentences explaining why>",
+    "estimated_effort": "<e.g., '2 hours manual + 30 min automated' or 'unknown'>"
+  },
+  "coverage_gaps": [
+    {
+      "id": 1,
+      "area": "<Area with no test coverage>",
+      "why_affected": "<Why this area is impacted by the change>",
+      "risk_introduced": "<What could go wrong without tests>",
+      "suggested_test_type": "<unit | integration | e2e | manual_exploratory | contract>"
+    }
+  ],
+  "notes": [
+    "<Assumptions, caveats, or follow-up recommendations>"
+  ]
+}

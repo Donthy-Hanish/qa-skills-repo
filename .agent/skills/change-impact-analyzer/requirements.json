@@ -1,0 +1,7 @@
+{
+  "runtime": "python",
+  "version": ">=3.9",
+  "packages": [],
+  "system_dependencies": [],
+  "notes": "All helper scripts use only Python standard library (json, re, sys, argparse, pathlib, textwrap, datetime). No external packages required."
+}

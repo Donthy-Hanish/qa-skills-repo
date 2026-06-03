@@ -1,0 +1,91 @@
+{
+  "skill_name": "change-impact-analyzer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here is a Jira ticket:\n\nSummary: Add rate limiting to public API endpoints\nDescription: Implement token-bucket rate limiting on /api/v1/search, /api/v1/export, and /api/v1/webhook endpoints. Add a new rate_limits table to store per-tenant limits. Update the API gateway middleware to check limits before routing.\nComponents: API-Gateway, Database, Search, Export\nLabels: security, backend, breaking-change\nFix Version: 3.2.0\n\nAnalyze the change impact and tell me what tests to run.",
+      "expected_output": "A structured impact report identifying at least 4 affected areas (API gateway, database/migration, search endpoint, export endpoint, webhook endpoint), risk classification with the database migration and API contract changes escalating risk, regression scope recommendation of at least targeted regression, coverage gaps if any, and both Markdown and JSON output.",
+      "expectations": [
+        "Report identifies API gateway middleware as a directly affected area",
+        "Report identifies the database migration (rate_limits table) as an affected area with elevated risk",
+        "Report flags the breaking-change label and discusses downstream consumer impact",
+        "Report lists at least three specific API endpoints as affected (/search, /export, /webhook)",
+        "Risk classification includes at least one Critical or High rating due to security + API contract change",
+        "Regression scope recommendation is at least targeted regression, not just smoke",
+        "Report explicitly states that no specific test IDs can be provided without a project test map (or uses a project test map if one exists)",
+        "Both Markdown and JSON output formats are produced or offered",
+        "No test IDs or test case names are fabricated"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Analyze this diff for change impact:\n\n--- a/src/services/notification-service.ts\n+++ b/src/services/notification-service.ts\n@@ -15,10 +15,15 @@\n-export async function sendNotification(userId: string, message: string) {\n-  const user = await userRepo.findById(userId);\n-  await emailClient.send(user.email, message);\n-  await smsClient.send(user.phone, message);\n+export async function sendNotification(userId: string, message: string, channels?: NotificationChannel[]) {\n+  const user = await userRepo.findById(userId);\n+  const activeChannels = channels || user.preferences.notificationChannels;\n+  if (activeChannels.includes('email')) {\n+    await emailClient.send(user.email, message);\n+  }\n+  if (activeChannels.includes('sms')) {\n+    await smsClient.send(user.phone, message);\n+  }\n+  if (activeChannels.includes('push')) {\n+    await pushClient.send(user.deviceToken, message);\n+  }\n }\n\n--- a/src/models/user.ts\n+++ b/src/models/user.ts\n@@ -8,6 +8,10 @@\n   email: string;\n   phone: string;\n+  deviceToken?: string;\n+  preferences: {\n+    notificationChannels: NotificationChannel[];\n+  };\n }",
+      "expected_output": "A report parsing the diff to identify notification-service and user-model changes, tracing upstream callers of sendNotification, flagging the new optional parameter as a potential breaking change for callers, and noting the new push notification channel as an area needing new test coverage.",
+      "expectations": [
+        "Report identifies notification-service.ts and user.ts as directly changed files",
+        "Report notes the function signature change (new optional channels parameter) as a potential breaking change for existing callers",
+        "Report identifies upstream dependencies - any code that calls sendNotification",
+        "Report flags the new push notification channel as requiring new test coverage",
+        "Report identifies the user model change (deviceToken, preferences) and its impact on data layer",
+        "Coverage gap is identified for push notification path since it is net-new functionality",
+        "Risk classification treats the API signature change as at least Medium risk",
+        "No test IDs or test case names are fabricated"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We changed the date picker component across the app to support date ranges instead of single dates. This affects the booking form, the report filters, and the admin dashboard date selectors. The backend already supports date ranges. What is the impact and what is the right regression scope?",
+      "expected_output": "A report analyzing the free-text description, identifying three directly affected UI areas (booking form, report filters, admin dashboard), checking backend compatibility, and recommending a scope based on the breadth of UI surface area affected.",
+      "expectations": [
+        "Report identifies all three stated areas: booking form, report filters, admin dashboard date selectors",
+        "Report considers downstream impact on form validation and data submission",
+        "Report checks whether backend compatibility is confirmed vs assumed",
+        "Regression scope recommendation accounts for the wide UI surface area (at least sanity + targeted)",
+        "Report notes that all three areas need individual testing since behavior change is in a shared component",
+        "Report does not invent specific test case IDs or names",
+        "Risk rationale is provided for each affected area"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I need a quick regression scope call - we fixed a typo in the error message shown when a user enters an invalid email on the signup form. No logic changes, just a string constant update. Smoke, sanity, or full?",
+      "expected_output": "A brief scope recommendation of smoke testing with rationale that this is a cosmetic-only change with no logic impact.",
+      "expectations": [
+        "Recommends smoke scope (not sanity or full)",
+        "Rationale explains this is a cosmetic/string-only change with no logic impact",
+        "Does not force a full analysis when user asked for a quick scope call",
+        "Response is concise and not a full multi-section report",
+        "Correctly classifies risk as Low"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Here is our Jira ticket DASH-892:\n\nSummary: Migrate user sessions from Redis to DynamoDB\nDescription: Replace Redis session store with DynamoDB to improve durability and reduce operational burden. Update session middleware, login flow, logout flow, and session expiry cron job. Add DynamoDB table via CloudFormation template.\nComponents: Auth, Infrastructure, Session-Management\nLabels: migration, backend, high-risk\n\nAlso here is the PR diff summary: 14 files changed across src/middleware/, src/auth/, src/session/, and infra/cloudformation/.\n\nPlease produce both the Markdown report and the JSON file.",
+      "expected_output": "A comprehensive report merging Jira ticket signals (components, labels, high-risk tag) with diff signals (14 files, 4 directories), producing both Markdown and JSON outputs.",
+      "expectations": [
+        "Report merges signals from both the Jira ticket AND the diff summary",
+        "Report identifies auth, session management, and infrastructure as affected areas",
+        "Report flags the data migration aspect (Redis to DynamoDB) as Critical or High risk",
+        "Report identifies login flow, logout flow, and session expiry as specific workflows needing regression",
+        "Report notes the CloudFormation template change as an infrastructure-level concern",
+        "Both Markdown and JSON output formats are produced",
+        "Regression scope recommendation is full regression or targeted regression given the high-risk label and auth impact",
+        "Coverage gaps are identified for DynamoDB-specific failure modes (throttling, eventual consistency)",
+        "No test IDs or test names are fabricated"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "I want to set up the change impact analyzer for my project. We have these modules: User Management, Billing, Notifications, Reports, Admin Panel, and API Gateway. We use Zephyr in Jira for test cases and have a Playwright automation suite organized by feature folders. How do I create the project test map?",
+      "expected_output": "A guided walkthrough using the project-test-map template, helping the user fill in their six modules with Zephyr test case references and Playwright folder mappings.",
+      "expectations": [
+        "Loads or references the project-test-map-template.md",
+        "Walks the user through filling in each of their six modules",
+        "Shows how to map Zephyr test case components/labels to each module",
+        "Shows how to map Playwright feature folders or tags to each module",
+        "Explains how the filled-in map will be used in future analyses",
+        "Does not invent test case IDs - asks the user to provide their actual IDs"
+      ]
+    }
+  ]
+}
