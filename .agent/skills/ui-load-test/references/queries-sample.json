@@ -1,0 +1,502 @@
+[
+  {
+    "userQuery": "Boutique space in Brooklyn under 1,000 sqft with large street-facing windows for a high-end flower shop.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Looking for a 1,500 sqft corner unit in downtown Austin with outdoor seating potential for a juice bar.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Need a retail shell in a high-foot-traffic area of Chicago, at least 500 meters away from any existing Starbucks.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Searching for a small yoga studio space in Denver with high ceilings and no shared walls with noisy businesses.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial space in Nashville with an existing grease trap and 200-amp power for a fast-casual kitchen.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Artist loft in Santa Fe with north-facing natural light and at least 800 sqft of open floor plan.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Pet grooming retail space in suburban Dallas in a strip mall with at least 15 dedicated customer parking spaces.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Pop-up shop location in SoHo, New York for December only, must be ground floor with a minimum 20ft frontage.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Looking for a dry cleaner retail location in a Chicago suburb with a drive-thru lane.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Small bookstore retail space in Boston in a historic building with original hardwood floors and built-in shelving.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Warehouse in Newark, New Jersey within 5 miles of Port Newark with 4 loading docks and 30ft clear height.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "20,000 sqft industrial flex space in Phoenix with grade-level doors and a fenced-in yard for vehicle storage.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Cold storage facility in Miami near Miami International Airport with at least 5,000 sqft of freezer space.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Light manufacturing unit in Charlotte with 3-phase power and a small 500 sqft office mezzanine.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Distribution center in Dallas with cross-docking capabilities and 120ft truck court depth.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Data center shell in Northern Virginia with redundant fiber providers and heavy floor load capacity.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Auto repair shop for lease in Las Vegas with at least 4 bays and an existing oil separator.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Research lab space in Cambridge, MA, with Class A wet lab specs and biosafety level 2 certification.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Contractor's yard in Atlanta with a small mobile office and at least 1 acre of gravel-paved land.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Self-storage conversion opportunity in Houston: vacant big-box retail shell with at least 40,000 sqft in a high-density area.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Quiet therapist office in Seattle in a professional building with a private entrance and soundproofed walls.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Modern tech office in Seattle for 20 people with at least 3 private call booths and an open kitchen.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Medical suite in a Class A building near a hospital in Boston with 4 exam rooms and a waiting area for 10.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Law firm office space in Midtown Manhattan with at least 5 windowed partner offices and a grand conference room.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Creative agency studio in Portland, Oregon with exposed brick, timber beams, and bike storage.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Shared dental office space in Chicago with 2 plumbed operatories and shared sterilization room.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Sublease for a CPA firm in San Francisco for the next 18 months, fully furnished with desks.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Office space in Silicon Valley with an EV charging station in the parking lot and 24/7 security.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Non-profit headquarters office in Washington DC with a large community hall and proximity to a Metro station.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Co-working friendly office floor in Brooklyn in a renovated warehouse with high-speed fiber and a rooftop deck.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Mixed-use retail building in Indianapolis in a B-class neighborhood with ground floor retail and offices above.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial mixed-use property in Philadelphia under $400k with no major structural or foundation issues.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Hospitality retail space in Kissimmee, FL with a private pool and no HOA restrictions for short-term lodging operations.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial student-services retail space near ASU Tempe with at least 4 separate units and individual leases.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Value-add commercial property in Houston with at least 20 office or retail units and 85% current occupancy.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Historic Victorian commercial building in Savannah zoned for hospitality, retail, or Bed & Breakfast conversion.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Mixed-use commercial building in a gentrifying area of Detroit with retail on the ground floor and office space above.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Retail space in Plano, TX with a 3-vehicle service bay and dedicated parking near a high-traffic intersection.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Retail commercial space in Downtown San Diego with a short-term commercial use permit and low monthly maintenance fees.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Section 8 approved mixed-use commercial property in Baltimore with recent lead paint certification.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Searching for a brewery location in Asheville, NC with a 15ft ceiling and no residential neighbors within 100 meters.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Outdoor event venue in Dallas, TX for a wedding business with at least 5 acres and a historic barn structure.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial kitchen in Atlanta for a catering business with a walk-in cooler and no shared loading zone.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Tutoring center retail space in suburban Chicago in a quiet area with at least 3 classrooms and no liquor stores nearby.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Looking for a luxury car showroom in Miami with floor-to-ceiling glass and no pillars in the main floor area.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Cannabis-zoned retail space in Los Angeles with at least 1,000 sqft and 700ft distance from schools.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Private gym retail space in Seattle with reinforced floors for heavy weights and no neighbors directly below.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Urban farm plot in Cleveland with at least 0.5 acres and access to city water lines.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Daycare retail facility in Atlanta with a fenced outdoor playground and at least 2,500 sqft of indoor space.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Record store retail location in Austin in a 'walkable' neighborhood with at least 1,200 sqft and a basement for inventory storage.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Office space in Boston with dedicated, soundproofed private offices and fiber optic internet pre-installed.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Looking for a commercial property in suburban Boston with a finished lower level that has a separate entrance for a therapy practice.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial property in Denver with a large parking lot and pre-approved zoning for a 500 sqft accessory commercial unit.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Modern office space in Austin with 'work-from-home' style coworking pods in the building amenities and a private balcony.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Rural commercial property near Worcester, MA with a detached barn that can be converted into a high-end recording studio.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial space in Atlanta with at least 2,500 sqft and a commercial kitchen or large pantry for a catering business.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Office space in Alexandria, VA, within walking distance to a co-working space and a dog park.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial property in Dallas with a 3-bay garage where one bay is climate-controlled for a luxury car dealership.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Loft retail space in Chicago with industrial zoning that allows for a combined commercial 'Live-Work' legal status.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial space in Phoenix with a room specifically designed for high-end golf simulator installation.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Net-zero energy commercial office in Portland, Oregon with solar panels, Tesla Powerwall, and a geothermal HVAC system.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial retail space in Atlanta in a LEED-certified building with floor-to-ceiling glass for natural lighting.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Looking for a commercial space in Denver, Colorado with 'Greywater' recycling systems and drought-resistant landscaping.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Small warehouse in San Diego with a roof structurally reinforced to support a full solar array.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Electric-vehicle friendly commercial space in San Jose with dual 240V chargers already installed in the parking area.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Passive House certified commercial building in Burlington, Vermont with triple-pane windows and 12-inch thick insulated walls.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Off-grid capable commercial property in Manchester, New Hampshire with a private well, septic, and at least 10 acres of woodlot.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial office space in Seattle with a Walk Score above 95 and a building-wide composting program.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Modern farmhouse-style commercial venue in Atlanta, Georgia with a rainwater harvesting system for a large organic garden.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial office space in Portland, Oregon in a 'Mass Timber' building with high air-filtration standards (MERV 13+).",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Vacant land in Tampa, Florida zoned for 'Tiny House' community development with utility hookups nearby.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial property in Newark, NJ zoned specifically for a 'Class 5' cannabis retail license with 1,000ft school buffer.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial mixed-use property in Nashville that falls within the 'Short-Term Rental' (STR) eligible zone.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial 4-unit retail property in Los Angeles that is NOT subject to the RSO (Rent Stabilization Ordinance).",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Industrial lot in Houston with 'Heavy Industrial' zoning and no deed restrictions for scrap metal processing.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial property in Charleston, SC in a historic district with an existing 'HCF' easement and tax credit eligibility.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Rural commercial acreage in Bozeman, Montana with 'Unrestricted' zoning for a private campground or RV park.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Office building in Detroit in a 'Qualified Opportunity Zone' (QOZ) for long-term capital gains tax benefits.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Mixed-use commercial building in Phoenix where the units can be used as 'Executive Suites' for corporate stays.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial property in Detroit in a 'HUBZone' to qualify for federal government contracting preferences.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Single-story commercial retail space in Scottsdale with extra-wide hallways and a roll-in shower for ADA compliance.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Multi-suite professional commercial space in Atlanta with full kitchen and laundry-equipped suites for medical professional use.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Office condo in Chicago in a building with elevator access directly into the unit and no stairs from the parking garage.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial space in Dallas on the main floor with at least 36-inch wide doorways throughout for ADA compliance.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Office space in Atlanta with at least 5 ground-floor private offices for a medical or accessibility-focused practice.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial space in Boston for a physical therapy clinic with a flat entrance and at least 5 dedicated handicap spots.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial medical-adjacent office space near a top-tier hospital in Cleveland for outpatient services.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Smart commercial office in Denver with voice-controlled lighting and blinds for an accessibility-focused workplace.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Senior-services commercial space in Phoenix in a 55+ community area with low-maintenance HOA and community transport.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial space in Nashville with a flat outdoor area for a wheelchair-accessible ramp and a sensory garden.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Warehouse space in Las Vegas with 24ft ceilings for an indoor pickleball club with 6 courts.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Retail shell in a tech-heavy area of San Francisco for a VR/AR arcade with high-speed 10Gbps fiber.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Commercial kitchen in Atlanta for a 'Ghost Kitchen' startup with 10 separate prep stations and easy courier access.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Quiet, high-security office in Arlington, VA, suitable for a SCIF (Sensitive Compartmented Information Facility).",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Looking for a 2,000 sqft space in a suburban mall in Dallas for a 'Sip and Paint' studio with a liquor license.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Industrial space in Houston with reinforced concrete floors and 480V power for a small-scale 3D printing factory.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Boutique hotel conversion: 10-bedroom historic mansion in New Orleans with commercial zoning.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Small retail unit in Boston for a 'cat cafe' with specific HVAC requirements for air filtration.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Data center property in Ashburn, Virginia with 'dark fiber' access and proximity to a major power substation.",
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "userQuery": "Storage facility in Miami with 'Climate Control' and 24/7 biometric access for high-end art storage.",
+    "lat": 0,
+    "lng": 0
+  }
+]

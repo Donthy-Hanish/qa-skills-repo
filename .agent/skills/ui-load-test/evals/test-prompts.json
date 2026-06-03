@@ -1,0 +1,71 @@
+{
+  "skill_name": "ui-load-test",
+  "description": "End-to-end test prompts for the ui-load-test skill. Each includes evaluation criteria.",
+  "test_prompts": [
+    {
+      "id": 1,
+      "prompt": "I just captured a HAR file from the PECO dev environment - peco_search.har. I want to run a quick smoke test with 3 VUs for 2 minutes. Walk me through what to do next.",
+      "expected_output": "Should guide the user to: (1) copy queries-smoke.json to queries.json, (2) run node peco_smart_compiler_v1.js with the right inputs (3 VUs, duration mode, 2m), (3) run the generated .ps1 wrapper, (4) mention how to view the report afterward.",
+      "evaluation_criteria": [
+        "Phase 2 step uses Copy-Item with queries-smoke.json",
+        "Phase 3 invokes node peco_smart_compiler_v1.js",
+        "Interactive prompts are explained: HAR path, VUs=3, mode=1 (duration), 2m, sleep",
+        "Phase 4 runs .\\run-search.ps1 (or correct flow name)",
+        "Report location reports/search/*_report.html is mentioned",
+        "Does NOT suggest starting from HAR capture (user already has one)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My last load test showed a 12% failure rate and most failures are 429s on the /api/v1/properties/vector/llm-test endpoint. What's going on and how do I fix it?",
+      "expected_output": "Should identify 429 as rate limiting, explain the user is hitting the backend's rate limit, and suggest reducing VUs, increasing sleep between iterations, or both. Should also mention checking with the dev team about per-IP rate limits.",
+      "evaluation_criteria": [
+        "Correctly identifies 429 as rate limiting (not a generic server error)",
+        "Notes the 12% failure rate exceeds the compiled 5% threshold",
+        "Suggests reducing VUs",
+        "Suggests increasing sleep between iterations (e.g., 2s -> 10s)",
+        "Mentions checking with the backend/dev team about per-IP rate limit policy",
+        "Does NOT recommend ignoring or retrying blindly"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need to create a custom query pool focused on healthcare-related commercial properties in the Northeast US. Can you help me build one?",
+      "expected_output": "Should create a valid queries.json array with healthcare/medical-themed commercial property searches in Northeast US cities, using the correct schema ({userQuery, lat, lng}). Should suggest saving it as queries-healthcare.json and copying to queries.json.",
+      "evaluation_criteria": [
+        "Output is valid JSON: array of objects with userQuery, lat, lng",
+        "At least 8-10 queries provided",
+        "Queries are healthcare-themed (medical office, urgent care, dental, physical therapy, clinic, lab, etc.)",
+        "Cities are in Northeast US (NYC, Boston, Philadelphia, Hartford, Providence, etc.)",
+        "lat/lng are 0 OR real geocoded centroids (both acceptable, document choice)",
+        "Suggests filename queries-healthcare.json and Copy-Item to queries.json",
+        "Does NOT recompile the script (pool switching doesn't require it)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want to estimate the cost of running PECO load tests against the dev backend for our weekly perf regression. We're thinking 5 VUs, 15 minutes, 5s sleep. Is that reasonable cost-wise?",
+      "expected_output": "Should walk through the math: iterations per VU, total LLM calls, multiply by per-call cost band ($0.001-$0.01). Should give a range and recommend confirming the actual figure via the compiler's cost prompt before running.",
+      "evaluation_criteria": [
+        "Estimates iterations: (15min * 60s) / (avg_request_time + 5s sleep) per VU",
+        "Multiplies by 5 VUs for total LLM call count",
+        "Applies $0.001-$0.01 cost band",
+        "Provides a low-high cost range",
+        "Recommends running the compiler to get its actual estimate before kicking off",
+        "Calls out that non-prod is required unless approved"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "The HTML report shows the run as passed but the failures.json file has 30 entries. Which one should I trust?",
+      "expected_output": "Should explain that the report's pass/fail summary uses the compiled thresholds (error rate < 5%, p95 thresholds), while failures.json captures every individual failed check. Both are correct - thresholds passing means the run was within SLOs, but individual failures still happened and are worth reviewing.",
+      "evaluation_criteria": [
+        "Distinguishes 'run passed thresholds' from 'zero failures'",
+        "Explains the 5% error rate threshold and AI/non-AI latency thresholds",
+        "Recommends reviewing failures.json to spot patterns (endpoint, status code clustering)",
+        "Mentions the Failure Diagnostics HTML section as the visual equivalent",
+        "Does NOT dismiss either output as wrong"
+      ]
+    }
+  ]
+}

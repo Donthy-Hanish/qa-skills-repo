@@ -1,0 +1,108 @@
+{
+  "skill_name": "ui-load-test",
+  "description": "Trigger evaluation: 10 queries that SHOULD activate ui-load-test and 10 that should NOT.",
+  "should_trigger": [
+    {
+      "id": "T01",
+      "prompt": "I have a HAR file from the PECO dev environment. How do I turn it into a k6 load test?",
+      "reason": "Direct HAR-to-k6 workflow for PECO."
+    },
+    {
+      "id": "T02",
+      "prompt": "Need to run a smoke load test on PECO search with 3 VUs for 2 minutes.",
+      "reason": "Smoke pool + VU config is core Phase 2 / Phase 3 workflow."
+    },
+    {
+      "id": "T03",
+      "prompt": "My PECO load test is showing 429s on the vector/llm-test endpoint. What's wrong?",
+      "reason": "Failure analysis (rate limit) on PECO load test results."
+    },
+    {
+      "id": "T04",
+      "prompt": "Can you help me create a custom query pool for healthcare properties in the Northeast?",
+      "reason": "Custom queries.json creation - documented in Phase 2."
+    },
+    {
+      "id": "T05",
+      "prompt": "What's the p(95) threshold for AI endpoints in our PECO performance tests?",
+      "reason": "Threshold details encoded in the compiled k6 script (10s for AI, 2s non-AI)."
+    },
+    {
+      "id": "T06",
+      "prompt": "How much will it cost to run a 15-minute load test against PECO with 10 VUs?",
+      "reason": "Cost estimation is a built-in compiler feature."
+    },
+    {
+      "id": "T07",
+      "prompt": "The failure diagnostics section in my k6 report is empty even though the run had errors. Why?",
+      "reason": "Direct troubleshooting entry from the SKILL.md table."
+    },
+    {
+      "id": "T08",
+      "prompt": "How do I switch from the smoke query pool to the full geocoded pool without recompiling?",
+      "reason": "Pool switching via Copy-Item - explicit Phase 2 guidance."
+    },
+    {
+      "id": "T09",
+      "prompt": "Walk me through capturing browser traffic from PECO to use as a load test baseline.",
+      "reason": "Phase 1 HAR capture with Playwright."
+    },
+    {
+      "id": "T10",
+      "prompt": "Analyze the latest report in reports/search/ and tell me what's failing.",
+      "reason": "Report analysis workflow described in 'Analyzing Results' section."
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "id": "N01",
+      "prompt": "Help me write a unit test for a React component using Jest.",
+      "reason": "Unit testing, not load testing; no PECO/k6/HAR keywords."
+    },
+    {
+      "id": "N02",
+      "prompt": "Generate test cases for the special character asset validation ticket QG-11502.",
+      "reason": "Functional test case generation - belongs to test-case-generator skill."
+    },
+    {
+      "id": "N03",
+      "prompt": "What's the best way to mock an API in Robot Framework?",
+      "reason": "Robot Framework topic - belongs to robot-framework-tester skill."
+    },
+    {
+      "id": "N04",
+      "prompt": "Run a Lighthouse audit on the PECO landing page.",
+      "reason": "Lighthouse/performance audit but not load testing - belongs to lighthouse-auditor."
+    },
+    {
+      "id": "N05",
+      "prompt": "How do I structure a YAML file for OpenAPI 3.0?",
+      "reason": "API contract topic, no load-testing context."
+    },
+    {
+      "id": "N06",
+      "prompt": "Explain how SharedArray works in JavaScript generally.",
+      "reason": "Generic JS question - k6 SharedArray usage is incidental, not the focus."
+    },
+    {
+      "id": "N07",
+      "prompt": "Compare JMeter vs Gatling for performance testing.",
+      "reason": "Generic tool comparison, not PECO-specific or k6-specific workflow."
+    },
+    {
+      "id": "N08",
+      "prompt": "Review my Python script that scrapes a website.",
+      "reason": "Web scraping, no load-testing intent."
+    },
+    {
+      "id": "N09",
+      "prompt": "How does QGrid handle per-VU authentication in its compiler?",
+      "reason": "QGrid compiler explicitly out of scope (PECO skill only)."
+    },
+    {
+      "id": "N10",
+      "prompt": "Set up a CI pipeline that runs regression tests on every PR.",
+      "reason": "CI/regression setup, not load test execution."
+    }
+  ]
+}

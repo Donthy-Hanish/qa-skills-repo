@@ -1,0 +1,41 @@
+{
+  "name": "ui-load-test",
+  "version": "1.0.0",
+  "description": "Runtime dependencies for the PECO HAR-to-k6 load-testing workflow.",
+  "runtime": {
+    "node": ">=18.0.0",
+    "powershell": ">=5.1"
+  },
+  "commands": [
+    {
+      "name": "k6",
+      "version": ">=0.47.0",
+      "install": "https://k6.io/docs/get-started/installation/",
+      "check": "k6 version"
+    },
+    {
+      "name": "node",
+      "version": ">=18.0.0",
+      "install": "https://nodejs.org/",
+      "check": "node --version"
+    }
+  ],
+  "node_packages": [
+    {
+      "name": "playwright",
+      "version": "latest",
+      "install": "npx playwright install chromium",
+      "purpose": "HAR capture from the PECO frontend (Phase 1 only)"
+    }
+  ],
+  "system": {
+    "os": ["windows"],
+    "notes": "The generated runner is a .ps1 wrapper. On Linux/macOS, k6 and node still work, but the wrapper needs porting to bash."
+  },
+  "project_path": "C:\\Users\\costrategix\\PycharmProjects\\PECO-Load-Tester",
+  "bundled_references": [
+    "references/peco_smart_compiler_v1.js",
+    "references/queries-sample.json",
+    "references/project-context.md"
+  ]
+}
