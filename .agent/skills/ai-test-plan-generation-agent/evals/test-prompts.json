@@ -1,0 +1,16 @@
+{
+  "skill_name": "ai-test-plan-generation-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "generate-test-plan",
+      "prompt": "Create a comprehensive QA Test Strategy and Test Plan using specs/requirements.md and save it to specs/test-plan.md.",
+      "expected_output": "Comprehensive test plan containing Scope, Out of Scope, Strategy, Test Scenarios with steps and expected results, and categorized suites.",
+      "evaluation_criteria": [
+        "Output is written to specs/test-plan.md",
+        "Contains sections for Scope, Strategy, and Scenarios",
+        "Scenarios include Case ID, Steps, and Expected Results"
+      ]
+    }
+  ]
+}

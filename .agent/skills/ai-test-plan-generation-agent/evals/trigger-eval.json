@@ -1,0 +1,82 @@
+[
+  {
+    "query": "generate a test plan from this requirements file",
+    "should_trigger": true
+  },
+  {
+    "query": "write a test strategy for the checkout flow",
+    "should_trigger": true
+  },
+  {
+    "query": "design test scenarios based on specs/requirements.md",
+    "should_trigger": true
+  },
+  {
+    "query": "create smoke and regression suites for JIRA-4521",
+    "should_trigger": true
+  },
+  {
+    "query": "design test cases for accessible elements and responsive layout",
+    "should_trigger": true
+  },
+  {
+    "query": "generate specs/test-plan.md",
+    "should_trigger": true
+  },
+  {
+    "query": "create a QA test strategy document",
+    "should_trigger": true
+  },
+  {
+    "query": "what regression test scenarios do I need for this feature?",
+    "should_trigger": true
+  },
+  {
+    "query": "make a test plan outlining entry and exit criteria",
+    "should_trigger": true
+  },
+  {
+    "query": "build test plan from acceptance criteria",
+    "should_trigger": true
+  },
+  {
+    "query": "analyze the requirements first and document them",
+    "should_trigger": false
+  },
+  {
+    "query": "run exploratory testing with playwright mcp",
+    "should_trigger": false
+  },
+  {
+    "query": "execute tests against chromium and webkit",
+    "should_trigger": false
+  },
+  {
+    "query": "fix this flaky locator using data-testid",
+    "should_trigger": false
+  },
+  {
+    "query": "commit the code to github repository",
+    "should_trigger": false
+  },
+  {
+    "query": "compile a release report with executive summary",
+    "should_trigger": false
+  },
+  {
+    "query": "heal these test failures",
+    "should_trigger": false
+  },
+  {
+    "query": "generate page object models in python",
+    "should_trigger": false
+  },
+  {
+    "query": "what error console logs were captured",
+    "should_trigger": false
+  },
+  {
+    "query": "install playwright npm dependencies",
+    "should_trigger": false
+  }
+]

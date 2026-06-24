@@ -1,0 +1,8 @@
+{
+  "skill": "ai-test-plan-generation-agent",
+  "python": [],
+  "node": [],
+  "commands": [],
+  "system": [],
+  "notes": "No runtime dependencies. Produces markdown test plan."
+}
