@@ -1,6 +1,6 @@
 ---
 name: robot-framework-tester
-description: "Generate production-ready Robot Framework test suites for Web UI testing (SeleniumLibrary) and REST API testing (RequestsLibrary). Produces .robot files with Settings/Variables/Test Cases/Keywords, .resource Page Object files, and Python .py helper libraries. Follows team conventions: suite setup/teardown, data-driven templates, proper waits (never Sleep), screenshots on failure, headless CI, session-based API tests, and tags (smoke, regression, critical). Trigger on: write robot tests, create robot framework test suite, generate .robot file, build selenium tests, automate this page with robot, write API tests with RequestsLibrary, create resource file, generate data-driven robot tests, scaffold robot project, convert manual test cases into robot scripts. Do NOT trigger for BDD test case docs from user stories (use test-case-generator), API contract validation against Swagger (use api-contract-tester), debugging failing robot tests, writing pytest unit tests, or CI/CD pipeline config."
+description: "Generate Robot Framework test suites (.robot files, .resource Page Objects, Python helpers) for Web UI (SeleniumLibrary) and REST API (RequestsLibrary) testing with CI-ready conventions."
 metadata:
   author: QA Skills Team
   version: 1.0.0
@@ -245,7 +245,7 @@ new connections and requires repeating headers.
 
 **Vague input ("write tests for the homepage"):**
 Ask for specifics before generating. Which elements? What interactions?
-Generate a skeleton with `TODO` comments only if explicitly asked.
+Generate a skeleton with stub comments only if explicitly asked.
 
 **Feature with no UI and no API:**
 Explain that Robot Framework is not the right tool for purely backend logic.

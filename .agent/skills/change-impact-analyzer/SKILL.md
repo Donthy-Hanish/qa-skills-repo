@@ -1,6 +1,6 @@
 ---
 name: change-impact-analyzer
-description: "Analyze a code change, Jira ticket, GitHub/GitLab PR, diff, or free-text change description to produce a structured change-impact report identifying affected modules, tests to run, risk rationale, regression scope, and coverage gaps. Trigger when the user mentions impact analysis, change impact, blast radius, regression scope, affected areas, which tests to run, test selection for a change, risk assessment for a ticket, diff analysis, PR review for test impact, or asks what a change might break. Also trigger when the user pastes a diff, references a Jira ticket for QA scoping, or asks for a regression plan tied to a specific change."
+description: "Analyze diffs, Jira tickets, PRs, or change descriptions to produce impact reports: affected modules, tests to run, risk levels, regression scope, and coverage gaps."
 version: "1.1.0"
 ---
 

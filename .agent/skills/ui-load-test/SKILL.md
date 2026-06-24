@@ -1,6 +1,6 @@
 ---
 name: ui-load-test
-description: "Run PECO AI-search load tests end-to-end - capture HAR files from the frontend, select or create query pools, compile HAR into k6 scripts, execute load tests, and analyze results and reports. Trigger when the user mentions load testing, performance testing, stress testing, k6, HAR capture, query pools, VU configuration, latency thresholds, failure diagnostics, or AI endpoint cost estimation for the PECO platform."
+description: "Run PECO AI-search load tests end-to-end: capture HAR files, manage query pools, compile HAR into k6 scripts, execute and analyze results. Triggers on k6, HAR, load/stress testing, VU config."
 version: "1.1.0"
 ---
 

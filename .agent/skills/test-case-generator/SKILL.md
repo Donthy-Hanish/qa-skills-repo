@@ -1,6 +1,6 @@
 ---
 name: test-case-generator
-description: "Generate comprehensive Gherkin-style BDD test cases from user stories. Covers positive, negative, boundary, and edge-case scenarios with clear Given/When/Then steps, preconditions, expected results, and priority levels. Tailored for Robot Framework with Selenium Python. Trigger when someone says generate test cases, create test scenarios, write test cases from this user story, BDD scenarios for this feature, cover positive and negative cases, what test cases do I need for this story, turn this ticket into test cases, help me with test coverage, write Given/When/Then for this, I need Robot Framework test cases, generate scenarios from acceptance criteria, or pastes a Jira ticket and asks for tests. Do NOT trigger for debugging failing tests, fixing flaky test scripts, reviewing existing test code, writing unit tests, CI/CD pipeline issues, or test execution/reporting questions."
+description: "Generate Gherkin BDD test cases from user stories: positive, negative, boundary, and edge cases with Given/When/Then for Robot Framework. Triggers on: test cases, BDD, Jira tickets."
 metadata:
   author: QA Skills Team
   version: 1.0.0
