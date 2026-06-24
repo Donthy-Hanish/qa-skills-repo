@@ -1,0 +1,26 @@
+{
+  "skill_name": "requirement-analysis-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "checkout-requirements",
+      "prompt": "Please analyze the checkout user story specs in user-stories/SCRUM-101-ecommerce-checkout.md and generate specs/requirements.md.",
+      "expected_output": "Markdown containing Feature Summary, Functional/Non-Functional requirements, Acceptance Criteria, Edge Cases, and RTM.",
+      "evaluation_criteria": [
+        "Output is saved in specs/requirements.md",
+        "Output has all the headers from Step 1 output format",
+        "Contains Requirement Traceability Matrix table"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "login-requirements",
+      "prompt": "Run requirements analysis on the login user story and map the user journeys.",
+      "expected_output": "Requirements analysis output mapped to the login functionality.",
+      "evaluation_criteria": [
+        "Identifies positive and negative login user journeys",
+        "Includes Validation Rules for fields"
+      ]
+    }
+  ]
+}

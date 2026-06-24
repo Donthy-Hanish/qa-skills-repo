@@ -1,0 +1,20 @@
+{
+  "skill": "smoke-test-builder",
+  "python": [
+    "robotframework",
+    "robotframework-seleniumlibrary",
+    "robotframework-requests",
+    "robotframework-appiumlibrary",
+    "playwright",
+    "requests"
+  ],
+  "node": [
+    "newman",
+    "playwright"
+  ],
+  "commands": [
+    "playwright install chromium"
+  ],
+  "system": [],
+  "notes": "Runtime dependencies to execute generated Web (Playwright/Robot), API (Requests/Newman), and Mobile (Appium/Robot) smoke test scripts."
+}

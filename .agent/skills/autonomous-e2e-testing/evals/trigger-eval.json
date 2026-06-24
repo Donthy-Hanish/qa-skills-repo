@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I need to setup an end to end test flow for our web application that covers the login, adding to cart, and checking out. Can you build this?",
+    "should_trigger": true
+  },
+  {
+    "query": "Can we write an e2e test suite in Playwright for our user registration and onboarding flow? We have a role-based access control setup to test.",
+    "should_trigger": true
+  },
+  {
+    "query": "Please analyze this user story and design an e2e testing scenario covering the purchase flow across Chrome, Firefox and Safari.",
+    "should_trigger": true
+  },
+  {
+    "query": "Here is a list of app requirements. We need an autonomous agent setup that can discover flows, generate E2E test scripts, and run them automatically.",
+    "should_trigger": true
+  },
+  {
+    "query": "Our checkout flow is failing in staging. Here's the trace log. Can you analyze the E2E failure and recommend how to fix the automation code?",
+    "should_trigger": true
+  },
+  {
+    "query": "We want to automate the mobile app user journey using Appium Python. The flow starts with Google login, moves to dashboard, then does a profile update. Can we build a test for it?",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you design E2E integration test scenarios to verify how the frontend checkout component talks to the payment processing gateway?",
+    "should_trigger": true
+  },
+  {
+    "query": "We need a script to run a basic performance smoke check during our E2E run on web. Just check core page load latencies.",
+    "should_trigger": true
+  },
+  {
+    "query": "How do we handle E2E session state persistence so we don't have to login before every single test scenario in our suite?",
+    "should_trigger": true
+  },
+  {
+    "query": "Write a Robot Framework test suite that performs E2E happy path flows for our billing portal, covering multiple user roles like admin and viewer.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you generate a Newman smoke test collection to verify environment health right after deployment? Needs to run under 5 minutes.",
+    "should_trigger": false
+  },
+  {
+    "query": "This unit test for our date utility is failing when leap years occur. Can you fix the leap year validation logic in dateUtils.py?",
+    "should_trigger": false
+  },
+  {
+    "query": "We have some flaky tests in our Robot Framework suite. Can you parse this output.xml and help me figure out why we get StaleElementReferenceException?",
+    "should_trigger": false
+  },
+  {
+    "query": "Please generate Gherkin-style BDD scenarios for this Jira ticket. We use Selenium Python.",
+    "should_trigger": false
+  },
+  {
+    "query": "We found a bug on the landing page where the submit button shifts by 10px on hover. Can you write a detailed bug report for Jira?",
+    "should_trigger": false
+  },
+  {
+    "query": "Here is our OpenAPI swagger.json file. Can you validate if our live API responses match the contract schemas?",
+    "should_trigger": false
+  },
+  {
+    "query": "Write unit tests for the email format validator regex. Here is the validator code: ...",
+    "should_trigger": false
+  },
+  {
+    "query": "Can we write a unit test to verify that the private method _calculateTax returns the correct value for state NY?",
+    "should_trigger": false
+  },
+  {
+    "query": "Help me write a test verifying every single combination of password validation rules: min length, caps, numbers, special characters, spaces.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I fix a CSS layout issue where the navbar overlaps the main content on mobile screens?",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "can you analyze this user story for the checkout flow refactor? JIRA-4521",
+    "should_trigger": true
+  },
+  {
+    "query": "help me extract requirements from SCRUM-101-ecommerce-checkout.md",
+    "should_trigger": true
+  },
+  {
+    "query": "run requirements analysis on the new user story",
+    "should_trigger": true
+  },
+  {
+    "query": "i need a Requirement Traceability Matrix for features listed in the req text",
+    "should_trigger": true
+  },
+  {
+    "query": "extract acceptance criteria and boundary conditions for this ticket",
+    "should_trigger": true
+  },
+  {
+    "query": "generate specs/requirements.md for feature requirements",
+    "should_trigger": true
+  },
+  {
+    "query": "analyze functional requirements for our new payment integration",
+    "should_trigger": true
+  },
+  {
+    "query": "can you read specs/req.txt and map the user journey?",
+    "should_trigger": true
+  },
+  {
+    "query": "extract risks and edge cases from user stories",
+    "should_trigger": true
+  },
+  {
+    "query": "do a business analyst analysis on this epic",
+    "should_trigger": true
+  },
+  {
+    "query": "generate a test plan from this requirements file",
+    "should_trigger": false
+  },
+  {
+    "query": "write a playwright test for checkout flow",
+    "should_trigger": false
+  },
+  {
+    "query": "run tests against staging and report results",
+    "should_trigger": false
+  },
+  {
+    "query": "can you heal the failing locators in specs/requirements.md",
+    "should_trigger": false
+  },
+  {
+    "query": "push my automated tests to github repository",
+    "should_trigger": false
+  },
+  {
+    "query": "what visual bugs did you find during the run",
+    "should_trigger": false
+  },
+  {
+    "query": "run exploratory testing on the checkout page",
+    "should_trigger": false
+  },
+  {
+    "query": "fix accessibility violations on login page",
+    "should_trigger": false
+  },
+  {
+    "query": "run npm playwright test command",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a QA summary report for the project",
+    "should_trigger": false
+  }
+]

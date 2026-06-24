@@ -1,0 +1,21 @@
+{
+  "skill": "autonomous-e2e-testing",
+  "python": [
+    "playwright",
+    "pytest",
+    "pytest-playwright",
+    "pytest-xdist",
+    "Appium-Python-Client",
+    "robotframework",
+    "robotframework-seleniumlibrary",
+    "robotframework-appiumlibrary",
+    "robotframework-requests",
+    "pabot"
+  ],
+  "node": [],
+  "commands": [
+    "playwright install chromium firefox webkit"
+  ],
+  "system": [],
+  "notes": "E2E testing runtime: Playwright, Appium-Python, and Robot Framework."
+}

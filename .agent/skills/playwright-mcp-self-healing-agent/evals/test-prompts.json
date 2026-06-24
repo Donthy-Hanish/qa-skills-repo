@@ -1,0 +1,16 @@
+{
+  "skill_name": "playwright-mcp-self-healing-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "run-self-healing",
+      "prompt": "Analyze failed tests from results/execution-results.md, apply self-healing for selectors following the Test Locator Standard, and generate results/healing-report.md.",
+      "expected_output": "Self-healing script updates and healing-report.md describing fixes and execution logs.",
+      "evaluation_criteria": [
+        "Saves report to results/healing-report.md",
+        "Healed scripts are output in results/healed-tests/",
+        "Applies standard kebab-case test locators during recovery"
+      ]
+    }
+  ]
+}

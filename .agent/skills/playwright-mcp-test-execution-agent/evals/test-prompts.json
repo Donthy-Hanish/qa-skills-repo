@@ -1,0 +1,16 @@
+{
+  "skill_name": "playwright-mcp-test-execution-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "run-playwright-tests",
+      "prompt": "Run the generated playwright tests across Chromium, Firefox, and WebKit and save output to results/execution-results.md.",
+      "expected_output": "Test execution log generated, showing pass/fail status and saved results file.",
+      "evaluation_criteria": [
+        "Saves test results under results/execution-results.md",
+        "Details pass/fail metrics and time elapsed",
+        "Captures traces for failures"
+      ]
+    }
+  ]
+}

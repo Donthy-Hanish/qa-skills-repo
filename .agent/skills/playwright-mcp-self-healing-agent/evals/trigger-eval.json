@@ -1,0 +1,82 @@
+[
+  {
+    "query": "analyze failed tests and run self-healing",
+    "should_trigger": true
+  },
+  {
+    "query": "heal locator elements that are flaky in the tests",
+    "should_trigger": true
+  },
+  {
+    "query": "resolve flaky test failures in playwright run",
+    "should_trigger": true
+  },
+  {
+    "query": "fix locator changes and timing issues in failed tests",
+    "should_trigger": true
+  },
+  {
+    "query": "generate results/healing-report.md",
+    "should_trigger": true
+  },
+  {
+    "query": "run self-healing agent on execution-results",
+    "should_trigger": true
+  },
+  {
+    "query": "apply locator healing on home page object",
+    "should_trigger": true
+  },
+  {
+    "query": "heal assertions and dynamic elements in tests",
+    "should_trigger": true
+  },
+  {
+    "query": "re-run healed scripts and report recovery rate",
+    "should_trigger": true
+  },
+  {
+    "query": "debug locator changes for broken checkout flow test",
+    "should_trigger": true
+  },
+  {
+    "query": "execute test command npx playwright test",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a test plan for regression suite",
+    "should_trigger": false
+  },
+  {
+    "query": "analyze requirement definitions and write RTM",
+    "should_trigger": false
+  },
+  {
+    "query": "commit code to github staging branch",
+    "should_trigger": false
+  },
+  {
+    "query": "generate page objects model code",
+    "should_trigger": false
+  },
+  {
+    "query": "compile a final release report with metrics",
+    "should_trigger": false
+  },
+  {
+    "query": "perform manual exploratory testing with browser",
+    "should_trigger": false
+  },
+  {
+    "query": "create a screenshot of page elements",
+    "should_trigger": false
+  },
+  {
+    "query": "validate swagger api contract",
+    "should_trigger": false
+  },
+  {
+    "query": "deploy the project code to staging",
+    "should_trigger": false
+  }
+]

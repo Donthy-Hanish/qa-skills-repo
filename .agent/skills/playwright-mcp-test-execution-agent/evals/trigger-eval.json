@@ -1,0 +1,82 @@
+[
+  {
+    "query": "execute all generated playwright tests",
+    "should_trigger": true
+  },
+  {
+    "query": "run pytest suite against staging environment",
+    "should_trigger": true
+  },
+  {
+    "query": "run tests across chromium, firefox and webkit",
+    "should_trigger": true
+  },
+  {
+    "query": "execute command npx playwright test and capture output",
+    "should_trigger": true
+  },
+  {
+    "query": "trigger playwright tests run",
+    "should_trigger": true
+  },
+  {
+    "query": "capture execution results and generate results/execution-results.md",
+    "should_trigger": true
+  },
+  {
+    "query": "run tests and record videos, traces, and screenshots",
+    "should_trigger": true
+  },
+  {
+    "query": "execute smoke test suite via playwright command",
+    "should_trigger": true
+  },
+  {
+    "query": "start automated test execution run",
+    "should_trigger": true
+  },
+  {
+    "query": "execute critical path tests and log execution duration",
+    "should_trigger": true
+  },
+  {
+    "query": "generate code for automated tests in python",
+    "should_trigger": false
+  },
+  {
+    "query": "write a test plan detailing test cases",
+    "should_trigger": false
+  },
+  {
+    "query": "analyze user requirements and edge cases",
+    "should_trigger": false
+  },
+  {
+    "query": "commit test code to github repository",
+    "should_trigger": false
+  },
+  {
+    "query": "heal flaky test selectors using self-healing library",
+    "should_trigger": false
+  },
+  {
+    "query": "generate final release quality report",
+    "should_trigger": false
+  },
+  {
+    "query": "write page object models for home page",
+    "should_trigger": false
+  },
+  {
+    "query": "troubleshoot playwright installation issues",
+    "should_trigger": false
+  },
+  {
+    "query": "check git branches and create pull request",
+    "should_trigger": false
+  },
+  {
+    "query": "perform exploratory testing manually on website",
+    "should_trigger": false
+  }
+]

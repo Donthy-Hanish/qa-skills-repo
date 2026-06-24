@@ -1,0 +1,14 @@
+{
+  "skill": "playwright-mcp-test-execution-agent",
+  "python": [
+    "playwright"
+  ],
+  "node": [
+    "playwright"
+  ],
+  "commands": [
+    "npx playwright install"
+  ],
+  "system": [],
+  "notes": "Requires playwright CLI execution support."
+}

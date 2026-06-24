@@ -1,0 +1,56 @@
+{
+  "skill_name": "smoke-test-builder",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "ecommerce-web-playwright-smoke",
+      "prompt": "hey, we just deployed our new ecommerce storefront to staging. can you generate a playwright python smoke test suite for us? we want to verify user login, search for a product, add it to the cart, and make sure the checkout page loads. the site is at https://stage.shop.example.com. we need this to run fast (like less than 2 mins) so we can run it after every deploy.",
+      "expected_output": "A comprehensive post-deployment smoke test suite including a workflow discovery mapping, an executable Python Playwright script, a deployment readiness report template, and a GitHub Actions CI pipeline configuration.",
+      "evaluation_criteria": [
+        "Includes a python script using playwright.sync_api or playwright.async_api",
+        "Covers login, product search, add to cart, and checkout page load verification",
+        "Includes a structured table mapping critical business workflows, target paths, and verification methods",
+        "Provides a clear deployment readiness report template",
+        "Includes a GitHub Actions workflow yaml block to run the script post-deploy"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "user-api-newman-smoke",
+      "prompt": "we need to sanity test our user-profile API in staging (https://api.stage.company.com/v1). Can you generate a smoke test using newman/postman or curl to verify three endpoints: POST /auth/login, GET /users/me, and PUT /users/settings? Need it to verify headers, response status codes (200/201), and a basic token check. Also show me how to run it in GitLab CI.",
+      "expected_output": "An API smoke test suite including an executable Postman/Newman JSON collection or curl bash script, a workflow mapping table, a GitLab CI pipeline snippet, and a deployment readiness report format.",
+      "evaluation_criteria": [
+        "Provides either a Newman JSON collection format or an executable curl bash script",
+        "Verifies POST /auth/login, GET /users/me, and PUT /users/settings",
+        "Includes response code assertions (200/201) and token validation logic",
+        "Provides a GitLab CI configuration section demonstrating newman CLI execution",
+        "Provides a deployment readiness report template"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "android-appium-robot-smoke",
+      "prompt": "Can you build a smoke test suite for our Android mobile app? We use Robot Framework with AppiumLibrary. We need to verify the app launches, the login screen works (happy path only), and the main home screen loads after authentication. Package name is com.company.app, activity is .MainActivity. Please keep it simple and clean, and give me a readiness report layout we can fill out.",
+      "expected_output": "A Robot Framework mobile smoke test file (.robot) using AppiumLibrary. Includes desired capabilities for the app launch, steps to authenticate, and a deployment readiness report.",
+      "evaluation_criteria": [
+        "Includes a .robot file with settings importing AppiumLibrary",
+        "Configures desired capabilities for Android (appPackage: com.company.app, appActivity: .MainActivity)",
+        "Implements test cases for App Launch, Login verification, and Home Screen loads",
+        "Provides a structured deployment readiness report template",
+        "Includes command-line execution instructions for robot CLI"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "general-manual-checklist-ci",
+      "prompt": "We have a legacy SaaS platform that doesn't have robust automation. We're deploying tomorrow. Can you generate a manual smoke test checklist for our release team focusing on critical user roles (Admin and Customer)? Also, how can we trigger an automated curl-based ping of our core health endpoint as part of our AWS CodePipeline?",
+      "expected_output": "A structured manual smoke test checklist by user roles (Admin, Customer) detailing critical workflows, verification steps, and a deployment readiness report format. Includes a bash/curl script and AWS CodePipeline buildspec.yml snippet for health checking.",
+      "evaluation_criteria": [
+        "Provides a structured manual test checklist organized by user roles (Admin and Customer)",
+        "Includes a curl-based health ping bash script with response assertions",
+        "Includes an AWS CodePipeline buildspec.yml configuration section",
+        "Includes a deployment readiness report template"
+      ]
+    }
+  ]
+}

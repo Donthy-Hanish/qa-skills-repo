@@ -1,0 +1,12 @@
+{
+  "skill": "playwright-mcp-exploratory-testing-agent",
+  "python": [
+    "playwright"
+  ],
+  "node": [],
+  "commands": [
+    "playwright install chromium"
+  ],
+  "system": [],
+  "notes": "Python Playwright package is needed to run browser automation."
+}

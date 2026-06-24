@@ -1,0 +1,10 @@
+{
+  "skill": "playwright-mcp-self-healing-agent",
+  "python": [
+    "playwright"
+  ],
+  "node": [],
+  "commands": [],
+  "system": [],
+  "notes": "Playwright dependencies to re-run test scripts for validation."
+}

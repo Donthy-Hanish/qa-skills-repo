@@ -1,0 +1,14 @@
+{
+  "skill": "playwright-mcp-automation-generation-agent",
+  "python": [
+    "playwright",
+    "pytest",
+    "pytest-playwright"
+  ],
+  "node": [],
+  "commands": [
+    "playwright install chromium"
+  ],
+  "system": [],
+  "notes": "Python and Pytest-Playwright dependencies to support POM execution."
+}

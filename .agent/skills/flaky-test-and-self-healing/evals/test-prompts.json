@@ -1,0 +1,56 @@
+﻿{
+  "skill_name": "flaky-test-and-self-healing",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "stale-element-retry",
+      "prompt": "Hey, can you help me write a custom Robot Framework self-healing python keyword that retries finding an element if a StaleElementReferenceException occurs? We want to try finding it 3 times with a short sleep in between before giving up.",
+      "expected_output": "A complete Python script containing a custom keyword class/method for Robot Framework that imports StaleElementReferenceException from Selenium, uses a retry loop of 3 iterations, includes a short sleep (e.g. 0.5s) between retries, and throws the error if all retries fail.",
+      "evaluation_criteria": [
+        "Imports StaleElementReferenceException from selenium.common.exceptions",
+        "Uses a loop to retry up to 3 times",
+        "Includes a time.sleep() between retries",
+        "Throws a clear exception if all retries fail",
+        "Written in a structure compatible with custom Robot Framework Python libraries"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "locator-self-healing",
+      "prompt": "Our React application updated and some custom classes changed, which broke our Robot tests. Can you provide the Python implementation for a locator self-healing mechanism that fallback-scrapes the DOM for candidate elements according to our Test Locator Standard priority (data-testid, aria-label, etc.) and returns the best candidate CSS selector?",
+      "expected_output": "A Python class or function that wraps locator resolution. It should include fallback logic that matches elements by scanning for data-testid, aria-label, role, text content, and stable CSS in order. It should calculate a similarity score or rank candidates and write the healing results to self_healing_report.json.",
+      "evaluation_criteria": [
+        "Prioritizes data-testid/data-qa/automation-id, aria-label, role, text content, and CSS selectors in that exact order",
+        "Implements a scoring or similarity comparison to find the best candidate element",
+        "Logs the healed locator recommendation, original broken locator, and action to self_healing_report.json",
+        "Enforces strict boundaries to avoid over-healing (e.g., does not bypass disabled elements or functional assertions)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "locator-compliance-auditor",
+      "prompt": "We have some old Robot tests in our repository. Can you write a Python script that parses a directory of Robot files, scans for locators used in keywords like Click Element and Input Text, checks if they violate our Test Locator Standard (like absolute XPaths, index-based selectors, or dynamic IDs), and generates a markdown compliance scorecard?",
+      "expected_output": "A complete, runnable Python CLI script that reads and parses .robot and .resource files. It uses regular expressions or a parser to extract locator strings from standard keywords. It audits them for violations (absolute XPath starting with multi-level divs, index-based selectors like div[3], dynamic framework IDs) and prints a markdown report.",
+      "evaluation_criteria": [
+        "Scans for keywords like Click Element, Input Text, Wait Until Element Is Visible",
+        "Checks for absolute XPaths (e.g. xpath=//div[3]/span/button or xpath=//div/span/button)",
+        "Checks for index-based selectors (e.g. xpath=//a[5] or css=div:nth-child(3))",
+        "Checks for dynamic framework-generated IDs (e.g. containing random hashes or prefixes like k-12345-)",
+        "Generates a structured markdown scorecard reporting files, line numbers, and specific violation details"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "flaky-test-analyzer",
+      "prompt": "We ran our Robot suites twice on CI and got two different output.xml logs. Can you show me how to build a Python script to compare these logs, find which test cases are flaky, and output an executive summary in markdown?",
+      "expected_output": "A Python script that parses two output.xml logs using xml.etree.ElementTree. It matches test cases by name and checks their status. It identifies test cases whose statuses differ between the two files (PASS in run 1 but FAIL in run 2, or vice versa) and prints a markdown summary table.",
+      "evaluation_criteria": [
+        "Uses Python's xml.etree.ElementTree to parse output.xml files",
+        "Extracts test cases and their status (PASS/FAIL)",
+        "Compares test case statuses by matching test case names",
+        "Identifies flaky tests (tests with status differences between runs)",
+        "Outputs a clear markdown summary table listing the flaky tests and execution details"
+      ]
+    }
+  ]
+}

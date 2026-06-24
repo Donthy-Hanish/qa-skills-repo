@@ -1,0 +1,82 @@
+[
+  {
+    "query": "run exploratory testing on the checkout page",
+    "should_trigger": true
+  },
+  {
+    "query": "perform browser testing with Playwright MCP on saucedemo",
+    "should_trigger": true
+  },
+  {
+    "query": "find UI bugs autonomously using the test plan",
+    "should_trigger": true
+  },
+  {
+    "query": "start exploratory testing using playwright",
+    "should_trigger": true
+  },
+  {
+    "query": "run automated browser walkthrough and capture screenshot",
+    "should_trigger": true
+  },
+  {
+    "query": "investigate broken links and console errors on staging",
+    "should_trigger": true
+  },
+  {
+    "query": "launch exploratory agent on url https://www.saucedemo.com/",
+    "should_trigger": true
+  },
+  {
+    "query": "generate specs/exploratory-findings.md",
+    "should_trigger": true
+  },
+  {
+    "query": "capture screenshots and traces during site exploration",
+    "should_trigger": true
+  },
+  {
+    "query": "check for accessibility and responsive issues on landing page",
+    "should_trigger": true
+  },
+  {
+    "query": "analyze the requirements specs/requirements.md",
+    "should_trigger": false
+  },
+  {
+    "query": "generate python test scripts for the test plan",
+    "should_trigger": false
+  },
+  {
+    "query": "run pytest to execute all test specs",
+    "should_trigger": false
+  },
+  {
+    "query": "heal locator in checkout.py page object",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a release report showing test results",
+    "should_trigger": false
+  },
+  {
+    "query": "commit files and push code to github",
+    "should_trigger": false
+  },
+  {
+    "query": "create a test plan spreadsheet",
+    "should_trigger": false
+  },
+  {
+    "query": "setup new database test data",
+    "should_trigger": false
+  },
+  {
+    "query": "resolve CI pipeline configuration issue",
+    "should_trigger": false
+  },
+  {
+    "query": "write test scenarios for accessibility",
+    "should_trigger": false
+  }
+]

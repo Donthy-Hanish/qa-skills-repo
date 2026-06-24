@@ -1,0 +1,82 @@
+[
+  {
+    "query": "generate automated tests for checkout flow using python",
+    "should_trigger": true
+  },
+  {
+    "query": "generate a complete Playwright Python automation framework",
+    "should_trigger": true
+  },
+  {
+    "query": "write Page Object Models for the login page",
+    "should_trigger": true
+  },
+  {
+    "query": "create automated playwright tests based on specs/test-plan.md",
+    "should_trigger": true
+  },
+  {
+    "query": "build automation framework structures and python scripts",
+    "should_trigger": true
+  },
+  {
+    "query": "create pages/*.py and tests/*.spec.py files for the test plan",
+    "should_trigger": true
+  },
+  {
+    "query": "code automated tests with smart waits and retries",
+    "should_trigger": true
+  },
+  {
+    "query": "write pytest-playwright automated script for saucedemo login",
+    "should_trigger": true
+  },
+  {
+    "query": "generate test-data configurations and playwright.config.py",
+    "should_trigger": true
+  },
+  {
+    "query": "implement automated smoke test suites using page object model",
+    "should_trigger": true
+  },
+  {
+    "query": "run exploratory testing using playwright browser",
+    "should_trigger": false
+  },
+  {
+    "query": "run the test suites across chromium, firefox and webkit",
+    "should_trigger": false
+  },
+  {
+    "query": "heal locator elements that are flaky in the tests",
+    "should_trigger": false
+  },
+  {
+    "query": "push automated test repo code to git",
+    "should_trigger": false
+  },
+  {
+    "query": "compile a final release report with metrics",
+    "should_trigger": false
+  },
+  {
+    "query": "extract acceptance criteria from this jira issue",
+    "should_trigger": false
+  },
+  {
+    "query": "write a test strategy template specs document",
+    "should_trigger": false
+  },
+  {
+    "query": "perform manual accessibility test checks",
+    "should_trigger": false
+  },
+  {
+    "query": "debug why pytest command failed on pipeline",
+    "should_trigger": false
+  },
+  {
+    "query": "list all files in the pages directory",
+    "should_trigger": false
+  }
+]

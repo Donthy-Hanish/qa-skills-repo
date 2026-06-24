@@ -1,0 +1,16 @@
+{
+  "skill_name": "playwright-mcp-automation-generation-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "generate-framework",
+      "prompt": "Using specs/test-plan.md and specs/exploratory-findings.md, generate the Playwright Python automation framework adhering to the Test Locator Standard.",
+      "expected_output": "Python files created inside pages/, tests/, and root config, using kebab-case data-testid or role-based locators.",
+      "evaluation_criteria": [
+        "Framework files are generated in pages/ and tests/",
+        "Locators use [data-testid] or role locators rather than absolute xpath",
+        "Tests contain explicit assertions"
+      ]
+    }
+  ]
+}

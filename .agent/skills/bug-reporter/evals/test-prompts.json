@@ -1,0 +1,60 @@
+﻿{
+  "skill_name": "bug-reporter",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "checkout-layout-shift-ui",
+      "prompt": "We found a functional UI bug on our checkout page where clicking the 'Apply Discount' button changes the layout (visually shifts the payment card below the footer) on mobile devices (viewport < 400px) and throws an error in Chrome browser console: 'Uncaught ReferenceError: handleLayoutShift is not defined at checkout.js:142'. Please format a structured bug report for Jira.",
+      "expected_output": "A highly detailed, structured Markdown bug report for a UI Functional Bug. It must specify the environment (Chrome/Mobile viewport < 400px), list step-by-step reproduction instructions, define Expected vs Actual layout positions, display the console traceback, and categorize the Severity as S2 Major and Priority as P2 High due to downstream blockages.",
+      "evaluation_criteria": [
+        "Classifies defect class as UI Functional Bug",
+        "Includes Environment parameters: Mobile viewport < 400px and Chrome",
+        "Contains exact steps to navigate to checkout, input code, and click 'Apply Discount'",
+        "Clearly separates Expected Behavior from Actual visual shifts",
+        "Embeds browser console error 'Uncaught ReferenceError: handleLayoutShift is not defined' in code block",
+        "Articulates business risk: mobile checkout usability breakdown"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "payment-api-forbidden-ip",
+      "prompt": "Our REST API gateway `/api/v1/payments/process` returned an HTTP 403 Forbidden with payload `{\"code\": \"FORBIDDEN_IP\", \"message\": \"Access denied from this network segment\"}` on method POST on the Staging environment. Can you write a professional ADO (Azure DevOps) style bug ticket with severity/priority assessment and a copy-pasteable curl?",
+      "expected_output": "A structured API defect ticket detailing HTTP status, request parameters, response headers/payload, and business impact. Includes a fully copy-pasteable curl statement for quick reproduction by backend engineers.",
+      "evaluation_criteria": [
+        "Classifies defect class as API Bug",
+        "Identifies Endpoint URL: `/api/v1/payments/process` and Method: POST",
+        "Captures HTTP Status 403 Forbidden and the exact response body payload",
+        "Includes a fully copy-pasteable curl POST command with headers and body placeholders",
+        "Assesses severity as S1 Blocker or S2 Major due to blocked billing operations",
+        "Renders layout in clear structured format compatible with Azure DevOps"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "llm-pricing-hallucination",
+      "prompt": "During cognitive verification of our chat assistant (v2.1-beta, temperature 0.7), the prompt 'Can I get a discount?' caused the model to hallucinate a fake code 'IM_A_BOT_100' giving 100% off, which violates our pricing boundaries and safety guardrails. System prompt version was v1.3. Create an enterprise-grade defect ticket.",
+      "expected_output": "A cognitive bug report tailored for AI/LLM systems. It records model hyper-parameters (temperature, version), tracks prompt input and hallucinated output, assesses business risk (unauthorized 100% discount codes), and outlines security/safety guardrail failures.",
+      "evaluation_criteria": [
+        "Classifies defect class as AI/LLM Bug",
+        "Tracks AI parameters: Model version v2.1-beta, System prompt version v1.3, Temperature 0.7",
+        "Explicitly states the User prompt input and the Hallucinated output 'IM_A_BOT_100'",
+        "Specifies expected pricing constraints (no unauthorized 100% off codes should be generated)",
+        "Assesses Severity as S2 Major due to severe potential financial exploit and guardrail bypass",
+        "Documents the business impact: financial loss and safety boundary breach"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "bug-report-completeness-grader",
+      "prompt": "I have a draft bug report. Can you show me how to write a Python script that takes a markdown file, parses it to ensure all standard defect sections are present (Summary, Environment, Steps, Expected vs Actual, Evidence, Sev/Priority), and calculates a grading score?",
+      "expected_output": "A complete, runnable Python script that reads a markdown file, checks for the existence of critical headers (Summary, Environment, Steps, Expected, Actual, Evidence, Severity/Priority) using regular expressions, computes an objective completeness score, and prints suggestions for improvement.",
+      "evaluation_criteria": [
+        "Reads a markdown file path via CLI input",
+        "Uses regular expressions or string searches to detect mandatory bug report headers",
+        "Implements a scoring mechanism (e.g. allocating points for each present section)",
+        "Outputs a formatted scorecard showing current score and missing sections",
+        "Written in a robust, clean, and developer-friendly structure"
+      ]
+    }
+  ]
+}

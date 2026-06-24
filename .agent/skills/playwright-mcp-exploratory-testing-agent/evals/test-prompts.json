@@ -1,0 +1,16 @@
+{
+  "skill_name": "playwright-mcp-exploratory-testing-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "exploratory-run",
+      "prompt": "Run exploratory testing on https://www.saucedemo.com/ guided by specs/test-plan.md, and capture traces and screenshots under artifacts/.",
+      "expected_output": "Exploratory findings saved in specs/exploratory-findings.md and captured screenshots, traces, and logs in artifacts/.",
+      "evaluation_criteria": [
+        "Output is recorded in specs/exploratory-findings.md",
+        "Screenshots are generated and linked in the markdown",
+        "Logs or traces are present in artifacts/"
+      ]
+    }
+  ]
+}

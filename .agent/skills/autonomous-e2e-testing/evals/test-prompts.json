@@ -1,0 +1,44 @@
+{
+  "skill_name": "autonomous-e2e-testing",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "web-checkout-playwright-auth",
+      "prompt": "We need to automate an E2E happy path for our SaaS checkout flow in Playwright Python. The flow is: Customer logs in -> Views dashboard -> Navigates to pricing -> Selects premium plan -> Enters payment info -> Receives success confirmation. We have session storage setup to prevent logging in for every test. Can you generate the E2E test scripts, including page setup and session state utilization?",
+      "expected_output": "A complete Playwright Python test suite using pytest. It should demonstrate loading authentication/session state from a storage state file to bypass the login page, structured page-object style interactions, and assertions checking the final success confirmation. It should focus strictly on the happy path, avoiding trivial form validation details.",
+      "evaluation_criteria": [
+        "Uses Playwright Python with pytest",
+        "Implements session state storage (storage_state) to bypass login page",
+        "Covers the complete E2E flow (dashboard -> pricing -> select plan -> payment -> success)",
+        "Focuses on happy path and omits low-level form validation checks",
+        "Uses robust, accessibility-first locators (e.g. get_by_role, get_by_test_id)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mobile-booking-robot-framework",
+      "prompt": "Write a mobile end-to-end test using Robot Framework and AppiumLibrary for our hotel booking application. The user journey starts on the splash screen, selects 'Search Hotels', selects a city, selects a hotel, enters guest details, and clicks 'Confirm Booking'. Please write a clean Robot test suite with Desired Capabilities and modular keywords.",
+      "expected_output": "A Robot Framework .robot suite utilizing AppiumLibrary. It must define proper Desired Capabilities for a mobile application (Android or iOS), organize keywords for user login/booking steps, and check for the final booking confirmation element.",
+      "evaluation_criteria": [
+        "Uses Robot Framework syntax with AppiumLibrary",
+        "Specifies Desired Capabilities for mobile device/app launch",
+        "Defines clear, high-level keywords representing the user journey steps",
+        "Includes assertions for the final booking success confirmation screen",
+        "Avoids unit-level edge cases or exhaustive field validations"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "e2e-integration-performance-check",
+      "prompt": "Create an E2E test for our data submission dashboard in Playwright Python that integrates with our backend storage. In addition to verifying the data appears on the listing page after submission, we need a basic performance smoke check to verify that the dashboard load time and submission API roundtrip take less than 3 seconds.",
+      "expected_output": "A Playwright Python test script that performs data submission, verifies the item appears in the list, and records performance metrics (e.g. navigation start to load event or direct API latency measurement) asserting it is under 3 seconds.",
+      "evaluation_criteria": [
+        "Uses Playwright Python with pytest",
+        "Verifies data integration (submission to list verification)",
+        "Measures and asserts that page load or submission latency is under 3000ms",
+        "Includes clean error handling and failure reports",
+        "Omits testing of internal implementation details"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "hey, can we write some post-deployment tests for our backend service? we just need to verify it's up and basic paths work",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to set up a smoke test suite for our mobile app. We support both ios and android. We use Appium.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a sanity test suite for our new Web checkout page that runs after each deploy",
+    "should_trigger": true
+  },
+  {
+    "query": "can you generate a quick smoke test for the payment API? it's in staging, here is the basic spec...",
+    "should_trigger": true
+  },
+  {
+    "query": "Need a deployment readiness verification script for our SaaS portal using Playwright.",
+    "should_trigger": true
+  },
+  {
+    "query": "we're shipping a new version of the CRM tomorrow. can you generate a smoke test checklist of the most critical flows for our QA team?",
+    "should_trigger": true
+  },
+  {
+    "query": "help me build a fast deployment validation suite that completes in under 5 minutes to verify login and dashboard",
+    "should_trigger": true
+  },
+  {
+    "query": "I need a release validation smoke script using Robot Framework to test our staging environment.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a smoke test suite to check critical business paths like authentication, search, and booking on the staging website.",
+    "should_trigger": true
+  },
+  {
+    "query": "can we configure a github action to run a post-deploy smoke test for our APIs?",
+    "should_trigger": true
+  },
+  {
+    "query": "Our login smoke test is failing intermittently on CI with a TimeoutError. Can you help me fix the flaky locator?",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you write a detailed bug report for the checkout page crash we saw during sanity testing?",
+    "should_trigger": false
+  },
+  {
+    "query": "We need to run contract tests against our swagger.json to check response shapes. Here is the file.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do we write a unit test in Jest for this utility function?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to run a load test on our landing page to see if it can handle 5000 concurrent users.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you perform a security audit on our login endpoint to check for SQL injection?",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a Gherkin story defining all possible boundary and edge cases for the freelancer filter feature.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I install node and npm on a clean Windows machine?",
+    "should_trigger": false
+  },
+  {
+    "query": "What are the best practices for structuring code in a Next.js application?",
+    "should_trigger": false
+  },
+  {
+    "query": "Set up a database migration script for our user table to add a new metadata column.",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,82 @@
+﻿[
+  {
+    "query": "hey, our robot UI tests are super flaky on CI. can we set up some kind of self-healing or retry for the locators? we use seleniumlibrary.",
+    "should_trigger": true
+  },
+  {
+    "query": "is there a way to auto-detect timing flakes in our robot framework run reports? i have two output.xml files we can parse.",
+    "should_trigger": true
+  },
+  {
+    "query": "Could you help us analyze why these frontend tests fail intermittently with NoSuchElementException? Here are the stacktraces.",
+    "should_trigger": true
+  },
+  {
+    "query": "we keep getting StaleElementReferenceException in our checkout suite. how can we auto-heal this at runtime with python?",
+    "should_trigger": true
+  },
+  {
+    "query": "check if our robot files in ./resources/elements.robot comply with the locator standard. i think some use absolute xpaths.",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the priority order of locator selection from the team's Test Locator Standard? we need to rewrite some flaky selectors.",
+    "should_trigger": true
+  },
+  {
+    "query": "can you write a custom self-healing library that wraps around SeleniumLibrary for smart clicks and inputs in robot?",
+    "should_trigger": true
+  },
+  {
+    "query": "run the flakiness analyzer on run_A_output.xml and run_B_output.xml to see which tests are unstable and why.",
+    "should_trigger": true
+  },
+  {
+    "query": "some checkout buttons changed their class names in React and it broke 50 tests. can we configure the self-healing algorithm to search by aria-label or text instead?",
+    "should_trigger": true
+  },
+  {
+    "query": "our automation keeps failing on dynamic elements because of loading screens. how do we implement smart waits and backoff rather than hard Sleeps?",
+    "should_trigger": true
+  },
+  {
+    "query": "ok so we just got this new user story for the checkout flow refactor - JIRA-4521. can you generate the full set of test cases? we use robot framework",
+    "should_trigger": false
+  },
+  {
+    "query": "I have a swagger.json file for our payment microservice and need to run contract tests against the staging URL. Can you help setup the runner?",
+    "should_trigger": false
+  },
+  {
+    "query": "write a python script to parse a CSV file containing user names and emails and format them as a JSON API response",
+    "should_trigger": false
+  },
+  {
+    "query": "this python unit test fails due to a syntax error. can you fix it? IndentationError: unexpected indent in test_math.py:12",
+    "should_trigger": false
+  },
+  {
+    "query": "can you explain how to set up robot framework from scratch on windows? we need to install python, pip, and seleniumlibrary",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i configure a Jenkins pipeline to run a pytest suite every night at 2 AM and email the team?",
+    "should_trigger": false
+  },
+  {
+    "query": "please write robot framework selenium keywords to mock a backend API response using a custom mock server library",
+    "should_trigger": false
+  },
+  {
+    "query": "we need a robot test case that validates that a user can login, view their dashboard, and logout. write the BDD steps.",
+    "should_trigger": false
+  },
+  {
+    "query": "how do i fix a git merge conflict in a robot resource file? my coworker changed a locator and i changed a variable.",
+    "should_trigger": false
+  },
+  {
+    "query": "validate that my OpenAPI specification is correct. I have some errors under paths /users/create: parameters not defined.",
+    "should_trigger": false
+  }
+]
