@@ -1,0 +1,82 @@
+[
+  {
+    "query": "generate QA report from all test files",
+    "should_trigger": true
+  },
+  {
+    "query": "build executive summary report for this sprint",
+    "should_trigger": true
+  },
+  {
+    "query": "write test report showing pass rates and quality scores",
+    "should_trigger": true
+  },
+  {
+    "query": "compile release recommendation decision",
+    "should_trigger": true
+  },
+  {
+    "query": "generate test-results/test-report.md and test-report.html",
+    "should_trigger": true
+  },
+  {
+    "query": "build executive QA report containing self-healing summary",
+    "should_trigger": true
+  },
+  {
+    "query": "calculate automation coverage and quality score for release",
+    "should_trigger": true
+  },
+  {
+    "query": "compile results/execution-results into final QA summary",
+    "should_trigger": true
+  },
+  {
+    "query": "write release assessment and risk level findings",
+    "should_trigger": true
+  },
+  {
+    "query": "consolidate test plan and findings into executive status",
+    "should_trigger": true
+  },
+  {
+    "query": "run exploratory testing with playwright mcp",
+    "should_trigger": false
+  },
+  {
+    "query": "generate python code for automated tests",
+    "should_trigger": false
+  },
+  {
+    "query": "run the tests on staging servers",
+    "should_trigger": false
+  },
+  {
+    "query": "heal broken selector elements in test plan",
+    "should_trigger": false
+  },
+  {
+    "query": "push results to github repository",
+    "should_trigger": false
+  },
+  {
+    "query": "write test cases for checkout page",
+    "should_trigger": false
+  },
+  {
+    "query": "analyze requirements and edge cases",
+    "should_trigger": false
+  },
+  {
+    "query": "install pytest dependencies on server",
+    "should_trigger": false
+  },
+  {
+    "query": "fix console log errors in browser",
+    "should_trigger": false
+  },
+  {
+    "query": "format checkout code correctly",
+    "should_trigger": false
+  }
+]

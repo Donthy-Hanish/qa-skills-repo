@@ -1,0 +1,16 @@
+{
+  "skill_name": "ai-test-report-generation-agent",
+  "test_prompts": [
+    {
+      "id": 1,
+      "name": "generate-report",
+      "prompt": "Consolidate specs/ and results/ files to generate the Executive QA Report in test-results/test-report.md.",
+      "expected_output": "Markdown and HTML report files detailing metrics and release recommendation.",
+      "evaluation_criteria": [
+        "Saves markdown report to test-results/test-report.md",
+        "Contains Quality Score and Release Recommendation decision",
+        "Includes Execution and Self-Healing summaries"
+      ]
+    }
+  ]
+}
