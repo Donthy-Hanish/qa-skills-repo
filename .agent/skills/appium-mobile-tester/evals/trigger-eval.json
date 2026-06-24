@@ -1,0 +1,96 @@
+{
+  "skill_name": "appium-mobile-tester",
+  "description": "Trigger evaluation - tests whether the skill activates on appropriate prompts and stays silent on unrelated ones",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write Appium tests for the myProlink login screen. It has email, password, and a login button. React Native app, needs to run on Android and iOS.",
+      "should_trigger": true,
+      "rationale": "Explicit Appium + mobile app + screen description - primary use case"
+    },
+    {
+      "id": 2,
+      "prompt": "I need mobile test automation for our Flutter app's checkout flow. It runs on both platforms and we use Python for our test framework.",
+      "should_trigger": true,
+      "rationale": "Mobile automation + Flutter + Python - Appium covers Flutter apps"
+    },
+    {
+      "id": 3,
+      "prompt": "Help me set up Appium on my machine. I have a Mac and want to test on Android emulator and iOS simulator.",
+      "should_trigger": true,
+      "rationale": "Appium setup request - Setup Flow"
+    },
+    {
+      "id": 4,
+      "prompt": "My mobile tests keep failing with 'element not found'. The app is React Native and the accessibility IDs changed after the last release.",
+      "should_trigger": true,
+      "rationale": "Mobile test debugging with locator issues - Debug Flow"
+    },
+    {
+      "id": 5,
+      "prompt": "Generate test cases for the onboarding carousel. User swipes through 4 screens, each has an image, title, and description. Last screen has a Get Started button.",
+      "should_trigger": true,
+      "rationale": "Mobile gesture testing (swipe) + screen description"
+    },
+    {
+      "id": 6,
+      "prompt": "How do I run my Appium tests on BrowserStack? I need to test on Samsung Galaxy S23 and Pixel 8.",
+      "should_trigger": true,
+      "rationale": "Device cloud integration - Cloud Integration Flow"
+    },
+    {
+      "id": 7,
+      "prompt": "Write a Maestro flow for the signup screen. YAML-based, should cover happy path and validation errors.",
+      "should_trigger": false,
+      "rationale": "Maestro is a different skill (maestro-flow-tester), not Appium"
+    },
+    {
+      "id": 8,
+      "prompt": "Write XCUITest cases in Swift for the iOS settings screen.",
+      "should_trigger": false,
+      "rationale": "XCUITest with Swift is a native iOS skill, not Appium"
+    },
+    {
+      "id": 9,
+      "prompt": "Write Playwright tests for the admin dashboard web app. It's a Next.js application.",
+      "should_trigger": false,
+      "rationale": "Web testing with Playwright, not mobile"
+    },
+    {
+      "id": 10,
+      "prompt": "Run a load test against the mobile API with 500 concurrent users.",
+      "should_trigger": false,
+      "rationale": "Load/performance testing, not mobile UI automation"
+    },
+    {
+      "id": 11,
+      "prompt": "I need to test our native Android Kotlin app. Can you generate test automation for the product listing screen?",
+      "should_trigger": true,
+      "rationale": "Native Android app testing - Appium covers native apps too"
+    },
+    {
+      "id": 12,
+      "prompt": "Write mobile regression tests for the search feature. User types a query, sees results, taps a result to view details. React Native.",
+      "should_trigger": true,
+      "rationale": "Mobile regression + screen flow + React Native"
+    },
+    {
+      "id": 13,
+      "prompt": "How do I find element locators for a React Native app? The devs haven't added testIDs yet.",
+      "should_trigger": true,
+      "rationale": "Mobile locator strategy question - core Appium concept"
+    },
+    {
+      "id": 14,
+      "prompt": "Write Espresso tests in Kotlin for the Android payment screen.",
+      "should_trigger": false,
+      "rationale": "Espresso + Kotlin is a separate skill"
+    },
+    {
+      "id": 15,
+      "prompt": "Generate API contract tests for the user service endpoints using Python.",
+      "should_trigger": false,
+      "rationale": "API testing, not mobile UI automation"
+    }
+  ]
+}

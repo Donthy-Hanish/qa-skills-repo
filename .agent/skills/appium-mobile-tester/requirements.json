@@ -1,0 +1,86 @@
+{
+  "skill_name": "appium-mobile-tester",
+  "version": "1.0.0",
+  "runtime": {
+    "language": "python",
+    "min_version": "3.9"
+  },
+  "dependencies": {
+    "python_packages": [
+      {
+        "name": "Appium-Python-Client",
+        "version": ">=4.0.0",
+        "purpose": "Appium WebDriver client for Python - core mobile automation library"
+      },
+      {
+        "name": "pytest",
+        "version": ">=7.0",
+        "purpose": "Test runner and framework"
+      },
+      {
+        "name": "pytest-html",
+        "version": ">=4.0",
+        "purpose": "HTML test report generation"
+      },
+      {
+        "name": "selenium",
+        "version": ">=4.15.0",
+        "purpose": "WebDriver protocol base (Appium-Python-Client depends on it)"
+      }
+    ],
+    "system_tools": [
+      {
+        "name": "appium",
+        "version": ">=2.0.0",
+        "install": "npm install -g appium",
+        "purpose": "Appium 2.x server - the automation server that drives mobile devices"
+      },
+      {
+        "name": "node",
+        "version": ">=18.0.0",
+        "purpose": "Node.js runtime required by Appium server"
+      },
+      {
+        "name": "adb",
+        "install": "Android SDK Platform Tools",
+        "purpose": "Android Debug Bridge - communicates with Android devices/emulators"
+      }
+    ],
+    "appium_drivers": [
+      {
+        "name": "uiautomator2",
+        "install": "appium driver install uiautomator2",
+        "purpose": "Android automation driver"
+      },
+      {
+        "name": "xcuitest",
+        "install": "appium driver install xcuitest",
+        "purpose": "iOS automation driver (requires macOS + Xcode)"
+      }
+    ],
+    "optional": [
+      {
+        "name": "appium-inspector",
+        "purpose": "GUI tool for inspecting mobile app element trees and building locators",
+        "url": "https://github.com/appium/appium-inspector/releases"
+      },
+      {
+        "name": "allure-pytest",
+        "version": ">=2.13.0",
+        "purpose": "Rich test reporting with screenshots and step logging"
+      }
+    ]
+  },
+  "platform_requirements": {
+    "android": {
+      "sdk": "Android SDK with platform-tools and build-tools",
+      "env_vars": ["ANDROID_HOME", "JAVA_HOME"],
+      "min_api_level": 21
+    },
+    "ios": {
+      "os": "macOS only",
+      "tools": ["Xcode", "xcode-select", "xcrun simctl"],
+      "note": "iOS automation requires a Mac. Cannot run on Windows or Linux."
+    }
+  }
+}

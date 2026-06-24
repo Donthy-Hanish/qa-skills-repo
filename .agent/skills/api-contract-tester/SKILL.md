@@ -1,6 +1,6 @@
 ---
 name: api-contract-tester
-description: "Run API contract tests against any OpenAPI/Swagger-described REST API. Use this skill whenever the user wants to validate that a live API's responses match its Swagger/OpenAPI specification, run regression or smoke tests against REST endpoints, set up automated endpoint testing, check for breaking changes between API versions, interpret contract violation errors from test runs, write test scenarios in test_data.csv format, configure API authentication for automated testing, or generate a CSV test report. Trigger on phrases like 'run contract tests', 'test my API', 'validate swagger', 'check API responses', 'contract testing', 'API regression suite', or any time the user shares a swagger.json and asks to test it. Also trigger when the user is troubleshooting test results showing CONTRACT FAIL, type mismatches, or missing required fields."
+description: "Run API contract tests against any OpenAPI/Swagger-described REST API. Validates response schemas, auto-discovers endpoints, merges custom QA scenarios, and generates CSV reports."
 ---
 
 ## What This Skill Does
@@ -167,7 +167,7 @@ The `Contract Violations` column in the CSV contains semicolon-separated message
 → The exchange response shape changed. Print `exch_resp.text` and trace where `eyJ...` appears in the JSON structure.
 
 **All POST Swagger tests return 400/422**
-→ Auto-generated mock payloads use placeholder values (`"test_string"`, `1`). Fields with business constraints (minimum values, enum values, FK relationships) will fail. Cover these in `test_data.csv` with real payloads.
+→ Auto-generated mock payloads use generic default values (`"test_string"`, `1`).
 
 **Too many timeouts**
 → Reduce `MAX_WORKERS` to 2-3. The staging environment may rate-limit concurrent connections.
