@@ -1,7 +1,6 @@
 ---
 name: ui-load-test
 description: "Run PECO AI-search load tests end-to-end: capture HAR files, manage query pools, compile HAR into k6 scripts, execute and analyze results. Triggers on k6, HAR, load/stress testing, VU config."
-version: "1.1.0"
 ---
 
 # UI Load Test
@@ -22,11 +21,11 @@ This skill ships with three reference files under `references/`:
 
 And helper scripts under `scripts/`:
 
-| Script | Purpose |
-|--------|---------|
-| `scripts/preflight.ps1` | Verify k6, node, and the project directory exist before starting any phase |
-| `scripts/switch-pool.ps1` | Switch the active `queries.json` to one of the four built-in pools |
-| `scripts/open-latest-report.ps1` | Open the most recent HTML report for a given flow |
+| Script | Purpose | When to run |
+|---|---|---|
+| `scripts/preflight.ps1` | Verify k6, node, and the project directory exist | Before first test run, or when setup errors appear |
+| `scripts/switch-pool.ps1` | Switch the active `queries.json` to one of the four built-in pools | Phase 2, when changing query pools without recompile |
+| `scripts/open-latest-report.ps1` | Open the most recent HTML report for a given flow | After Phase 4 completes, or when reviewing past results |
 
 Read references on demand. Do not dump their contents unless the user asks.
 

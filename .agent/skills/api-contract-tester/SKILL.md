@@ -5,16 +5,35 @@ description: "Run API contract tests against any OpenAPI/Swagger-described REST 
 
 ## What This Skill Does
 
-This skill runs **API contract tests** — automated checks that verify a live API's responses match what its OpenAPI/Swagger spec promises.
+This skill runs **API contract tests** -- automated checks that verify a live API's responses match what its OpenAPI/Swagger spec promises.
 
 A test **passes** when the endpoint returns the expected status code AND the response body has the right shape: correct types, all required fields present, no undocumented extra fields.
 
 The tool does three things most API testers skip:
 1. **Auto-discovers** every endpoint from the Swagger spec (no need to manually list them)
-2. **Validates response bodies** against the spec's schema definitions — not just status codes
+2. **Validates response bodies** against the spec's schema definitions -- not just status codes
 3. **Merges custom QA scenarios** with auto-generated smoke tests so nothing gets missed
 
 The output is a CSV report with per-endpoint Pass / Fail / CONTRACT FAIL results and exact violation details.
+
+---
+
+## Reference Files
+
+| File | What it is | When to load |
+|---|---|---|
+| `references/auth-patterns.md` | Authentication configuration patterns for common API auth types (JWT, API key, OAuth2) | Step 1, when configuring auth in contract_runner.py |
+| `references/test-data-format.md` | CSV format guide with examples for writing custom test scenarios | Step 2, when building or editing test_data.csv |
+| `references/swagger-generation.md` | Guide for obtaining or generating OpenAPI/Swagger specs from a live API | Prerequisites, when the user does not have a swagger.json |
+| `references/supported-qa-flows.md` | Overview of supported QA workflows (smoke, regression, contract validation) | When the user asks what testing modes are available |
+| `references/certification-decision.md` | Decision framework for certifying an API as contract-compliant based on results | Step 4, when interpreting results and deciding pass/fail at the API level |
+
+## Scripts
+
+| Script | Purpose | When to run |
+|---|---|---|
+| `scripts/contract_runner.py` | Main test runner that discovers endpoints, validates schemas, and generates CSV reports | Step 3, the primary test execution script |
+| `scripts/contract_runner_reference.py` | Reference implementation with annotated comments explaining each section | When the user wants to understand or customize the runner internals |
 
 ---
 
@@ -48,7 +67,7 @@ When preparing and running contract tests, apply the following logic:
 
 Ask the user to confirm before starting:
 
-- `swagger.json` or `openapi.json` — the API spec (often at `/swagger/v1/swagger.json` on the server)
+- `swagger.json` or `openapi.json` -- the API spec (often at `/swagger/v1/swagger.json` on the server)
 - Python 3.x installed
 - Auth credentials for the **staging/QA environment** (never run automated tests against production)
 - Base URL of the target environment
@@ -68,10 +87,10 @@ Read `references/auth-patterns.md` to find the right auth pattern for the user's
 
 The four most common patterns are:
 
-- **Two-step JWT** — enterprise APIs where you login, then exchange the lobby token for a privileged one
-- **Single bearer token login** — standard JWT login returning `access_token`
-- **Static API key** — fixed key in a header
-- **OAuth2 client credentials** — machine-to-machine token endpoint
+- **Two-step JWT** -- enterprise APIs where you login, then exchange the lobby token for a privileged one
+- **Single bearer token login** -- standard JWT login returning `access_token`
+- **Static API key** -- fixed key in a header
+- **OAuth2 client credentials** -- machine-to-machine token endpoint
 
 If the user is unsure how their API authenticates, ask them to open the login request in browser DevTools (Network tab) and describe what headers/body the login call sends.
 
@@ -88,7 +107,7 @@ SSL_VERIFY = False  # set True if environment has a valid public cert
 
 ## Step 2: Write Custom Test Scenarios
 
-The engine auto-generates smoke tests for every endpoint. To add **business logic tests** — specific payloads, error cases, edge cases — create `test_data.csv`.
+The engine auto-generates smoke tests for every endpoint. To add **business logic tests** -- specific payloads, error cases, edge cases -- create `test_data.csv`.
 
 Read `references/test-data-format.md` for the full format guide and examples.
 
@@ -107,7 +126,7 @@ Endpoint,Method,Scenario,Expected Status,Payload
 | Unauthenticated request | 401 |
 | Duplicate / constraint violation | 409 |
 
-CSV tests take priority — any endpoint+method pair covered in the CSV won't get an auto-generated test. This lets the QA team override auto-mocks with real payloads.
+CSV tests take priority -- any endpoint+method pair covered in the CSV won't get an auto-generated test. This lets the QA team override auto-mocks with real payloads.
 
 ---
 
@@ -144,7 +163,7 @@ The `Contract Violations` column in the CSV contains semicolon-separated message
 
 | Violation message | Root cause | Who fixes it |
 |---|---|---|
-| `root.X: required field missing` | Field marked `required` in spec but absent from response | Backend developer — field must always be returned |
+| `root.X: required field missing` | Field marked `required` in spec but absent from response | Backend developer -- field must always be returned |
 | `root.X: expected integer, got str` | Type mismatch | Backend JSON serializer returning wrong type |
 | `root.X: undocumented field (contract breach)` | Response includes field not in spec (and spec says `additionalProperties: false`) | Update spec OR strip field from response |
 | `root: expected object, got null` | Entire response body is null/empty | Check if endpoint has data to return |
@@ -173,7 +192,7 @@ The `Contract Violations` column in the CSV contains semicolon-separated message
 → Reduce `MAX_WORKERS` to 2-3. The staging environment may rate-limit concurrent connections.
 
 **`data` field always shows as null violation**
-→ Check if the spec has `"nullable": true` on the `data` property. The validator respects nullable — if it's not set in the spec but null is a valid API response, the spec needs updating.
+→ Check if the spec has `"nullable": true` on the `data` property. The validator respects nullable -- if it's not set in the spec but null is a valid API response, the spec needs updating.
 
 ---
 
@@ -184,7 +203,7 @@ To cover PUT / PATCH / DELETE endpoints, extend the discovery line in `contract_
 for method in ['get', 'post', 'put', 'patch', 'delete']:
 ```
 
-To test multiple environments, run the suite with different `BASE_URL` values and diff the output CSVs — new CONTRACT FAILs indicate breaking changes introduced in that environment.
+To test multiple environments, run the suite with different `BASE_URL` values and diff the output CSVs -- new CONTRACT FAILs indicate breaking changes introduced in that environment.
 
 To increase concurrency for large specs (200+ endpoints):
 ```python
