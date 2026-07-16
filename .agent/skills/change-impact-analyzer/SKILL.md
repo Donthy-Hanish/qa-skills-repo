@@ -1,7 +1,6 @@
 ---
 name: change-impact-analyzer
 description: "Analyze diffs, Jira tickets, PRs, or change descriptions to produce impact reports: affected modules, tests to run, risk levels, regression scope, and coverage gaps."
-version: "1.1.0"
 ---
 
 # Change Impact Analyzer
@@ -42,11 +41,11 @@ This skill ships with reference files under `references/`:
 
 And helper scripts under `scripts/`:
 
-| Script | Purpose |
-|--------|---------|
-| `scripts/parse-diff.py` | Parse a unified diff or GitHub PR diff and extract changed files, functions, and line ranges |
-| `scripts/extract-jira-labels.py` | Extract components, labels, fix-versions, and linked test cases from Jira ticket text |
-| `scripts/render-report.py` | Render a completed analysis into both Markdown and JSON report files from structured data |
+| Script | Purpose | When to run |
+|---|---|---|
+| `scripts/parse-diff.py` | Parse a unified diff or GitHub PR diff and extract changed files, functions, and line ranges | Step 1 Diff/PR Flow, when user provides a diff or PR link |
+| `scripts/extract-jira-labels.py` | Extract components, labels, fix-versions, and linked test cases from Jira ticket text | Step 1 Jira Ticket Flow, when user pastes raw ticket text |
+| `scripts/render-report.py` | Render a completed analysis into both Markdown and JSON report files from structured data | Step 6, when generating the final report outputs |
 
 Read `references/methodology.md` at the start of every analysis. Load other references
 on demand. Do not dump their contents unless the user asks.
@@ -127,7 +126,7 @@ Using the parsed input, identify affected areas:
 4. **Shared resources**: Config files, environment variables, database schemas, API contracts that multiple modules depend on
 5. **Cross-cutting concerns**: Auth, logging, error handling, caching - if the change touches these, blast radius widens
 
-IF a `references/project-test-map.md` file exists for the current project:
+IF a project-test-map file (created from `references/project-test-map-template.md`) exists for the current project:
 - Use the module-to-test mapping to identify specific tests per affected area
 - Cross-reference component tags and labels with the test inventory
 
