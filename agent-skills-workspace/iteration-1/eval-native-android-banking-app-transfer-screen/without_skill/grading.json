@@ -1,0 +1,40 @@
+{
+  "assertion_results": [
+    {
+      "text": "Output includes a Page Object for the transfer screen",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 11356, Requested 2389. Please try again in 8.725s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Test suite covers the full happy path flow end to end",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 11356, Requested 2389. Please try again in 8.725s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Negative test cases include at least zero or negative amount and amount exceeding balance",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 11356, Requested 2389. Please try again in 8.725s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output handles the confirmation dialog as a separate interaction step",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 11356, Requested 2389. Please try again in 8.725s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Test data uses realistic banking amounts and beneficiary names",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 11356, Requested 2389. Please try again in 8.725s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output does NOT assume React Native - recognizes this is native Android",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 11356, Requested 2389. Please try again in 8.725s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 6,
+    "total": 6,
+    "pass_rate": 0
+  }
+}

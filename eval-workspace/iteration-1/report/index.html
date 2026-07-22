@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Skills Repository - Eval Report</title>
+  <style>
+  :root {
+    --fg: #1a1f24;
+    --muted: #6a737d;
+    --bg: #ffffff;
+    --bg-alt: #f6f8fa;
+    --border: #e1e4e8;
+    --ok: #1a7f37;
+    --warn: #b08800;
+    --bad: #cf222e;
+    --ok-bg: #dafbe1;
+    --warn-bg: #fff8c5;
+    --bad-bg: #ffebe9;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; color: var(--fg); background: var(--bg); }
+  header.hero { background: linear-gradient(180deg, #fafbfc 0%, #f0f2f5 100%); border-bottom: 1px solid var(--border); padding: 24px 32px; }
+  header.hero h1 { margin: 0 0 4px; font-size: 22px; }
+  header.hero .meta { color: var(--muted); font-size: 13px; }
+  header.hero .totals { margin-top: 16px; display: flex; gap: 16px; flex-wrap: wrap; }
+  header.hero .stat { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; min-width: 120px; }
+  header.hero .stat .label { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  header.hero .stat .value { display: block; font-size: 22px; font-weight: 600; margin-top: 2px; }
+  header.hero .stat.ok .value { color: var(--ok); }
+  header.hero .stat.bad .value { color: var(--bad); }
+  main { padding: 24px 32px; max-width: 1200px; margin: 0 auto; }
+  h2 { margin: 0 0 4px; font-size: 18px; }
+  .muted { color: var(--muted); font-size: 12px; }
+  table.summary { width: 100%; border-collapse: collapse; margin-bottom: 32px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  table.summary th, table.summary td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+  table.summary th { background: var(--bg-alt); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  table.summary td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.summary tr.skill-row.bad { background: var(--bad-bg); }
+  table.summary tr.skill-row.warn { background: var(--warn-bg); }
+  table.summary tr.skill-row.ok td { background: transparent; }
+  table.summary tr.skill-row a { color: var(--fg); text-decoration: none; font-weight: 500; }
+  table.summary tr.skill-row a:hover { text-decoration: underline; }
+  .bar { width: 100px; height: 10px; background: var(--bg-alt); border-radius: 5px; overflow: hidden; }
+  .bar .fill { height: 100%; }
+  .bar.ok .fill { background: var(--ok); }
+  .bar.warn .fill { background: var(--warn); }
+  .bar.bad .fill { background: var(--bad); }
+  article.skill { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+  article.skill header h2 .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; vertical-align: middle; margin-left: 8px; }
+  article.skill header h2 .badge.ok { background: var(--ok-bg); color: var(--ok); }
+  article.skill header h2 .badge.warn { background: var(--warn-bg); color: var(--warn); }
+  article.skill header h2 .badge.bad { background: var(--bad-bg); color: var(--bad); }
+  article.skill .delta { margin-top: 8px; font-size: 13px; }
+  article.skill .delta.ok { color: var(--ok); }
+  article.skill .delta.bad { color: var(--bad); }
+  details.eval { border: 1px solid var(--border); border-radius: 6px; margin-top: 12px; }
+  details.eval > summary { padding: 10px 14px; cursor: pointer; display: flex; gap: 10px; align-items: center; }
+  details.eval[open] > summary { border-bottom: 1px solid var(--border); }
+  details.eval.bad > summary { background: var(--bad-bg); }
+  details.eval.ok > summary { background: var(--ok-bg); }
+  details.eval .eval-status { font-weight: 600; }
+  details.eval.bad .eval-status { color: var(--bad); }
+  details.eval.ok .eval-status { color: var(--ok); }
+  .eval-body { padding: 12px 16px; }
+  .run { padding: 12px 0; border-top: 1px dashed var(--border); }
+  .run:first-child { border-top: none; padding-top: 0; }
+  .run-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .mode { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+  .mode-with_skill { background: #ddf4ff; color: #0969da; }
+  .mode-without_skill { background: #fff1e5; color: #bc4c00; }
+  .status.ok { color: var(--ok); font-weight: 600; }
+  .status.bad { color: var(--bad); font-weight: 600; }
+  .run details > summary { cursor: pointer; font-size: 12px; color: var(--muted); padding: 4px 0; }
+  .run details[open] > summary { color: var(--fg); }
+  .run pre { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; font-family: var(--mono); font-size: 12px; line-height: 1.45; overflow-x: auto; white-space: pre-wrap; word-break: break-word; max-height: 400px; overflow-y: auto; }
+  table.assertions { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  table.assertions th, table.assertions td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  table.assertions th { background: var(--bg-alt); font-size: 11px; text-transform: uppercase; color: var(--muted); }
+  table.assertions tr.bad td { background: var(--bad-bg); }
+  table.assertions .check { color: var(--ok); font-weight: 600; }
+  table.assertions .x { color: var(--bad); font-weight: 600; }
+  table.assertions .evidence { color: var(--muted); font-size: 12px; }
+  details.tools { margin: 12px 0; }
+  details.tools > summary { cursor: pointer; font-size: 12px; color: var(--muted); padding: 4px 0; }
+  details.tools[open] > summary { color: var(--fg); font-weight: 500; }
+  table.tool-calls { width: 100%; border-collapse: collapse; margin: 6px 0 8px; font-size: 13px; }
+  table.tool-calls th, table.tool-calls td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  table.tool-calls th { background: var(--bg-alt); font-size: 11px; text-transform: uppercase; color: var(--muted); }
+  table.tool-calls .tool-name { font-family: var(--mono); color: #b08800; font-weight: 600; }
+  pre.tool-args { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 4px; padding: 6px 8px; margin: 0; font-family: var(--mono); font-size: 12px; line-height: 1.4; overflow-x: auto; white-space: pre-wrap; word-break: break-word; max-height: 240px; overflow-y: auto; }
+  .empty { padding: 60px 20px; text-align: center; color: var(--muted); }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <h1>QA Skills Repository - Eval Report</h1>
+    <div class="meta">
+      generated 2026-07-22T05:58:13.066Z
+      · target <code>llama-3.3-70b-versatile</code>
+      · judge <code>llama-3.3-70b-versatile</code>
+    </div>
+    <div class="totals">
+      <div class="stat"><span class="label">skills</span><span class="value">0</span></div>
+      <div class="stat"><span class="label">evals</span><span class="value">0</span></div>
+      <div class="stat ok"><span class="label">passed</span><span class="value">0</span></div>
+      <div class="stat "><span class="label">failed</span><span class="value">0</span></div>
+      <div class="stat ok"><span class="label">pass rate</span><span class="value">100.0%</span></div>
+    </div>
+  </header>
+  <main><div class="empty">No skill artifacts found in <code>C:\Users\costrategix\PycharmProjects\qa-skills-repo\eval-workspace\iteration-1</code>.</div></main>
+</body>
+</html>

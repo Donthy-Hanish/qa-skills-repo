@@ -1,0 +1,40 @@
+{
+  "assertion_results": [
+    {
+      "text": "Output mentions installing Appium 2.x via npm",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5308, Requested 2670. Please try again in 19.78s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output includes appium driver install commands for uiautomator2 and xcuitest",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5308, Requested 2670. Please try again in 19.78s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output mentions ANDROID_HOME and JAVA_HOME environment variables",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5308, Requested 2670. Please try again in 19.78s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output references Appium Inspector for element identification",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5308, Requested 2670. Please try again in 19.78s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output includes a conftest.py with both platform capability builders",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5308, Requested 2670. Please try again in 19.78s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Capabilities use environment variables with defaults, not hardcoded values",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5308, Requested 2670. Please try again in 19.78s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 6,
+    "total": 6,
+    "pass_rate": 0
+  }
+}

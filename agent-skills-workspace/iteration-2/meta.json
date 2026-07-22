@@ -1,0 +1,12 @@
+{
+  "name": "appium-mobile-tester",
+  "slug": "appium-mobile-tester",
+  "relPath": "",
+  "target": "llama-3.1-8b-instant",
+  "judge": "llama-3.1-8b-instant",
+  "modes": [
+    "with_skill",
+    "without_skill"
+  ],
+  "generated_at": "2026-07-22T06:04:31.346Z"
+}

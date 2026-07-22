@@ -1,0 +1,196 @@
+Here's a full Appium test suite for testing the onboarding flow in a React Native app:
+
+**`test/spec/onboarding.spec.js`**
+```javascript
+const { Given, When, Then } = require('cucumber');
+const assert = require('assert');
+const { AppiumDriver } = require('appium driver');
+
+let driver;
+let elements = {};
+
+Given(/^I have the onboarding flow opened$/, async () => {
+  // Start the app and go to the onboarding flow
+  driver = new AppiumDriver('localhost:4723');
+  await driver.startActivity('com.example.app', 'MainActivity');
+  await waitUntilDisplayed('#onboarding');
+});
+
+When(/^I swipe through the first slide$/, async () => {
+  await swipeLeft(element('onboarding-slide-1-title'));
+});
+
+When(/^I swipe through the second slide$/, async () => {
+  await swipeLeft(element('onboarding-slide-2-title'));
+});
+
+When(/^I swipe through the third slide$/, async () => {
+  await swipeLeft(element('onboarding-slide-3-title'));
+});
+
+When(/^I tap the Get Started button$/, async () => {
+  await tap(element('get-started-button'));
+});
+
+Then(/^the title of the first slide is displayed$/, async () => {
+  const title = await element('onboarding-slide-1-title').getText();
+  assert.strictEqual(title, 'Title of the first slide');
+});
+
+Then(/^the description of the first slide is displayed$/, async () => {
+  const description = await element('onboarding-slide-1-description').getText();
+  assert.strictEqual(description, 'Description of the first slide');
+});
+
+Then(/^the illustration of the first slide is displayed$/, async () => {
+  const illustration = await screenshot();
+  assert.ok(illustration.includes('illustration-of-the-first-slide'));
+});
+
+Then(/^the title of the third slide is displayed$/, async () => {
+  const title = await element('onboarding-slide-3-title').getText();
+  assert.strictEqual(title, 'Title of the third slide');
+});
+
+Then(/^I am navigated to the signup screen$/, async () => {
+  await waitUntilDisplayed('#signup');
+});
+
+function element(id) {
+  return driver.$(`[resource-id="${id}"]`);
+}
+
+async function awaitDisplayed(element) {
+  try {
+    await element.isDisplayed();
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+async function swipeLeft(element) {
+  await element.swipe('left', 0.75);
+}
+
+async function tap(element) {
+  await element.tap();
+}
+
+async function screenshot() {
+  return await driver.takeScreenshot();
+}
+
+async function waitUntilDisplayed(selector) {
+  const element = element(selector);
+  while (!awaitDisplayed(element)) {
+    await driver.sleep(100);
+  }
+}
+```
+
+**`test/support/world.js`**
+```javascript
+const { Given, When, Then } = require('cucumber');
+
+module.exports = class OnboardingPage {
+  static url() {
+    return 'http://localhost:3000';
+  }
+
+  async navigateToOnboardingFlow() {
+    await browser.url(this.url());
+  }
+};
+```
+
+**`config/cucumber.js`**
+```javascript
+const cucumber = require('cucumber');
+const { Builder } = require('selenium/webdriver');
+const AppiumDriver = require('appium driver');
+const onboardingWorld = require('./support/world');
+
+module.exports = function(config) {
+  process.env.WD_MOTORS = 'appium';
+
+  process.env.CHROME_DRIVER = config.chromeDriver;
+
+  return {
+    default: {
+      require: ['ts-node/register', 'tsconfig-paths/register'],
+      basepath: 'test',
+      env: {
+        WD_MOTORS: 'appium',
+        WD_HOST: 'localhost:4723',
+        WD_PORT: 4723,
+      },
+    },
+    before: [
+      async function({ cucumberOpts, wd, client }) {
+        const url = `http://localhost:3000/appium/v1.0`;
+        const capabilities = {
+          platformName: 'Android',
+          automationName: 'UIAutomator2',
+          appPackage: 'com.example.app',
+          appActivity: 'MainActivity',
+          app: 'path/to/your/app.apk',
+        };
+        const client_ = await AppiumDriver.createClient(url, capabilities);
+        client_.then(client => {
+          client_.resetApp().then(() => {
+            client_.lock().then(() => {
+              wd.driver = client_;
+            });
+          });
+        });
+        if (process.env.WD_DEBUG) {
+          wd.debug = true;
+        } else {
+          wd.debug = false;
+        }
+
+        onboardingWorld.navigateToOnboardingFlow();
+      },
+    ],
+    after: [
+      async function({ wd }) {
+        await wd.driver.quit();
+      },
+    ],
+    cucumberOpts: {
+      tags: '',
+    },
+  };
+};
+```
+
+**`package.json`**
+```json
+{
+  "name": "your-app",
+  "scripts": {
+    "test": "cucumber features specs --world ./test/support/world.js --format json:./test/output/",
+    "e2e": "cucumber features specs --world ./test/support/world.js --format json:./test/output/"
+  },
+  "devDependencies": {
+    "appium": "^1.22.2",
+    "appium-uiautomator2-driver": "^2.0.0",
+    "chai": "^4.3.6",
+    "chrome driver": "^94.0.4606.71",
+    "cucumber": "^6.2.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.3.5",
+    "ts-node": "^10.2.1",
+    "ui-automator2": "^2.2.0"
+  }
+}
+```
+Replace `com.example.app` with the actual package name of your app and `path/to/your/app.apk` with the path to the APK file of your app.
+
+You can then run the tests with the following command:
+
+```bash
+npm run test
+```
+This will run the tests using Appium and Cucumber. The tests will swipe through the onboarding flow and verify that the correct slides are displayed, that the Get Started button is displayed and functional, and that the user is navigated to the signup screen after tapping it.

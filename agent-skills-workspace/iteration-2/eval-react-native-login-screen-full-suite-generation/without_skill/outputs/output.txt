@@ -1,0 +1,126 @@
+### Setup
+
+First, you need to install the Appium client and the `wd` library, which is a Node.js client for WebDriver:
+
+```bash
+npm install appium@appium/appium server -g
+npm install wd
+```
+
+Then, install the necessary dependencies for the project:
+
+```bash
+npm install appium-caps
+npm install jest
+```
+
+Create the `appiumCaps.js` file:
+
+```javascript
+const appiumCaps = {
+  platformName: 'Android', // or 'iOS'
+  platformVersion: '10', // Specify the Android version
+  deviceName: 'Android Emulator', // or 'iPhone simulator'
+  automationName: 'Appium',
+  appPackage: 'your.package.name', // Package name of your app
+  appActivity: 'your.activity.name', // Activity name of your app
+};
+
+module.exports = appiumCaps;
+```
+
+You may need to adjust the caps based on your app's specific setup. 
+
+### Login Test
+
+Create the `login.test.js` file:
+
+```javascript
+const appiumCaps = require('./appiumCaps');
+const { Builder, By, Capabilities } = require('selenium-webdriver');
+const test = require('@jest/globals');
+
+const until = require('selenium-webdriver/lib/util/until');
+
+describe('myProlink login test', () => {
+  let driver;
+
+  beforeAll(async () => {
+    const capabilities = new Capabilities(appiumCaps);
+    capabilities.set('autoGrantPermissions', true);
+    capabilities.set('unicodeKeyboard', true);
+    capabilities.set('resetKeyboard', true);
+    capabilities.set('newCommandTimeout', 30000);
+
+    if (process.env.HOST) {
+      driver = await new Builder()
+        .forBrowser('android') // or 'iOS'
+        .usingServer('http://localhost:4723/wd/hub')
+        .withCapabilities(capabilities)
+        .build();
+       driver = await driver.get('https://example.com/login'); // Replace with your app URL
+    } else {
+      console.log(
+        'Set the HOST environment variable to the Appium server host'
+      );
+      throw new Error('Host not specified');
+    }
+
+    await driver.wait(until.titleContains('Login'));
+  });
+
+  afterAll(async () => {
+    await driver.quit();
+  });
+
+  it('should login with correct credentials', async () => {
+    await driver.wait(until.elementLocated(By.id('username')),'20000');
+    const usernameInput = await driver.findElement(By.id('username'));
+    await usernameInput.sendKeys('test_email@example.com');
+
+    const passwordInput = await driver.findElement(By.id('password'));
+    await passwordInput.sendKeys('test_password');
+
+    await driver.findElement(By.id('login-button')).click();
+
+    const toastText = await driver.findElement(By.id('toast-message'));
+    expect(await toastText.getText()).toContain('Logged in successfully');
+  });
+
+  it('should show forgot password link', async () => {
+    const forgotPasswordLink = await driver.findElement(By.id('forgot-password'));
+    const buttonText = await forgotPasswordLink.getText();
+    expect(buttonText).toContain('Forgot Password');
+  });
+
+  it('should login with incorrect credentials', async () => {
+    await driver.wait(until.elementLocated(By.id('username')),'20000');
+    const usernameInput = await driver.findElement(By.id('username'));
+    await usernameInput.sendKeys('test_email@example.com');
+
+    const passwordInput = await driver.findElement(By.id('password'));
+    await passwordInput.sendKeys('wrong_password');
+
+    await driver.findElement(By.id('login-button')).click();
+
+    const errorText = await driver.findElement(By.id('error-message'));
+    expect(await errorText.getText()).toContain('Invalid credentials');
+  });
+});
+```
+
+You may need to adjust the locators based on your app's specific setup.
+
+**Note**: You need to have Appium server running and point it to the correct platform name (Android or iOS). You can run Appium server with the following command:
+
+```bash
+appium --address 0.0.0.0 --port 4723
+```
+
+To run the tests, use the following command:
+
+```bash
+jest
+```
+
+**Note**: Make sure you have the correct appPackage and appActivity in the `appiumCaps.js` file.

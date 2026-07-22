@@ -39,12 +39,13 @@ Do NOT use this skill for:
    - Define minimum acceptable scores (0-100) for categories (Performance, Accessibility, Best Practices, SEO).
    - Assert limits for Core Web Vitals: LCP (Largest Contentful Paint), FID/INP (First Input Delay / Interaction to Next Paint), CLS (Cumulative Layout Shift), TBT (Total Blocking Time), and SI (Speed Index).
 4. **Reference Resources**:
-   - Refer users to [Playbook](file:///.agent/skills/lighthouse-auditor/references/playbook.md) for CLI options, thresholds, and error troubleshooting.
-   - Refer users to [Advanced Patterns](file:///.agent/skills/lighthouse-auditor/references/advanced-patterns.md) for custom audits, budgets, and trends.
-   - Refer users to [Helper Script](file:///.agent/skills/lighthouse-auditor/scripts/run_lighthouse.py) for the pre-implemented Python utility.
-   - Refer users to [Robot Framework Keywords](file:///.agent/skills/lighthouse-auditor/references/lighthouse-keywords.py) for the custom keyword library.
-   - Refer users to [Robot Suite Template](file:///.agent/skills/lighthouse-auditor/references/lighthouse-audit-template.robot) for the test template.
-   - Refer users to [User Flow Templates](file:///.agent/skills/lighthouse-auditor/references/user-flow-templates.js) for cold+warm, snapshot, and timespan flow examples.
+   - Refer to `references/playbook.md` for CLI options, thresholds, and error troubleshooting.
+   - Refer to `references/advanced-patterns.md` for custom audits, budgets, and trends.
+   - Refer to `scripts/run_lighthouse.py` for the pre-implemented Python utility.
+   - Refer to `references/lighthouse-keywords.py` for the custom keyword library.
+   - Refer to `references/lighthouse-audit-template.robot` for the test template.
+   - Refer to `references/user-flow-templates.js` for cold+warm, snapshot, and timespan flow examples.
+   - Refer to `references/user-flow-example.js` for a complete working user flow script.
 
 ---
 
@@ -194,13 +195,22 @@ def run_authenticated_audit():
 
 ---
 
-## References
-- [Playbook](file:///.agent/skills/lighthouse-auditor/references/playbook.md)
-- [Advanced Patterns](file:///.agent/skills/lighthouse-auditor/references/advanced-patterns.md)
-- [Helper Script](file:///.agent/skills/lighthouse-auditor/scripts/run_lighthouse.py)
-- [Robot Framework Keywords](file:///.agent/skills/lighthouse-auditor/references/lighthouse-keywords.py)
-- [Robot Suite Template](file:///.agent/skills/lighthouse-auditor/references/lighthouse-audit-template.robot)
-- [User Flow Templates](file:///.agent/skills/lighthouse-auditor/references/user-flow-templates.js)
+## Reference Files
+
+| File | What it is | When to load |
+|---|---|---|
+| `references/playbook.md` | CLI options, thresholds, and error troubleshooting guide | When configuring audit parameters or debugging CLI errors |
+| `references/advanced-patterns.md` | Custom audits, performance budgets, and trend tracking | When the user needs budgets, multi-run trends, or custom audit categories |
+| `references/lighthouse-keywords.py` | Custom Robot Framework keyword library for Lighthouse | When generating Robot Framework integration tests |
+| `references/lighthouse-audit-template.robot` | Robot Framework test suite template | When the user wants a ready-to-run .robot file |
+| `references/user-flow-templates.js` | Puppeteer user flow templates for cold+warm, snapshot, and timespan modes | When auditing authenticated pages, SPAs, or specific page states |
+| `references/user-flow-example.js` | Complete working user flow script with login and navigation | When the user needs a full end-to-end example of an authenticated user flow audit |
+
+## Scripts
+
+| Script | Purpose | When to run |
+|---|---|---|
+| `scripts/run_lighthouse.py` | Pre-implemented Python utility wrapping the Lighthouse CLI with threshold assertions | Step 1, when the user wants a ready-to-use audit script |
 
 ---
 

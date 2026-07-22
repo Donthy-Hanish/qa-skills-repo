@@ -1,0 +1,32 @@
+﻿Skill Eval Report: appium-mobile-tester
+Generated: 2026-07-22 12:17:59
+Target: claude-sonnet-4-6 | Judge: claude-haiku-4-5-20251001
+============================================================
+
+OVERALL: with_skill 76.7% vs without_skill 50% (delta: +26.7 pp)
+
+--- React Native login screen - full suite generation ---
+  with_skill: 75% (6/8)
+  without_skill: 25% (2/8)
+  delta: +50 pp
+
+--- Onboarding carousel with gesture handling ---
+  with_skill: 80% (4/5)
+  without_skill: 60% (3/5)
+  delta: +20 pp
+
+--- Appium setup from scratch on Mac ---
+  with_skill: 50% (3/6)
+  without_skill: 0% (0/6)
+  delta: +50 pp
+
+--- BrowserStack integration across 3 devices ---
+  with_skill: 100% (5/5)
+  without_skill: 100% (5/5)
+  delta: +0 pp
+
+--- Native Android banking app - transfer screen ---
+  with_skill: 83.3% (5/6)
+  without_skill: 83.3% (5/6)
+  delta: +0 pp
+

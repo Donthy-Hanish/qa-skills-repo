@@ -1,0 +1,35 @@
+{
+  "assertion_results": [
+    {
+      "text": "Output includes BrowserStack-specific capabilities including userName and accessKey",
+      "passed": false,
+      "evidence": "No output captured"
+    },
+    {
+      "text": "Output includes device configs for all 3 requested devices",
+      "passed": false,
+      "evidence": "No output captured"
+    },
+    {
+      "text": "Output uses environment variables for BrowserStack credentials, never hardcoded",
+      "passed": false,
+      "evidence": "No output captured"
+    },
+    {
+      "text": "Appium server URL changes to BrowserStack hub URL",
+      "passed": false,
+      "evidence": "No output captured"
+    },
+    {
+      "text": "Output mentions uploading the app binary to BrowserStack before running",
+      "passed": false,
+      "evidence": "No output captured"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5,
+    "pass_rate": 0
+  }
+}

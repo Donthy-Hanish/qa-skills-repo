@@ -1,0 +1,56 @@
+# agent-skills-eval configuration for QA Skills Repository
+# Usage: npx agent-skills-eval --config agent-skills-eval.yaml
+
+root: ./.agent/skills
+workspace: ./eval-workspace
+baseline: true
+concurrency: 2
+layout: iteration
+strict: true
+
+# Model configuration
+# Option 1: OpenAI
+# target: gpt-4o-mini
+# judge: gpt-4o-mini
+# baseUrl: https://api.openai.com/v1
+# apiKeyEnv: OPENAI_API_KEY
+
+# Option 2: Anthropic via OpenAI-compatible proxy
+# target: claude-sonnet-4-6
+# judge: claude-sonnet-4-6
+# baseUrl: https://api.anthropic.com/v1
+# apiKeyEnv: ANTHROPIC_API_KEY
+
+# Option 3: Groq (fast, free tier available)
+target: llama-3.3-70b-versatile
+judge: llama-3.3-70b-versatile
+baseUrl: https://api.groq.com/openai/v1
+apiKeyEnv: GROQ_API_KEY
+
+# Include/exclude skills
+include:
+  - "appium-mobile-tester/**"
+  - "api-contract-tester/**"
+  - "ui-load-test/**"
+  - "lighthouse-auditor/**"
+  - "change-impact-analyzer/**"
+  - "robot-framework-tester/**"
+# exclude:
+#   - "**/draft-*"
+
+# Report generation
+report:
+  enabled: true
+  title: "QA Skills Repository - Eval Report"
+
+# Logging
+logging:
+  format: pretty
+  verbose: false
+  color: auto
+
+# Model parameters
+targetParams:
+  temperature: 0
+judgeParams:
+  temperature: 0

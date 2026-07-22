@@ -1,0 +1,142 @@
+**Appium Tests for myProlink Login Screen**
+======================================================
+
+### Setup
+
+To run these tests, you need to have Appium installed on your system, along with the necessary drivers for Android and iOS. You also need to have the myProlink app installed on your test devices.
+
+First, install the required dependencies:
+
+```bash
+npm install appium wdio-appium-service
+```
+
+Next, create a `wdio.conf.js` file with the following configuration:
+
+```javascript
+// wdio.conf.js
+exports.config = {
+  user: 'your_username',
+  key: 'your_key',
+  specs: [
+    './tests/login.spec.js'
+  ],
+  capabilities: [
+    {
+      platformName: 'Android',
+      platformVersion: '11',
+      deviceName: 'Your Android Device',
+      appPackage: 'com.yourcompany.myprolink',
+      appActivity: 'com.yourcompany.myprolink.MainActivity',
+      udid: 'your_android_device_udid'
+    },
+    {
+      platformName: 'iOS',
+      platformVersion: '15',
+      deviceName: 'Your iOS Device',
+      app: 'path/to/your/ios/app.ipa',
+      udid: 'your_ios_device_udid'
+    }
+  ],
+  services: ['appium'],
+  appium: {
+    args: {
+      address: 'localhost',
+      port: 4723
+    }
+  }
+};
+```
+
+### Login Screen Tests
+
+Create a `login.spec.js` file with the following tests:
+
+```javascript
+// tests/login.spec.js
+const { expect } = require('@wdio/assert');
+const { loginScreen } = require('./page_objects/login_screen');
+
+describe('myProlink Login Screen', () => {
+  it('should display email field', async () => {
+    await loginScreen.open();
+    const emailField = await loginScreen.emailField;
+    expect(await emailField.isDisplayed()).toBe(true);
+  });
+
+  it('should display password field', async () => {
+    await loginScreen.open();
+    const passwordField = await loginScreen.passwordField;
+    expect(await passwordField.isDisplayed()).toBe(true);
+  });
+
+  it('should display login button', async () => {
+    await loginScreen.open();
+    const loginButton = await loginScreen.loginButton;
+    expect(await loginButton.isDisplayed()).toBe(true);
+  });
+
+  it('should display forgot password link', async () => {
+    await loginScreen.open();
+    const forgotPasswordLink = await loginScreen.forgotPasswordLink;
+    expect(await forgotPasswordLink.isDisplayed()).toBe(true);
+  });
+
+  it('should allow user to login', async () => {
+    await loginScreen.open();
+    const emailField = await loginScreen.emailField;
+    const passwordField = await loginScreen.passwordField;
+    const loginButton = await loginScreen.loginButton;
+    await emailField.setValue('your_email@example.com');
+    await passwordField.setValue('your_password');
+    await loginButton.click();
+    // Add additional assertions to verify login success
+  });
+
+  it('should allow user to reset password', async () => {
+    await loginScreen.open();
+    const forgotPasswordLink = await loginScreen.forgotPasswordLink;
+    await forgotPasswordLink.click();
+    // Add additional assertions to verify password reset flow
+  });
+});
+```
+
+### Page Objects
+
+Create a `page_objects/login_screen.js` file with the following page object:
+
+```javascript
+// page_objects/login_screen.js
+const loginScreen = {
+  open: async () => {
+    await driver.pause(2000);
+  },
+  emailField: async () => {
+    return await driver.$('~email');
+  },
+  passwordField: async () => {
+    return await driver.$('~password');
+  },
+  loginButton: async () => {
+    return await driver.$('~login');
+  },
+  forgotPasswordLink: async () => {
+    return await driver.$('~forgotPassword');
+  }
+};
+
+module.exports = { loginScreen };
+```
+
+Note: Replace `~email`, `~password`, `~login`, and `~forgotPassword` with the actual accessibility IDs or XPath expressions for the respective elements in your app.
+
+### Running the Tests
+
+To run the tests, execute the following command in your terminal:
+
+```bash
+npx wdio run wdio.conf.js
+```
+
+This will run the tests on both Android and iOS devices. Make sure to replace the placeholders in the `wdio.conf.js` file with your actual device information and app package details.

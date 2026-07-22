@@ -1,0 +1,137 @@
+**BrowserStack Config**
+------------------------
+
+Create a new file `browserstack.cfg` with the following content:
+
+```properties
+[DEFAULT]
+platform_name = android
+platform_version = latest
+session_name = AppiumTests
+device = Samsung Galaxy S23
+# For Pixel 7 change the device to Google Pixel 7
+# For iPhone 15, please note that Appium does not support real device simulations.
+# However, we can use an emulated iPhone device, here I am using the latest version
+device = Samsung Galaxy S23
+
+[ANDROID]
+platform_name = android
+platform_version = latest
+device = Samsung Galaxy S23
+appium_version = 1.0.0
+# For Pixel 7
+# device = Google Pixel 7
+# appium_version = 7.0.0
+
+# For iPhone 15, please use ios platform and an emulated device
+[IOS]
+platform_name = ios
+platform_version = latest
+device = iPhone 15
+appium_version = latest
+```
+
+However, above configuration isn't recommended as the devices and the Appium versions are not specified correctly.
+
+**Recommended** Configuration
+
+```properties
+[DEFAULT]
+browserstack.user = YOUR_USERNAME
+browserstack.key = YOUR_ACCESS_KEY
+
+[ANDROID]
+platform_name = android
+platform_version = latest
+device_name = Samsung Galaxy S23
+device = Samsung Galaxy S23
+browserstack.avd = Samsung Galaxy S23
+appium_version = latest
+
+[ANDROID-Pixel]
+platform_name = android
+platform_version = latest
+device_name = Google Pixel 7
+device = Google Pixel 7
+browserstack.avd = Google Pixel 7
+appium_version = latest
+
+[IOS-iPhone]
+platform_name = ios
+platform_version = latest
+device_name = iPhone 15
+device = iPhone 15
+browserstack.avd = iPhone 15
+appium_version = latest
+```
+You can then update the `conftest.py` file as mentioned below:
+
+**conftest.py**
+```python
+import os
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.edge.service import Service as EdgeService
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from selenium.webdriver.common.by import By
+
+capabilities = {
+    'os_version': '5',
+    # Change the os_version to Android and device_name to Pixel 7 for pixel
+    # 'os_version': '13',
+    # 'device_name': 'Google Pixel 7',
+    # 'os_version': 'latest' 
+    'build': 'My Appium Tests',
+    'name': 'Test',
+    'browserstack.console': 'true',
+}
+
+def before_test():
+    username = os.environ.get("BROWSERSTACK_USERNAME")
+    access_key = os.environ.get("BROWSERSTACK_ACCESS_KEY")
+    capabilities['browserstack.user'] = username
+    capabilities['browserstack.key'] = access_key
+    global capabilities
+
+def before_all():
+    before_test()
+
+# Change the driver based on your needs
+def before_scenario(context, scenario):
+    driver = context.current_scenario.driver
+    if 'android' in driver.capabilities['platformName'].lower():
+        driver.delete_all_cookies()
+        url = f"http://localhost:{os.environ.get('SELENIUM_GRID_PORT')}/wd/hub"
+        # Set the desired capabilities from your browserstack.cfg file.
+        # Change the capabilities according to your needs
+        capabilities['app'] = 'your.apk' 
+        try:
+            # Set the driver to use the Android driver
+            driver = webdriver.Remote(command_executor=f'http://hub-cloud.browserstack.com/wd/hub',
+                             desired_capabilities=capabilities)
+            return driver
+        except Exception as e:
+            assert False, f"Failed to launch browser with exception: {str(e)}"
+    elif 'ios' in driver.capabilities['platformName'].lower():
+        driver.delete_all_cookies()
+        # Change the capabilities according to your needs
+        capabilities['app'] = 'your.ipa'
+        try:
+            # Set the driver to use the IOS driver
+            driver = webdriver.Remote(command_executor=f'http://hub-cloud.browserstack.com/wd/hub',
+                                     desired_capabilities=capabilities)
+            return driver
+        except Exception as e:
+            assert False, f"Failed to launch browser with exception: {str(e)}"
+```
+
+Make sure to replace 'your.apk' and 'your.ipa' with the paths of your Android and iOS apps on your system.
+Make sure to run `your.apk` on Android devices and `your.ipa` on iOS devices.
+
+You might also need to replace 'YOUR_USERNAME' and 'YOUR_ACCESS_KEY' with your actual BrowserStack credentials.
+
+**Make sure to use the latest version of Selenium WebDriver and Appium.**
+
+Also, make sure to install all necessary packages in your `requirements.txt` file.

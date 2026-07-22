@@ -1,0 +1,150 @@
+**Appium Test Suite for Onboarding Flow**
+======================================
+
+### Prerequisites
+
+* Node.js installed
+* Appium installed
+* Java Development Kit (JDK) installed
+* React Native app built and installed on a mobile device or emulator
+
+### Test Suite
+
+We will use the WebDriverIO framework to write our test suite in JavaScript.
+
+**Required Packages**
+--------------------
+
+* `wdio-appium-service`: provides Appium test automation capabilities
+* `wdio-jasmine-framework`: provides a Jasmine-based test framework
+* `appium`: provides the Appium test automation library
+
+**Package Installation**
+----------------------
+
+```bash
+npm install --save-dev wdio-appium-service wdio-jasmine-framework appium
+```
+
+**Test Suite Code**
+------------------
+
+```javascript
+// test/onboarding.spec.js
+const { expect } = require('chai');
+
+describe('Onboarding Flow', () => {
+  beforeEach(async () => {
+    // Launch the app
+    await driver.launchApp();
+  });
+
+  afterEach(async () => {
+    // Close the app
+    await driver.closeApp();
+  });
+
+  it('should display the first onboarding slide', async () => {
+    // Get the title, description, and illustration elements
+    const titleElement = await driver.findElement('id', 'onboarding-title-1');
+    const descriptionElement = await driver.findElement('id', 'onboarding-description-1');
+    const illustrationElement = await driver.findElement('id', 'onboarding-illustration-1');
+
+    // Verify the elements are displayed
+    expect(await titleElement.isDisplayed()).to.be.true;
+    expect(await descriptionElement.isDisplayed()).to.be.true;
+    expect(await illustrationElement.isDisplayed()).to.be.true;
+  });
+
+  it('should swipe to the second onboarding slide', async () => {
+    // Swipe to the second slide
+    await driver.swipe(300, 400, 100, 400, 1000);
+
+    // Get the title, description, and illustration elements
+    const titleElement = await driver.findElement('id', 'onboarding-title-2');
+    const descriptionElement = await driver.findElement('id', 'onboarding-description-2');
+    const illustrationElement = await driver.findElement('id', 'onboarding-illustration-2');
+
+    // Verify the elements are displayed
+    expect(await titleElement.isDisplayed()).to.be.true;
+    expect(await descriptionElement.isDisplayed()).to.be.true;
+    expect(await illustrationElement.isDisplayed()).to.be.true;
+  });
+
+  it('should swipe to the third onboarding slide and click Get Started', async () => {
+    // Swipe to the second slide
+    await driver.swipe(300, 400, 100, 400, 1000);
+
+    // Swipe to the third slide
+    await driver.swipe(300, 400, 100, 400, 1000);
+
+    // Get the title, description, and illustration elements
+    const titleElement = await driver.findElement('id', 'onboarding-title-3');
+    const descriptionElement = await driver.findElement('id', 'onboarding-description-3');
+    const illustrationElement = await driver.findElement('id', 'onboarding-illustration-3');
+
+    // Verify the elements are displayed
+    expect(await titleElement.isDisplayed()).to.be.true;
+    expect(await descriptionElement.isDisplayed()).to.be.true;
+    expect(await illustrationElement.isDisplayed()).to.be.true;
+
+    // Get the Get Started button element
+    const getStartedButtonElement = await driver.findElement('id', 'get-started-button');
+
+    // Verify the button is displayed and enabled
+    expect(await getStartedButtonElement.isDisplayed()).to.be.true;
+    expect(await getStartedButtonElement.isEnabled()).to.be.true;
+
+    // Click the Get Started button
+    await getStartedButtonElement.click();
+
+    // Verify the signup screen is displayed
+    const signUpScreenElement = await driver.findElement('id', 'signup-screen');
+    expect(await signUpScreenElement.isDisplayed()).to.be.true;
+  });
+});
+```
+
+**Configuration File**
+----------------------
+
+```javascript
+// wdio.conf.js
+const path = require('path');
+
+exports.config = {
+  user: 'username',
+  key: 'appium-key',
+  specs: [
+    path.join(__dirname, 'test', 'onboarding.spec.js'),
+  ],
+  capabilities: [
+    {
+      platformName: 'Android',
+      platformVersion: '10.0',
+      deviceName: 'emulator-5554',
+      appPackage: 'com.example.app',
+      appActivity: 'com.example.app.MainActivity',
+    },
+  ],
+  services: [
+    ['appium', {
+      args: {
+        address: 'localhost',
+        port: 4723,
+      },
+    }],
+  ],
+  framework: 'jasmine',
+  reporters: ['spec'],
+};
+```
+
+**Running the Test Suite**
+-------------------------
+
+To run the test suite, execute the following command in your terminal:
+```bash
+npx wdio run wdio.conf.js
+```
+This will launch the Appium test automation server and execute the test suite on the specified device or emulator.

@@ -1,0 +1,35 @@
+{
+  "assertion_results": [
+    {
+      "text": "Output includes a gesture utility with swipe function using W3C Actions API",
+      "passed": false,
+      "evidence": "Error output (413) does not meet this requirement."
+    },
+    {
+      "text": "Output includes a Page Object for the onboarding screen",
+      "passed": false,
+      "evidence": "Error output (413) does not have a successful model output."
+    },
+    {
+      "text": "Output includes tests that verify each of the 3 slides",
+      "passed": false,
+      "evidence": "Error output (413) does not have a successful model output."
+    },
+    {
+      "text": "Swipe gestures use ActionBuilder and PointerInput, not deprecated TouchAction",
+      "passed": false,
+      "evidence": "Error output (413) does not meet this requirement."
+    },
+    {
+      "text": "Output includes a test for the Get Started button navigation",
+      "passed": false,
+      "evidence": "Error output (413) does not have a successful model output."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5,
+    "pass_rate": 0
+  }
+}

@@ -1,0 +1,153 @@
+Skill Reference Integrity Report
+Generated: 2026-07-16 08:51:52
+==================================================
+
+Skill: ai-test-plan-generation-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: ai-test-report-generation-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: api-contract-tester
+Status: PASS
+Referenced files: 3
+ORPHANED (on disk, not in SKILL.md):
+  - references/certification-decision.md
+  - references/supported-qa-flows.md
+  - references/swagger-generation.md
+  - scripts/contract_runner_reference.py
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: appium-mobile-tester
+Status: PASS
+Referenced files: 6
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: autonomous-e2e-testing
+Status: PASS
+Referenced files: 2
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: bug-reporter
+Status: FAIL
+Referenced files: 2
+MISSING:
+  - requirements.json
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: change-impact-analyzer
+Status: FAIL
+Referenced files: 6
+MISSING:
+  - references/project-test-map.md
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: flaky-test-and-self-healing
+Status: FAIL
+Referenced files: 0
+MISSING:
+  - requirements.json
+ORPHANED (on disk, not in SKILL.md):
+  - references/flaky-prevention-best-practices.md
+  - references/locator-healing-patterns.md
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: lighthouse-auditor
+Status: PASS
+Referenced files: 6
+ORPHANED (on disk, not in SKILL.md):
+  - references/user-flow-example.js
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: playwright-mcp-automation-generation-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: playwright-mcp-exploratory-testing-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: playwright-mcp-self-healing-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: playwright-mcp-test-execution-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: requirement-analysis-agent
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: robot-framework-tester
+Status: PASS
+Referenced files: 8
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: skill-creator
+Status: FAIL
+Referenced files: 4
+MISSING:
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+  - references/file1.md
+  - references/file2.js
+  - requirements.json
+  - evals/trigger-eval.json
+  - evals/test-prompts.json
+
+Skill: smoke-test-builder
+Status: PASS
+Referenced files: 2
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: test-case-generator
+Status: PASS
+Referenced files: 0
+ORPHANED (on disk, not in SKILL.md):
+  - evals/test-prompts.json
+  - evals/trigger-eval.json
+
+Skill: ui-load-test
+Status: PASS
+Referenced files: 6
+
+Summary: 15 passed, 4 failed, 0 skipped

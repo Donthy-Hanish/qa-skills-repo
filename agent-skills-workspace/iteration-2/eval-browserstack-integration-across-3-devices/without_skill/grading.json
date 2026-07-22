@@ -1,0 +1,35 @@
+{
+  "assertion_results": [
+    {
+      "text": "Output includes BrowserStack-specific capabilities including userName and accessKey",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5409, Requested 2476. Please try again in 18.849999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output includes device configs for all 3 requested devices",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5409, Requested 2476. Please try again in 18.849999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output uses environment variables for BrowserStack credentials, never hardcoded",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5409, Requested 2476. Please try again in 18.849999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Appium server URL changes to BrowserStack hub URL",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5409, Requested 2476. Please try again in 18.849999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    },
+    {
+      "text": "Output mentions uploading the app binary to BrowserStack before running",
+      "passed": false,
+      "evidence": "judge returned unparseable response: openai-compatible 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krxdve1zewcapde42tysrxgg` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5409, Requested 2476. Please try again in 18.849999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5,
+    "pass_rate": 0
+  }
+}

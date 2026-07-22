@@ -1,0 +1,93 @@
+### BrowserStack Configuration
+To run Appium tests on BrowserStack, you need to configure your test setup with the required capabilities and environment settings. Below is an example of how you can define the capabilities for the desired devices.
+
+```python
+# browserstack_config.py
+BROWSERSTACK_CONFIG = {
+    "username": "your_browserstack_username",
+    "accessKey": "your_browserstack_access_key",
+    "server": "https://hub-cloud.browserstack.com/wd/hub",
+}
+
+TEST_DEVICES = [
+    {
+        "device": "Samsung Galaxy S23",
+        "os_version": "12.0",
+        "os": "Android",
+        "platform": "ANDROID",
+        "browserName": "",
+        "app": "path_to_your_app.apk",
+    },
+    {
+        "device": "Google Pixel 7",
+        "os_version": "13.0",
+        "os": "Android",
+        "platform": "ANDROID",
+        "browserName": "",
+        "app": "path_to_your_app.apk",
+    },
+    {
+        "device": "iPhone 15",
+        "os_version": "16.0",
+        "os": "iOS",
+        "platform": "IOS",
+        "browserName": "",
+        "app": "path_to_your_app.ipa",
+    },
+]
+
+TEST_CAPABILITIES = []
+for device in TEST_DEVICES:
+    capability = {
+        "browserName": device["browserName"],
+        "device": device["device"],
+        "os_version": device["os_version"],
+        "os": device["os"],
+        "platform": device["platform"],
+        "app": device["app"],
+        "project": "Your Project",
+        "build": "Your Build",
+        "name": f"{device['device']} Test",
+    }
+    TEST_CAPABILITIES.append(capability)
+```
+
+### Update conftest.py
+To integrate the BrowserStack configuration with your test framework, you need to update your `conftest.py` file.
+
+```python
+# conftest.py
+import pytest
+from appium import webdriver
+from browserstack_config import BROWSERSTACK_CONFIG, TEST_CAPABILITIES
+
+@pytest.fixture(params=TEST_CAPABILITIES, scope="function")
+def driver(request):
+    capability = request.param
+    driver = webdriver.Remote(
+        command_executor=BROWSERSTACK_CONFIG["server"],
+        desired_capabilities=capability,
+    )
+    yield driver
+    driver.quit()
+```
+
+### Example Test
+With the `driver` fixture, you can now write your tests:
+
+```python
+# test_example.py
+def test_example(driver):
+    # Perform actions on the app using the driver
+    driver.find_element("id", "com.example.app:id/button").click()
+    assert driver.find_element("id", "com.example.app:id/result").text == "Expected result"
+```
+
+### Running Tests with Pytest
+To run your tests using Pytest, save all the above files and run the command:
+
+```bash
+pytest tests
+```
+
+This will execute your tests on each device specified in the `TEST_DEVICES` list.
