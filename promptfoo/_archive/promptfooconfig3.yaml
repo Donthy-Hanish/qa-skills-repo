@@ -1,0 +1,116 @@
+# promptfooconfig.yaml
+# Evaluates appium-mobile-tester skill: with_skill vs without_skill
+#
+# Usage:
+#   cd promptfoo
+#   $env:ANTHROPIC_API_KEY = "your-key"
+#   npx promptfoo eval --no-cache
+#   npx promptfoo view
+
+description: "appium-mobile-tester skill evaluation"
+
+providers:
+  - id: anthropic:messages:claude-sonnet-4-6
+
+prompts:
+  - label: with-skill
+    raw:
+      - role: system
+        content: file://system-with-skill.txt
+      - role: user
+        content: "{{query}}"
+  - label: without-skill
+    raw:
+      - role: user
+        content: "{{query}}"
+
+tests:
+  - description: "React Native login screen - full suite generation"
+    vars:
+      query: "Write Appium tests for a React Native login screen with email field, password field, login button, and forgot password link. Both Android and iOS. Include setup."
+    assert:
+      - type: llm-rubric
+        value: "Output includes a conftest.py with both Android and iOS capability functions"
+      - type: llm-rubric
+        value: "Output includes a Page Object class with LOCATORS dict using at least 2 locator strategies per element"
+      - type: llm-rubric
+        value: "Output includes a find_element method with fallback chain logic"
+      - type: llm-rubric
+        value: "Output includes at least 5 test cases"
+      - type: llm-rubric
+        value: "Test data uses meaningful names, not test123 or user1"
+      - type: llm-rubric
+        value: "Capabilities use Appium 2.x Options classes, not deprecated desired_capabilities dict"
+      - type: llm-rubric
+        value: "No hardcoded locators in test methods - all go through Page Object"
+      - type: llm-rubric
+        value: "Driver fixture uses yield and calls driver.quit() in teardown"
+
+  - description: "Onboarding carousel with gesture handling"
+    vars:
+      query: "I need to test the onboarding flow in a React Native app. There are 3 slides the user swipes through. Each slide has a title, description, and illustration. The last slide has a Get Started button that goes to the signup screen. Generate the full Appium test suite with gesture handling."
+    assert:
+      - type: llm-rubric
+        value: "Output includes a gesture utility with swipe function using W3C Actions API"
+      - type: llm-rubric
+        value: "Output includes a Page Object for the onboarding screen"
+      - type: llm-rubric
+        value: "Output includes tests that verify each of the 3 slides"
+      - type: llm-rubric
+        value: "Swipe gestures use ActionBuilder and PointerInput, not deprecated TouchAction"
+      - type: llm-rubric
+        value: "Output includes a test for the Get Started button navigation"
+      - type: llm-rubric
+        value: "Output handles the swipe direction correctly (swipe left to advance)"
+
+  - description: "Appium setup from scratch on Mac"
+    vars:
+      query: "Set up Appium from scratch for a React Native app. I have a Mac with Android Studio. Walk me through everything and generate the conftest.py."
+    assert:
+      - type: llm-rubric
+        value: "Output mentions installing Appium 2.x via npm"
+      - type: llm-rubric
+        value: "Output includes appium driver install commands for uiautomator2 and xcuitest"
+      - type: llm-rubric
+        value: "Output mentions ANDROID_HOME and JAVA_HOME environment variables"
+      - type: llm-rubric
+        value: "Output references Appium Inspector for element identification"
+      - type: llm-rubric
+        value: "Output includes a conftest.py with both platform capability builders"
+      - type: llm-rubric
+        value: "Capabilities use environment variables with defaults, not hardcoded values"
+
+  - description: "BrowserStack integration across 3 devices"
+    vars:
+      query: "My Appium tests need to run on BrowserStack. I want to test on Samsung Galaxy S23, Pixel 7, and iPhone 15. Generate the BrowserStack config and update conftest.py."
+    assert:
+      - type: llm-rubric
+        value: "Output includes BrowserStack-specific capabilities including userName and accessKey"
+      - type: llm-rubric
+        value: "Output includes device configs for all 3 requested devices"
+      - type: llm-rubric
+        value: "Output uses environment variables for BrowserStack credentials, never hardcoded"
+      - type: llm-rubric
+        value: "Appium server URL changes to BrowserStack hub URL"
+      - type: llm-rubric
+        value: "Output mentions uploading the app binary to BrowserStack before running"
+
+  - description: "Native Android banking app - transfer screen"
+    vars:
+      query: "I have a native Android Kotlin banking app. Write Appium tests for the money transfer screen: user selects beneficiary from a list, enters amount, enters remarks, taps transfer, sees confirmation dialog, confirms. Include negative cases."
+    assert:
+      - type: llm-rubric
+        value: "Output includes a Page Object for the transfer screen"
+      - type: llm-rubric
+        value: "Test suite covers the full happy path flow end to end"
+      - type: llm-rubric
+        value: "Negative test cases include at least zero or negative amount and amount exceeding balance"
+      - type: llm-rubric
+        value: "Output handles the confirmation dialog as a separate interaction step"
+      - type: llm-rubric
+        value: "Test data uses realistic banking amounts and beneficiary names"
+      - type: llm-rubric
+        value: "Output does NOT assume React Native - recognizes this is native Android"
+
+commandLineOptions:
+  maxConcurrency: 1

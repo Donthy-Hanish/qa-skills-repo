@@ -1,75 +1,110 @@
-{
-  "skill_name": "appium-mobile-tester",
-  "evals": [
-    {
-      "id": "login-screen-suite",
-      "name": "React Native login screen - full suite generation",
-      "prompt": "Write Appium tests for the myProlink login screen. It has email field, password field, login button, and forgot password link. React Native, both Android and iOS. Include setup.",
-      "expected_output": "Complete test suite with conftest.py, Page Object with multi-strategy locators, at least 5 test cases, pytest.ini, and requirements.txt.",
-      "assertions": [
-        "Output includes a conftest.py with both Android and iOS capability functions",
-        "Output includes a Page Object class with LOCATORS dict using at least 2 locator strategies per element",
-        "Output includes a find_element method with fallback chain logic",
-        "Output includes at least 5 test cases in a TestLogin class",
-        "Test data uses meaningful names, not test123 or user1",
-        "Capabilities use Appium 2.x Options classes, not deprecated desired_capabilities dict",
-        "No hardcoded locators in test methods - all go through Page Object",
-        "Driver fixture uses yield and calls driver.quit() in teardown"
-      ]
-    },
-    {
-      "id": "gesture-onboarding",
-      "name": "Onboarding carousel with gesture handling",
-      "prompt": "I need to test the onboarding flow in our React Native app. There are 3 slides the user swipes through. Each slide has a title, description, and illustration. The last slide has a Get Started button that goes to the signup screen. Generate the full Appium test suite with gesture handling.",
-      "expected_output": "Page Object for onboarding, gestures utility with swipe helper using W3C Actions API, and test cases for swiping through slides and tapping Get Started.",
-      "assertions": [
-        "Output includes a gesture utility with swipe function using W3C Actions API",
-        "Output includes a Page Object for the onboarding screen",
-        "Output includes tests that verify each of the 3 slides",
-        "Swipe gestures use ActionBuilder and PointerInput, not deprecated TouchAction",
-        "Output includes a test for the Get Started button navigation"
-      ]
-    },
-    {
-      "id": "appium-setup",
-      "name": "Appium setup from scratch on Mac",
-      "prompt": "Set up Appium from scratch for a React Native app. I have a Mac with Android Studio. Walk me through everything and generate the conftest.py.",
-      "expected_output": "Step-by-step setup guide with driver install commands, environment variables, and a conftest.py with environment-variable-driven capabilities.",
-      "assertions": [
-        "Output mentions installing Appium 2.x via npm",
-        "Output includes appium driver install commands for uiautomator2 and xcuitest",
-        "Output mentions ANDROID_HOME and JAVA_HOME environment variables",
-        "Output references Appium Inspector for element identification",
-        "Output includes a conftest.py with both platform capability builders",
-        "Capabilities use environment variables with defaults, not hardcoded values"
-      ]
-    },
-    {
-      "id": "browserstack-cloud",
-      "name": "BrowserStack integration across 3 devices",
-      "prompt": "My Appium tests need to run on BrowserStack. I want to test on Samsung Galaxy S23, Pixel 7, and iPhone 15. Generate the BrowserStack config and update conftest.py.",
-      "expected_output": "Updated conftest.py with BrowserStack capability builder, device config JSON for all 3 devices, and environment variable setup for credentials.",
-      "assertions": [
-        "Output includes BrowserStack-specific capabilities including userName and accessKey",
-        "Output includes device configs for all 3 requested devices",
-        "Output uses environment variables for BrowserStack credentials, never hardcoded",
-        "Appium server URL changes to BrowserStack hub URL",
-        "Output mentions uploading the app binary to BrowserStack before running"
-      ]
-    },
-    {
-      "id": "native-android-banking",
-      "name": "Native Android banking app - transfer screen",
-      "prompt": "I have a native Android Kotlin banking app. Write Appium tests for the money transfer screen: user selects beneficiary from a list, enters amount, enters remarks, taps transfer, sees confirmation dialog, confirms. Include negative cases.",
-      "expected_output": "Page Object for transfer screen with locators, test suite with happy path and negative cases for zero amount, exceeding balance, empty beneficiary.",
-      "assertions": [
-        "Output includes a Page Object for the transfer screen",
-        "Test suite covers the full happy path flow end to end",
-        "Negative test cases include at least zero or negative amount and amount exceeding balance",
-        "Output handles the confirmation dialog as a separate interaction step",
-        "Test data uses realistic banking amounts and beneficiary names",
-        "Output does NOT assume React Native - recognizes this is native Android"
-      ]
-    }
-  ]
+﻿{
+    "skill_name":  "appium-mobile-tester",
+    "evals":  [
+                  {
+                      "expected_output":  "Complete test suite with conftest.py (Android + iOS capabilities), page_login.py (Page Object with multi-strategy locators for all 4 elements), test_login.py (at least 5 test cases covering happy path, empty fields, invalid credentials, forgot password navigation, password masking), pytest.ini, and requirements.txt.",
+                      "id":  "eval-1",
+                      "assertions":  [
+                                         "Output includes a conftest.py with both Android and iOS capability functions",
+                                         "Output includes a Page Object class with LOCATORS dict using at least 2 locator strategies per element",
+                                         "Output includes a find_element method with fallback chain logic",
+                                         "Output includes at least 5 test cases in a TestLogin class",
+                                         "Test data uses meaningful names, not \u0027test123\u0027 or \u0027user1\u0027",
+                                         "Capabilities use Appium 2.x Options classes, not deprecated desired_capabilities dict",
+                                         "Output includes pytest.ini with markers",
+                                         "Output includes a project directory structure",
+                                         "No hardcoded locators in test methods - all go through Page Object",
+                                         "Driver fixture uses yield and calls driver.quit() in teardown"
+                                     ],
+                      "name":  "Write Appium tests for the myProlink login screen. It has email field, password ...",
+                      "prompt":  "Write Appium tests for the myProlink login screen. It has email field, password field, login button, and forgot password link. React Native, both Android and iOS. Include setup."
+                  },
+                  {
+                      "expected_output":  "Page Object for onboarding with locators for slide elements and indicators, a gestures utility with swipe helper using W3C Actions API, and test cases for swiping through slides, swiping back, verifying each slide\u0027s content, and tapping Get Started.",
+                      "id":  "eval-2",
+                      "assertions":  [
+                                         "Output includes a gesture utility with swipe function using W3C Actions API",
+                                         "Output includes a Page Object for the onboarding screen",
+                                         "Output includes tests that verify each of the 3 slides",
+                                         "Swipe gestures use ActionBuilder/PointerInput, not deprecated TouchAction",
+                                         "Output includes a test for the Get Started button navigation",
+                                         "Output handles the scroll/swipe direction correctly (swipe left to advance)"
+                                     ],
+                      "name":  "I need to test the onboarding flow in our React Native app. There are 3 slides t...",
+                      "prompt":  "I need to test the onboarding flow in our React Native app. There are 3 slides the user swipes through. Each slide has a title, description, and illustration. The last slide has a \u0027Get Started\u0027 button that goes to the signup screen. Generate the full Appium test suite with gesture handling."
+                  },
+                  {
+                      "expected_output":  "Step-by-step setup guide covering Node.js, Appium 2.x server install, driver install (uiautomator2 + xcuitest), Android SDK verification, iOS simulator setup, Appium Inspector recommendation, and a conftest.py with environment-variable-driven capabilities.",
+                      "id":  "eval-3",
+                      "assertions":  [
+                                         "Output mentions installing Appium 2.x via npm",
+                                         "Output includes appium driver install commands for uiautomator2 and xcuitest",
+                                         "Output mentions ANDROID_HOME and JAVA_HOME environment variables",
+                                         "Output references Appium Inspector for element identification",
+                                         "Output includes a conftest.py with both platform capability builders",
+                                         "Capabilities use environment variables with defaults, not hardcoded values",
+                                         "Output mentions verifying setup with the verify-setup script or equivalent commands"
+                                     ],
+                      "name":  "Set up Appium from scratch for a React Native app. I have a Mac with Android Stu...",
+                      "prompt":  "Set up Appium from scratch for a React Native app. I have a Mac with Android Studio. Walk me through everything and generate the conftest.py."
+                  },
+                  {
+                      "expected_output":  "Updated conftest.py with BrowserStack capability builder, device config JSON for all 3 devices, instructions for uploading the app to BrowserStack, and environment variable setup.",
+                      "id":  "eval-4",
+                      "assertions":  [
+                                         "Output includes BrowserStack-specific capabilities (userName, accessKey, appUrl)",
+                                         "Output includes device configs for all 3 requested devices",
+                                         "Output uses environment variables for BrowserStack credentials, never hardcoded",
+                                         "Appium server URL changes to BrowserStack hub URL",
+                                         "Output mentions uploading the app binary to BrowserStack before running"
+                                     ],
+                      "name":  "My Appium tests need to run on BrowserStack. I want to test on Samsung Galaxy S2...",
+                      "prompt":  "My Appium tests need to run on BrowserStack. I want to test on Samsung Galaxy S23, Pixel 7, and iPhone 15. Generate the BrowserStack config and update conftest.py."
+                  },
+                  {
+                      "expected_output":  "Page Object for transfer screen with locators for beneficiary list, amount field, remarks, transfer button, confirmation dialog. Test suite with happy path and negative cases: zero amount, exceeding balance, empty beneficiary, special characters in remarks.",
+                      "id":  "eval-5",
+                      "assertions":  [
+                                         "Output includes a Page Object for the transfer screen",
+                                         "Test suite covers the full happy path flow end to end",
+                                         "Negative test cases include at least: zero/negative amount, amount exceeding balance, no beneficiary selected",
+                                         "Output handles the confirmation dialog as a separate interaction step",
+                                         "Test data uses realistic banking amounts and beneficiary names",
+                                         "Locators include Android-specific resource-id strategy",
+                                         "Output does NOT assume React Native - recognizes this is native Android"
+                                     ],
+                      "name":  "I have a native Android Kotlin banking app. Write Appium tests for the money tra...",
+                      "prompt":  "I have a native Android Kotlin banking app. Write Appium tests for the money transfer screen: user selects beneficiary from a list, enters amount, enters remarks, taps transfer, sees confirmation dialog, confirms. Include negative cases."
+                  },
+                  {
+                      "assertions":  [
+                                         "The response addresses the specific request rather than asking for clarification on basic concepts",
+                                         "The response includes concrete technical details relevant to the skill domain"
+                                     ],
+                      "prompt":  "Write Appium tests for the myProlink login screen. It has email, password, and a login button. React Native app, needs to run on Android and iOS.",
+                      "name":  "Trigger test: Explicit Appium + mobile app + screen description - primary ",
+                      "id":  "trigger-6",
+                      "expected_output":  "The response should demonstrate relevant expertise and provide actionable guidance for this request."
+                  },
+                  {
+                      "assertions":  [
+                                         "The response addresses the specific request rather than asking for clarification on basic concepts",
+                                         "The response includes concrete technical details relevant to the skill domain"
+                                     ],
+                      "prompt":  "I need mobile test automation for our Flutter app\u0027s checkout flow. It runs on both platforms and we use Python for our test framework.",
+                      "name":  "Trigger test: Mobile automation + Flutter + Python - Appium covers Flutter",
+                      "id":  "trigger-7",
+                      "expected_output":  "The response should demonstrate relevant expertise and provide actionable guidance for this request."
+                  },
+                  {
+                      "assertions":  [
+                                         "The response addresses the specific request rather than asking for clarification on basic concepts",
+                                         "The response includes concrete technical details relevant to the skill domain"
+                                     ],
+                      "prompt":  "Help me set up Appium on my machine. I have a Mac and want to test on Android emulator and iOS simulator.",
+                      "name":  "Trigger test: Appium setup request - Setup Flow",
+                      "id":  "trigger-8",
+                      "expected_output":  "The response should demonstrate relevant expertise and provide actionable guidance for this request."
+                  }
+              ]
 }

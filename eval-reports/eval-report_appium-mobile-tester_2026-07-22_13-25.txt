@@ -1,0 +1,47 @@
+﻿Skill Eval Report: appium-mobile-tester
+Generated: 2026-07-22 13:44:55
+Target: claude-sonnet-4-6 | Judge: claude-haiku-4-5-20251001
+============================================================
+
+OVERALL: with_skill 75.6% vs without_skill 53.7% (delta: +21.9 pp)
+
+--- Write Appium tests for the myProlink login screen. It has email field, password ... ---
+  with_skill: 70% (7/10)
+  without_skill: 30% (3/10)
+  delta: +40 pp
+
+--- I need to test the onboarding flow in our React Native app. There are 3 slides t... ---
+  with_skill: 100% (6/6)
+  without_skill: 66.7% (4/6)
+  delta: +33.3 pp
+
+--- Set up Appium from scratch for a React Native app. I have a Mac with Android Stu... ---
+  with_skill: 85.7% (6/7)
+  without_skill: 57.1% (4/7)
+  delta: +28.6 pp
+
+--- My Appium tests need to run on BrowserStack. I want to test on Samsung Galaxy S2... ---
+  with_skill: 100% (5/5)
+  without_skill: 100% (5/5)
+  delta: +0 pp
+
+--- I have a native Android Kotlin banking app. Write Appium tests for the money tra... ---
+  with_skill: 57.1% (4/7)
+  without_skill: 0% (0/7)
+  delta: +57.1 pp
+
+--- Trigger test: Explicit Appium + mobile app + screen description - primary  ---
+  with_skill: 100% (2/2)
+  without_skill: 100% (2/2)
+  delta: +0 pp
+
+--- Trigger test: Mobile automation + Flutter + Python - Appium covers Flutter ---
+  with_skill: 50% (1/2)
+  without_skill: 100% (2/2)
+  delta: +-50 pp
+
+--- Trigger test: Appium setup request - Setup Flow ---
+  with_skill: 0% (0/2)
+  without_skill: 100% (2/2)
+  delta: +-100 pp
+
